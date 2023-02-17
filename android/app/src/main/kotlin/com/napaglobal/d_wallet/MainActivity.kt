@@ -1,4 +1,4 @@
-package com.napaglobal.flutter_bloc_base_source_code
+package com.napaglobal.d_wallet
 
 import io.flutter.embedding.android.FlutterActivity
 
