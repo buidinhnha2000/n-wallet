@@ -2,16 +2,10 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <item android:drawable="@android:color/white"/>
     <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/splash_background" />
-        </shape>
-    </item>
-    <item android:height="120dp"
-            android:width="164dp"
-        android:gravity="center"
-        >
-        <bitmap android:gravity="fill"
+        <bitmap
+            android:gravity="center"
             android:src="@drawable/logo_app"
             />
     </item>
