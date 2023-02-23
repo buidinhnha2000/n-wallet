@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../screens/home/home.dart';
 import '../screens/login/login.dart';
+import '../screens/onboarding/onboarding.dart';
 
 abstract class AppRoutes {
   static const login = 'login';
   static const home = 'home';
+  static const onboarding = 'onboarding';
 }
 
 abstract class AppNavigation {
@@ -15,6 +17,8 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const HomeScreen(), settings);
       case AppRoutes.login:
         return AppPageRoute((_) => const LoginScreen(), settings);
+      case AppRoutes.onboarding:
+        return AppPageRoute((context) => const OnboardingScreeen(), settings);
       default:
         throw 'Cannot find destination route';
     }
