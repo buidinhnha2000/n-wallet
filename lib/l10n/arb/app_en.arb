@@ -1,4 +1,14 @@
 {
     "text_hello_world": "Hello World!",
-    "text_display_some_text": "Display some text!"
+    "text_display_some_text": "Display some text!",
+    "text_reset_password": "Reset Password",
+    "text_reset_password_content": "Enter your email and we send you a link to reset your password",
+    "text_new_password": "Create New Password",
+    "text_new_password_content": "Your new password must be different from previous passwords",
+    "text_signup_verify": "Verify Your Email",
+    "text_signup_verify_content": "Please enter 4 digit code sent to",
+    "text_your_name": "Enter Your Name",
+    "text_your_name_content": "Please enter your first and last name",
+    "text_setup_password": "Setup Password",
+    "text_setup_password_content": "Please create a secure password including the following criteria bellow"
 }
