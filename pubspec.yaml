@@ -37,6 +37,9 @@ dependencies:
   # Equatable
   equatable: ^2.0.5
 
+  # Shared Preference
+  shared_preferences: ^2.0.18
+
   # endregion packages
 
   # The following adds the Cupertino Icons font to your application.
