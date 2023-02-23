@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
+            const SizedBox(height: 20,),
             Expanded(
               child: BlocProvider<HomeBloc>(
                 create: (context) => HomeBloc(context.read()),
@@ -38,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                     context, AppRoutes.login, (route) => false);
               },
               child: const Text('Logout'),
-            )
+            ),
           ],
         ),
       ),
