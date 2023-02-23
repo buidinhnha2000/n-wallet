@@ -7,9 +7,4 @@
 
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
     </style>
-
-    <style name="Theme.AppCompat.NoActionBar">
-        <item name="windowActionBar">true</item>
-        <item name="windowNoTitle">true</item>
-    </style>
 </resources>
