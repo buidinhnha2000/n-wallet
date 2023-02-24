@@ -13,6 +13,6 @@ Future<void> main() async {
   final serviceLocator = ServiceLocator.instance;
   serviceLocator.registerSingleton(dioClient);
   serviceLocator.configureNetworkModule(AppFlavor.staging);
-
+  serviceLocator.configureLocalStorage();
   bootstrap();
 }
