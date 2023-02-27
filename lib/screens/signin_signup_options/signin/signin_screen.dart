@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/context.dart';
 import '../../../l10n/l10n.dart';
->>>>>>>>> Temporary merge branch 2
 import '../../../navigation/navigation.dart';
 import '../../../theme/app_color.dart';
 import '../../widget/button/button_check.dart';
