@@ -21,7 +21,6 @@ class ButtonCheck extends StatefulWidget {
 }
 
 class _ButtonCheckState extends State<ButtonCheck> {
-  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -46,15 +45,7 @@ class _ButtonCheckState extends State<ButtonCheck> {
               onPressed: () async {
                 await widget.onPressed!();
               },
-              child: _isLoading
-                  ? const SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: CircularProgressIndicator(
-                        strokeWidth: 3,
-                        color: Colors.cyanAccent,
-                      ))
-                  : Row(
+              child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
