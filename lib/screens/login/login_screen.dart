@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../blocs/authentication/authentication_cubit.dart';
+
+import '../../common/extensions/extensions.dart';
 import '../../navigation/navigation.dart';
+import '../../theme/app_color.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,9 +14,11 @@ class LoginScreen extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: ElevatedButton(
-          child: const Text('Login'),
+          child:  Text('Login', style: context.textTheme.titleMedium?.copyWith(
+            color: Colors.black
+          ),),
           onPressed: () {
-            context.read<AuthenticationCubit>().setAuthenticated();
+
             Navigator.pushNamedAndRemoveUntil(
                 context, AppRoutes.home, (route) => false);
           },

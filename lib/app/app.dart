@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../blocs/authentication/authentication_cubit.dart';
-import '../blocs/onboarding/onboarding_cubit.dart';
 import '../di/service_locator.dart';
 import '../domain/repositories/example_repository.dart';
 import '../l10n/l10n.dart';
 import '../navigation/navigation.dart';
+import '../screens/onboarding/cubit/onboarding_cubit.dart';
 import '../theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -27,7 +26,7 @@ class App extends StatelessWidget {
             create: (context) => AuthenticationCubit(),
           ),
           BlocProvider(
-            create: (context) => OnboardingCubit(),
+            create: (context) => OnBoardingCubit(),
           )
         ],
         child: const AppView(),
@@ -41,18 +40,15 @@ class AppView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final onBoardingState = context.read<OnBoardingCubit>().state;
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: AppLocalizations.supportedLocales,
-      onGenerateRoute: AppNavigation.onGeneratedRoute,
-      initialRoute: context.read<OnboardingCubit>().state
-          ? AppRoutes.onboarding
-          : context.read<AuthenticationCubit>().state
-              ? AppRoutes.home
-              : AppRoutes.login,
-    );
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light,
+        darkTheme: AppTheme.dark,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        onGenerateRoute: AppNavigation.onGeneratedRoute,
+        initialRoute: onBoardingState.isOnBoardingComplete ? AppRoutes.login : AppRoutes.onboarding
+     );
   }
 }

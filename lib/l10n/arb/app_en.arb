@@ -1,4 +1,7 @@
 {
     "text_hello_world": "Hello World!",
-    "text_display_some_text": "Display some text!"
+    "text_display_some_text": "Display some text!",
+    "text_skip": "Skip",
+    "text_next": "Next"
+
 }

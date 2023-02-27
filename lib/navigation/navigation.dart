@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../screens/home/home.dart';
 import '../screens/login/login.dart';
+import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
 
 abstract class AppRoutes {
@@ -18,7 +20,12 @@ abstract class AppNavigation {
       case AppRoutes.login:
         return AppPageRoute((_) => const LoginScreen(), settings);
       case AppRoutes.onboarding:
-        return AppPageRoute((context) => const OnboardingScreeen(), settings);
+        return AppPageRoute(
+            (_) => BlocProvider(
+                  create: (context) => OnBoardingBloc(),
+                  child: const OnBoardingScreen(),
+                ),
+            settings);
       default:
         throw 'Cannot find destination route';
     }
