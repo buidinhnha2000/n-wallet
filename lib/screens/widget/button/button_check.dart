@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../common/extensions/context.dart';
+import '../../../theme/app_color.dart';
 
 class ButtonCheck extends StatefulWidget {
-  final Future Function()? onPressed;
+  final Function()? onPressed;
   final String text;
   final Color? color;
   final String? img;
@@ -33,7 +34,7 @@ class _ButtonCheckState extends State<ButtonCheck> {
             child: ElevatedButton(
               style: ButtonStyle(
                 elevation: const MaterialStatePropertyAll(0),
-                foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                foregroundColor: MaterialStateProperty.all<Color>(AppColors.textWhite),
                 backgroundColor:
                     MaterialStateProperty.all<Color?>(widget.color),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -42,8 +43,8 @@ class _ButtonCheckState extends State<ButtonCheck> {
                       side: BorderSide.none),
                 ),
               ),
-              onPressed: () async {
-                await widget.onPressed!();
+              onPressed: () {
+                widget.onPressed?.call();
               },
               child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +57,7 @@ class _ButtonCheckState extends State<ButtonCheck> {
                                 width: 18,
                                 child: Image.asset(
                                   widget.img ?? '',
-                                  color: Colors.white,
+                                  color: AppColors.textWhite,
                                   fit: BoxFit.fill,
                                 ))
                             : const Text(''),
@@ -66,7 +67,7 @@ class _ButtonCheckState extends State<ButtonCheck> {
                         Text(
                           widget.text,
                           style: context.textTheme.titleMedium
-                              ?.copyWith(color: Colors.white, fontSize: 16),
+                              ?.copyWith(color: AppColors.textWhite, fontSize: 16),
                         ),
                       ],
                     ),

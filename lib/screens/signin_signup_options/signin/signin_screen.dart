@@ -18,8 +18,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  late TextEditingController _emailController;
-  late TextEditingController _passwordController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _passwordController;
+  final _keyForm = GlobalKey<FormState>();
+  bool showPassword = false;
 
   @override
   void initState() {
@@ -30,10 +32,18 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [_topPage(), _bottomPage()],
+    return GestureDetector(
+      onTap: () {
+        FocusScopeNode currentFocus = FocusScope.of(context);
+        if (!currentFocus.hasPrimaryFocus) {
+          currentFocus.unfocus();
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: Stack(
+          children: [_topPage(), _bottomPage()],
+        ),
       ),
     );
   }
@@ -61,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
             hintText: context.l10n.text_yourEmail,
             keyboardType: TextInputType.emailAddress,
             controller: _emailController,
-            validator: validatedEmail,
+            validator: emailValidator,
           ),
         ),
         const SizedBox(
@@ -70,12 +80,18 @@ class _SignInScreenState extends State<SignInScreen> {
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
           child: TextForm(
-              hintText: context.l10n.text_password,
-              keyboardType: TextInputType.text,
-              controller: _passwordController,
-              validator: passwordValidator,
-              isPassword: true,
-              suffixIcon: const IconShowPassword()),
+            hintText: context.l10n.text_password,
+            keyboardType: TextInputType.text,
+            controller: _passwordController,
+            validator: passwordValidator,
+            isPassword: !showPassword,
+            suffixIcon: IconShowPassword(
+              showPassword: showPassword,
+              onPressed: () => setState(() {
+                showPassword = !showPassword;
+              }),
+            ),
+          ),
         ),
         const SizedBox(
           height: 8,
@@ -86,10 +102,7 @@ class _SignInScreenState extends State<SignInScreen> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               GestureDetector(
-                onTap: () {
-                  // Navigator.of(context)
-                  //     .pushNamed(AppRoutes.forgotPassword);
-                },
+                onTap: () {},
                 child: Text(
                   context.l10n.text_signIn_forgot,
                   style: context.textTheme.bodyLarge?.copyWith(
@@ -111,7 +124,9 @@ class _SignInScreenState extends State<SignInScreen> {
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: ButtonCheck(
                   onPressed: () {
-                    return Future(() => null);
+                    if (_keyForm.currentState!.validate()) {
+                      Navigator.of(context).pushNamed(AppRoutes.signOption);
+                    }
                   },
                   text: context.l10n.text_login,
                   color: AppColors.buttonNeonGreen,
@@ -126,8 +141,8 @@ class _SignInScreenState extends State<SignInScreen> {
                 Text(
                   context.l10n.text_signIn_new_to_DPay,
                   style: context.textTheme.bodyLarge?.copyWith(
-                        color: Colors.black45,
-                      ),
+                    color: AppColors.textLightBlack,
+                  ),
                 ),
                 GestureDetector(
                   // onTap: () {Navigator.of(context).pushNamed(AppRoutes.signUp);},
@@ -159,8 +174,8 @@ class _SignInScreenState extends State<SignInScreen> {
         Text(
           context.l10n.text_signIn_option_auth,
           style: context.textTheme.bodyLarge?.copyWith(
-                color: Colors.black45,
-              ),
+            color: AppColors.textLightBlack,
+          ),
         ),
         const SizedBox(
           height: 16,

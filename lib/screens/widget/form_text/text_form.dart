@@ -34,21 +34,19 @@ class TextForm extends StatelessWidget {
         style: context.textTheme.bodyLarge?.copyWith(
             color: AppColors.textLightBlack,
             fontWeight: FontWeight.w400,
-            fontSize: 16
-        ),
+            fontSize: 16),
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: context.textTheme.bodyLarge?.copyWith(
-              color: AppColors.textLightBlack
-          ),
+          hintStyle: context.textTheme.bodyLarge
+              ?.copyWith(color: AppColors.textLightBlack),
           focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: AppColors.buttonBorder, width: 2)),
           enabledBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: AppColors.buttonBorder, width: 2)),
           labelStyle: const TextStyle(color: Colors.black54, fontSize: 16),
-
-          suffixIcon: suffixIcon,),
+          suffixIcon: suffixIcon,
+        ),
         validator: validator,
       ),
     );

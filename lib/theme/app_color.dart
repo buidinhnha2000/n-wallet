@@ -38,14 +38,13 @@ class AppColors{
   static const Color iconBlue = Color(0xFF2f80ed);
   static const Color iconSalmon = Color(0xFFFFAE58);
   static const Color iconBackgroundWhile = Color(0xFFF6FAFD);
+  static const Color iconGrey = Color(0xFFbdbdbd);
 
   //text
   static const Color textLightBlack = Color(0xFF8F92A1);
-  static const Color textBlack = Color(0xFF030319);
+  static const Color textBlack = Color(0xFF000000);
+  static const Color textBlackLight = Color(0xFF030319);
   static const Color textYellow = Color(0xFFf9ad57);
   static const Color textNeonGreen = Color(0xFF4cd080);
-  static const Color text3 = Color(0xFFFFAE58);
-  static const Color text4 = Color(0xFFF6FAFD);
-  static const Color text5 = Color(0xFFF6FAFD);
-
+  static const Color textWhite = Color(0xFFFFFFFF);
 }
