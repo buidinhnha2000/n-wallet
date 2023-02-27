@@ -38,8 +38,8 @@ class _ButtonOptionState extends State<ButtonOption> {
                 side: BorderSide(color: AppColors.buttonBorder, width: 2)),
           ),
         ),
-        onPressed:() async{
-          await widget.onPressed!();
+        onPressed:(){
+          widget.onPressed?.call();
         },
         child: SizedBox(
           child: Row(

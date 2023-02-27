@@ -45,14 +45,14 @@ class _SignInSignUpOptionState extends State<SignInSignUpOption> {
               Text(
                 context.l10n.text_optionSign_1,
                 style: context.textTheme.bodyLarge?.copyWith(
-                    color: Colors.white,
+                    color: AppColors.textWhite,
                     fontSize: 28,
                     fontWeight: FontWeight.w700),
               ),
               Text(
                 context.l10n.text_optionSign_2,
                 style: context.textTheme.bodyLarge?.copyWith(
-                    color: Colors.white,
+                    color: AppColors.textWhite,
                     fontSize: 28,
                     fontWeight: FontWeight.w700),
               ),
@@ -112,14 +112,19 @@ class CurvedShape extends StatelessWidget {
 class _MyPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
+    double sizeScreen = 0.5;
+    double width = 1.5;
+    double height = 1.7;
+    double rightHeight = 0.28;
+
     var paint = Paint();
     paint.color = AppColors.backgroundLightGreen;
     paint.style = PaintingStyle.fill; // Change this to fill
 
     var path = Path();
-    path.moveTo(0, size.height * 0.5);
+    path.moveTo(0, size.height * sizeScreen);
     path.quadraticBezierTo(
-        size.width / 1.5, size.height / 1.7, size.width, size.height * 0.28);
+        size.width / width, size.height / height, size.width, size.height * rightHeight);
     path.lineTo(size.width, 0);
     path.lineTo(0, 0);
     canvas.drawPath(path, paint);

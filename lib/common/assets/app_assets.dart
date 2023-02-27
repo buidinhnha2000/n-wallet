@@ -16,4 +16,5 @@ abstract class AppAssets {
   static const iconGoogle = '$appAssetIconSource/google.svg';
   static const iconBack = '$appAssetIconSource/icon_back.svg';
   static const iconPasswordLess = '$appAssetIconSource/icon_password.svg';
+  static const iconPasswordShow = '$appAssetIconSource/icon_password_show.svg';
 }
