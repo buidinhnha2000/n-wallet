@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../common/assets/app_assets.dart';
+import '../../../common/extensions/context.dart';
 import '../../../l10n/l10n.dart';
 import '../../../navigation/navigation.dart';
 import '../../../theme/app_color.dart';
@@ -91,7 +92,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 },
                 child: Text(
                   context.l10n.text_signIn_forgot,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  style: context.textTheme.bodyLarge?.copyWith(
                       color: AppColors.primaryGreen,
                       fontWeight: FontWeight.w500),
                 ),
@@ -124,7 +125,7 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 Text(
                   context.l10n.text_signIn_new_to_DPay,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  style: context.textTheme.bodyLarge?.copyWith(
                         color: Colors.black45,
                       ),
                 ),
@@ -132,7 +133,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   // onTap: () {Navigator.of(context).pushNamed(AppRoutes.signUp);},
                   child: Text(
                     context.l10n.text_signUp,
-                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    style: context.textTheme.bodyLarge?.copyWith(
                         color: AppColors.primaryGreen,
                         fontWeight: FontWeight.w500,
                         decoration: TextDecoration.underline,
@@ -157,7 +158,7 @@ class _SignInScreenState extends State<SignInScreen> {
       children: [
         Text(
           context.l10n.text_signIn_option_auth,
-          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          style: context.textTheme.bodyLarge?.copyWith(
                 color: Colors.black45,
               ),
         ),

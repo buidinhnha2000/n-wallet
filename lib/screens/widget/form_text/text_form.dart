@@ -30,7 +30,7 @@ class TextForm extends StatelessWidget {
         controller: controller,
         obscureText: isPassword,
         keyboardType: keyboardType,
-        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+        style: context.textTheme.bodyLarge?.copyWith(
             color: AppColors.textLightBlack,
             fontWeight: FontWeight.w400,
             fontSize: 16
@@ -38,7 +38,7 @@ class TextForm extends StatelessWidget {
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           hintText: hintText,
-          hintStyle: Theme.of(context).textTheme.bodyLarge?.copyWith(
+          hintStyle: context.textTheme.bodyLarge?.copyWith(
               color: AppColors.textLightBlack
           ),
           focusedBorder: const UnderlineInputBorder(
