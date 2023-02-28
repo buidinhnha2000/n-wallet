@@ -6,7 +6,7 @@ class OnBoardingState extends Equatable {
   const OnBoardingState({required this.isOnBoardingComplete});
 
   factory OnBoardingState.initial() {
-    return const OnBoardingState(isOnBoardingComplete: false);
+    return const OnBoardingState(isOnBoardingComplete: true);
   }
 
   @override

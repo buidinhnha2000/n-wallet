@@ -1,4 +1,3 @@
-import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -8,7 +7,7 @@ class OnBoardingCubit extends HydratedCubit<OnBoardingState> {
   OnBoardingCubit() : super(OnBoardingState.initial());
 
   void completedOnBoarding() {
-    emit(state.copyWith(isOnBoardingComplete: true));
+    emit(state.copyWith(isOnBoardingComplete: false));
   }
   @override
   OnBoardingState fromJson(Map<String, dynamic> json) => OnBoardingState.fromJson(json);

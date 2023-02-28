@@ -7,6 +7,7 @@ import '../../navigation/navigation.dart';
 import '../../theme/app_color.dart';
 import '../../theme/color_schemes.dart';
 import 'bloc/onboarding_bloc.dart';
+import 'cubit/onboarding_cubit.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -42,8 +43,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               alignment: Alignment.topRight,
               child: TextButton(
                 onPressed: () {
+                  context.read<OnBoardingCubit>().completedOnBoarding();
                   context.navigator.pushNamedAndRemoveUntil(
-                      AppRoutes.login, (route) => false);
+                      AppRoutes.signOption, (route) => false);
                 },
                 style: ButtonStyle(
                   overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -121,25 +123,27 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             style: context.textTheme.titleLarge?.copyWith(
                               fontSize: 26,
                               fontWeight: FontWeight.w700,
+                              color: Colors.black
                             ),
                           ),
                         ),
                         Text(
                           onBoardData[state.pageIndex].desc,
                           textAlign: TextAlign.center,
-                          style: context.textTheme.bodyText1
+                          style: context.textTheme.bodyLarge
                               ?.copyWith(fontSize: 18, color: Colors.black26),
                         ),
                         const Spacer(),
                         ElevatedButton(
                             onPressed: () {
+                              context.read<OnBoardingCubit>().completedOnBoarding();
                               final currentPageIndex = context
                                   .read<OnBoardingScreenCubit>()
                                   .state
                                   .pageIndex;
                               currentPageIndex >= onBoardData.length - 1
                                   ? context.navigator.pushNamedAndRemoveUntil(
-                                      AppRoutes.login, (route) => false)
+                                      AppRoutes.signOption, (route) => false)
                                   : context
                                       .read<OnBoardingScreenCubit>()
                                       .changePage(state.pageIndex + 1);
@@ -155,7 +159,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                             ),
                             child: Text(
                               context.l10n.text_next,
-                              style: context.textTheme.bodyText1?.copyWith(
+                              style: context.textTheme.bodyLarge?.copyWith(
                                   fontSize: 18,
                                   color: Colors.white,
                                   fontWeight: FontWeight.w700),
@@ -182,41 +186,28 @@ class DotIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          height: isActive ? 16 : 16,
-          width: 16,
-          decoration: BoxDecoration(
+    return
+      Container(
+        width: 22,
+        height: 22,
+        decoration: BoxDecoration(
+          border: Border.all(
+              color: isActive ? Colors.white : Colors.transparent,
+              width: 2
+          ),
+          // border color
+          shape: BoxShape.circle,
+        ),
+        child: Container(
+          margin: const EdgeInsets.all(4),// or ClipRRect if you need to clip the content
+          decoration:  BoxDecoration(
+            shape: BoxShape.circle,
             color: isActive
                 ? lightColorScheme.primary
-                : lightColorScheme.primary.withOpacity(0.4),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(12),
-            ),
-          ),
+                : lightColorScheme.primary.withOpacity(0.4), // inner circle color
+          ), // inner content
         ),
-        Container(
-          width: 28,
-          height: 28,
-          decoration: BoxDecoration(
-            color: Colors.white, // border color
-            shape: BoxShape.circle,
-          ),
-          child: Padding(
-            padding: EdgeInsets.all(3), // border width
-            child: Container( // or ClipRRect if you need to clip the content
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.black, // inner circle color
-              ),
-              child: Container(), // inner content
-            ),
-          ),
-        ),
-      ],
-    );
+      );
   }
 }
 
