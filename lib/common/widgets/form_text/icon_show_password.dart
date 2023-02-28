@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../common/assets/app_assets.dart';
-import '../../../theme/app_color.dart';
 
 class IconShowPassword extends StatelessWidget {
   const IconShowPassword({
@@ -20,7 +19,6 @@ class IconShowPassword extends StatelessWidget {
         showPassword ? AppAssets.iconPasswordShow : AppAssets.iconPasswordLess,
         height: 24,
         width: 24,
-        color: AppColors.iconGrey,
         fit: BoxFit.scaleDown,
       ),
     );

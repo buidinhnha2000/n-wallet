@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/context.dart';
+import '../../../common/widgets/widgets.dart';
 import '../../../l10n/l10n.dart';
 import '../../../navigation/navigation.dart';
 import '../../../theme/app_color.dart';
-import '../../widget/button/button_check.dart';
 
 class SignInSignUpOption extends StatefulWidget {
   const SignInSignUpOption({Key? key}) : super(key: key);
@@ -78,9 +78,8 @@ class _SignInSignUpOptionState extends State<SignInSignUpOption> {
                 padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
                 child: ButtonCheck(
                     onPressed: () {
-                      return Future(() => null);
-                      // return Navigator.of(context).pushNamed(AppRoutes.signUp);
-                      // return Navigator.pop(context);
+                      context.navigator.pushNamedAndRemoveUntil(
+                          AppRoutes.signUp, (route) => false);
                     },
                     text: context.l10n.text_signUp,
                     color: AppColors.primaryGreen,
@@ -123,8 +122,8 @@ class _MyPainter extends CustomPainter {
 
     var path = Path();
     path.moveTo(0, size.height * sizeScreen);
-    path.quadraticBezierTo(
-        size.width / width, size.height / height, size.width, size.height * rightHeight);
+    path.quadraticBezierTo(size.width / width, size.height / height, size.width,
+        size.height * rightHeight);
     path.lineTo(size.width, 0);
     path.lineTo(0, 0);
     canvas.drawPath(path, paint);

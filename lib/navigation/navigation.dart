@@ -6,6 +6,7 @@ import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/signin_signup_options/signin/signin.dart';
 import '../screens/signin_signup_options/signin_signup_options/signin_signup_options.dart';
+import '../screens/signup/signup.dart';
 
 abstract class AppRoutes {
   static const home = 'home';
@@ -13,6 +14,7 @@ abstract class AppRoutes {
 
   static const signOption = 'signOption';
   static const signIn = 'signIn';
+  static const signUp = 'signup';
 }
 
 abstract class AppNavigation {
@@ -31,7 +33,8 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const SignInSignUpOption(), settings);
       case AppRoutes.signIn:
         return AppPageRoute((_) => const SignInScreen(), settings);
-
+      case AppRoutes.signUp:
+        return AppPageRoute((_) => const SignUpScreen(), settings);
       default:
         throw 'Cannot find destination route';
     }
