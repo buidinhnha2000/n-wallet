@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'app_flavor.dart';
 import 'bootstrap.dart';
 import 'data/remote/remote.dart';

@@ -45,8 +45,8 @@ class AppView extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       onGenerateRoute: AppNavigation.onGeneratedRoute,
       initialRoute: context.read<AuthenticationCubit>().state
-          ? AppRoutes.home
-          : AppRoutes.login,
+          ? AppRoutes.signOption
+          : AppRoutes.signOption,
     );
   }
 }
