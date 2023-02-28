@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/context.dart';
+import '../../../common/widgets/widgets.dart';
 import '../../../l10n/l10n.dart';
 import '../../../navigation/navigation.dart';
 import '../../../theme/app_color.dart';
-import '../../widget/button/button_check.dart';
-import '../../widget/button/button_option.dart';
-import '../../widget/form_text/icon_show_password.dart';
-import '../../widget/form_text/text_form.dart';
-import '../../widget/form_text/validation_form.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
