@@ -10,6 +10,17 @@ import '../../theme/color_schemes.dart';
 import 'bloc/onboarding_bloc.dart';
 import 'cubit/onboarding_cubit.dart';
 
+class OnBoarding {
+  final String title;
+  final String desc;
+  final String image;
+
+  const OnBoarding({required this.title, required this.desc, required this.image});
+}
+
+
+
+
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
@@ -34,6 +45,20 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final List<OnBoarding> onBoardData = [
+      OnBoarding(
+          title: context.l10n.text_title_onboarding_fastest_payment,
+          desc: context.l10n.text_desc_onboarding_fastest_payment,
+          image: AppAssets.imageQRScan),
+      OnBoarding(
+          title: context.l10n.text_title_onboarding_safest_platform,
+          desc: context.l10n.text_desc_onboarding_safest_platform,
+          image: AppAssets.imageFaceID),
+      OnBoarding(
+          title: context.l10n.text_title_onboarding_pay_anything,
+          desc: context.l10n.text_desc_onboarding_pay_anything,
+          image: AppAssets.imageShoppingItems)
+    ];
     return Scaffold(
       backgroundColor: AppColors.primaryGreen,
       body: SafeArea(
@@ -73,7 +98,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     itemCount: onBoardData.length,
                     onPageChanged:
                         context.read<OnBoardingScreenCubit>().changePage,
-                    itemBuilder: (context, index) => OnBoardingContent(
+                    itemBuilder: (context, index) => OnBoardingIllustration(
                       image: onBoardData[index].image,
                     ),
                   );
@@ -101,76 +126,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ],
               ),
             ),
-            Container(
-              height: 250.0,
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(32.0),
-                      topRight: Radius.circular(32.0))),
-              child: BlocBuilder<OnBoardingScreenCubit, OnboardingPage>(
-                builder: (context, state) {
-                  return Padding(
-                    padding: const EdgeInsets.all(24.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            onBoardData[state.pageIndex].title,
-                            textAlign: TextAlign.center,
-                            style: context.textTheme.titleLarge?.copyWith(
-                              fontSize: 26,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.black
-                            ),
-                          ),
-                        ),
-                        Text(
-                          onBoardData[state.pageIndex].desc,
-                          textAlign: TextAlign.center,
-                          style: context.textTheme.bodyLarge
-                              ?.copyWith(fontSize: 18, color: Colors.black26),
-                        ),
-                        const Spacer(),
-                        ElevatedButton(
-                            onPressed: () {
-                              context.read<OnBoardingCubit>().completedOnBoarding();
-                              final currentPageIndex = context
-                                  .read<OnBoardingScreenCubit>()
-                                  .state
-                                  .pageIndex;
-                              currentPageIndex >= onBoardData.length - 1
-                                  ? context.navigator.pushNamedAndRemoveUntil(
-                                      AppRoutes.signOption, (route) => false)
-                                  : context
-                                      .read<OnBoardingScreenCubit>()
-                                      .changePage(state.pageIndex + 1);
-                            },
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.buttonNeonGreen,
-                              shape: RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.circular(16.0), // <-- Radius
-                              ),
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 10.0),
-                            ),
-                            child: Text(
-                              context.l10n.text_next,
-                              style: context.textTheme.bodyLarge?.copyWith(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w700),
-                            ))
-                      ],
-                    ),
-                  );
-                },
-              ),
-            )
+            OnBoardingBottomSheet(onBoardData: onBoardData),
           ],
         ),
       ),
@@ -212,8 +168,8 @@ class DotIndicator extends StatelessWidget {
   }
 }
 
-class OnBoardingContent extends StatelessWidget {
-  OnBoardingContent({Key? key, required this.image}) : super(key: key);
+class OnBoardingIllustration extends StatelessWidget {
+  OnBoardingIllustration({Key? key, required this.image}) : super(key: key);
   String image;
 
   @override
@@ -226,26 +182,87 @@ class OnBoardingContent extends StatelessWidget {
   }
 }
 
-final List<OnBoarding> onBoardData = [
-  OnBoarding(
-      title: 'Fastest Payment',
-      desc:
-          'QR code scanning technology makes your payment process more faster',
-      image: AppAssets.imageQRScan),
-  OnBoarding(
-      title: 'Safest Platform',
-      desc: 'Multiple verification and face ID makes your account more safely',
-      image: AppAssets.imageFaceID),
-  OnBoarding(
-      title: 'Pay Anything',
-      desc: 'Supports many types of payments and pay without being complicated',
-      image: AppAssets.imageShoppingItems)
-];
+class OnBoardingBottomSheet extends StatelessWidget {
+  const OnBoardingBottomSheet({super.key, required this.onBoardData});
+  final List<OnBoarding> onBoardData;
 
-class OnBoarding {
-  final String title;
-  final String desc;
-  final String image;
 
-  OnBoarding({required this.title, required this.desc, required this.image});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250.0,
+      width: double.infinity,
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(32.0),
+              topRight: Radius.circular(32.0))),
+      child: BlocBuilder<OnBoardingScreenCubit, OnboardingPage>(
+        builder: (context, state) {
+          return Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    onBoardData[state.pageIndex].title,
+                    textAlign: TextAlign.center,
+                    style: context.textTheme.titleLarge?.copyWith(
+                        fontSize: 26,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.black
+                    ),
+                  ),
+                ),
+                Text(
+                  onBoardData[state.pageIndex].desc,
+                  textAlign: TextAlign.center,
+                  style: context.textTheme.bodyLarge
+                      ?.copyWith(fontSize: 18, color: Colors.black26),
+                ),
+                const Spacer(),
+                ElevatedButton(
+                    onPressed: () {
+                      context.read<OnBoardingCubit>().completedOnBoarding();
+                      final currentPageIndex = context
+                          .read<OnBoardingScreenCubit>()
+                          .state
+                          .pageIndex;
+                      currentPageIndex >= onBoardData.length - 1
+                          ? context.navigator.pushNamedAndRemoveUntil(
+                          AppRoutes.signOption, (route) => false)
+                          : context
+                          .read<OnBoardingScreenCubit>()
+                          .changePage(state.pageIndex + 1);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.buttonNeonGreen,
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                        BorderRadius.circular(16.0), // <-- Radius
+                      ),
+                      padding:
+                      const EdgeInsets.symmetric(vertical: 10.0),
+                    ),
+                    child: Text(
+                      context.l10n.text_next,
+                      style: context.textTheme.bodyLarge?.copyWith(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w700),
+                    ))
+              ],
+            ),
+          );
+        },
+      ),
+    );
+  }
+
 }
+
+

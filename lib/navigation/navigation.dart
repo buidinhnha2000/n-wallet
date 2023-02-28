@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../screens/home/home.dart';
-import '../screens/login/login.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/signin_signup_options/signin/signin.dart';
 import '../screens/signin_signup_options/signin_signup_options/signin_signup_options.dart';
 
 abstract class AppRoutes {
-  static const login = 'login';
   static const home = 'home';
   static const onboarding = 'onboarding';
 
@@ -22,12 +20,10 @@ abstract class AppNavigation {
     switch (settings.name) {
       case AppRoutes.home:
         return AppPageRoute((_) => const HomeScreen(), settings);
-      case AppRoutes.login:
-        return AppPageRoute((_) => const LoginScreen(), settings);
       case AppRoutes.onboarding:
         return AppPageRoute(
             (_) => BlocProvider(
-                  create: (context) => OnBoardingScreenCubit(),
+                  create: (_) => OnBoardingScreenCubit(),
                   child: const OnBoardingScreen(),
                 ),
             settings);

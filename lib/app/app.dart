@@ -50,7 +50,7 @@ class AppView extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         onGenerateRoute: AppNavigation.onGeneratedRoute,
-        initialRoute: onBoardingState.isOnBoardingComplete
+        initialRoute: onBoardingState.onBoardingUnCompleted
             ? AppRoutes.onboarding
             : authenticateState
                 ? AppRoutes.home
