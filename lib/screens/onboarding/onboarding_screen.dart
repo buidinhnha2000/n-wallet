@@ -6,6 +6,7 @@ import '../../l10n/l10n.dart';
 import '../../navigation/navigation.dart';
 import '../../theme/app_color.dart';
 import '../../theme/color_schemes.dart';
+
 import 'bloc/onboarding_bloc.dart';
 import 'cubit/onboarding_cubit.dart';
 
