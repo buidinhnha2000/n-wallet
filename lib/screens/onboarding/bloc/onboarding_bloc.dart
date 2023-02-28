@@ -1,23 +1,32 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
-import '../../../common/base_state.dart';
+enum OnboardingPage {
+  fastestPayment(0),
+  safestPlatform(1),
+  payAnything(2);
 
-part 'onboarding_event.dart';
+  const OnboardingPage(this.pageIndex);
 
-part 'onboarding_state.dart';
+  final int pageIndex;
+}
 
-class OnBoardingBloc extends Bloc<OnBoardingEvent, OnBoardingState> {
+class OnBoardingScreenCubit extends Cubit<OnboardingPage> {
   final PageController pageController = PageController(initialPage: 0);
 
-  OnBoardingBloc() : super(PageViewOnBoardingState(page: 0)) {
-    on<OnBoardingEvent>(_handlePageView);
-  }
+  OnBoardingScreenCubit() : super(OnboardingPage.fastestPayment);
 
-  void _handlePageView(OnBoardingEvent event, Emitter<OnBoardingState> emit) {
-    if (event is PageIndexChanged) {
-      emit(state.copyWith(page: event.pageIndex));
-      }
+  void changePage(int index) {
+    switch (index) {
+      case 0:
+        emit(OnboardingPage.fastestPayment);
+        break;
+      case 1:
+        emit(OnboardingPage.safestPlatform);
+        break;
+      case 2:
+        emit(OnboardingPage.payAnything);
+        break;
+    }
   }
 }

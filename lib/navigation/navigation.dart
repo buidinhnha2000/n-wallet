@@ -22,7 +22,7 @@ abstract class AppNavigation {
       case AppRoutes.onboarding:
         return AppPageRoute(
             (_) => BlocProvider(
-                  create: (context) => OnBoardingBloc(),
+                  create: (context) => OnBoardingScreenCubit(),
                   child: const OnBoardingScreen(),
                 ),
             settings);

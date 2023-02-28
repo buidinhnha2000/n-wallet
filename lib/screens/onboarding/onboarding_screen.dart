@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../common/assets/app_assets.dart';
 import '../../common/extensions/extensions.dart';
 import '../../l10n/l10n.dart';
+import '../../navigation/navigation.dart';
 import '../../theme/app_color.dart';
 import '../../theme/color_schemes.dart';
 import 'bloc/onboarding_bloc.dart';
@@ -15,7 +16,7 @@ class OnBoardingScreen extends StatefulWidget {
 }
 
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
-  late PageController _pageController;
+  late final PageController _pageController;
 
   @override
   void initState() {
@@ -41,15 +42,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               alignment: Alignment.topRight,
               child: TextButton(
                 onPressed: () {
-                  final currentSkipPage = context
-                      .read<OnBoardingBloc>()
-                      .pageController
-                      .page
-                      ?.toInt();
-
-                  context.read<OnBoardingBloc>().pageController.nextPage(
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease);
+                  context.navigator.pushNamedAndRemoveUntil(
+                      AppRoutes.login, (route) => false);
                 },
                 style: ButtonStyle(
                   overlayColor: MaterialStateProperty.all(Colors.transparent),
@@ -65,15 +59,17 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               ),
             ),
             Expanded(
-              child: BlocBuilder<OnBoardingBloc, OnBoardingState>(
+              child: BlocConsumer<OnBoardingScreenCubit, OnboardingPage>(
+                listener: (context, state) => _pageController.animateToPage(
+                    state.pageIndex,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.linear),
                 builder: (context, state) {
                   return PageView.builder(
-                    controller: context.read<OnBoardingBloc>().pageController,
+                    controller: _pageController,
                     itemCount: onBoardData.length,
-                    onPageChanged: (pageIndex) =>
-                        context.read<OnBoardingBloc>().add(
-                              PageIndexChanged(pageIndex),
-                            ),
+                    onPageChanged:
+                        context.read<OnBoardingScreenCubit>().changePage,
                     itemBuilder: (context, index) => OnBoardingContent(
                       image: onBoardData[index].image,
                     ),
@@ -89,11 +85,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   ...List.generate(
                     onBoardData.length,
                     (index) => Padding(
-                      padding: const EdgeInsets.only(right: 4),
-                      child: BlocBuilder<OnBoardingBloc, OnBoardingState>(
+                      padding: const EdgeInsets.only(right: 12),
+                      child: BlocBuilder<OnBoardingScreenCubit, OnboardingPage>(
                         builder: (context, state) {
                           return DotIndicator(
-                            isActive: index == state.page,
+                            isActive: index == state.pageIndex,
                           );
                         },
                       ),
@@ -110,7 +106,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(32.0),
                       topRight: Radius.circular(32.0))),
-              child: BlocBuilder<OnBoardingBloc, OnBoardingState>(
+              child: BlocBuilder<OnBoardingScreenCubit, OnboardingPage>(
                 builder: (context, state) {
                   return Padding(
                     padding: const EdgeInsets.all(24.0),
@@ -120,7 +116,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            onBoardData[state.page].title,
+                            onBoardData[state.pageIndex].title,
                             textAlign: TextAlign.center,
                             style: context.textTheme.titleLarge?.copyWith(
                               fontSize: 26,
@@ -129,16 +125,31 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           ),
                         ),
                         Text(
-                          onBoardData[state.page].desc,
+                          onBoardData[state.pageIndex].desc,
                           textAlign: TextAlign.center,
                           style: context.textTheme.bodyText1
                               ?.copyWith(fontSize: 18, color: Colors.black26),
                         ),
                         const Spacer(),
                         ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              final currentPageIndex = context
+                                  .read<OnBoardingScreenCubit>()
+                                  .state
+                                  .pageIndex;
+                              currentPageIndex >= onBoardData.length - 1
+                                  ? context.navigator.pushNamedAndRemoveUntil(
+                                      AppRoutes.login, (route) => false)
+                                  : context
+                                      .read<OnBoardingScreenCubit>()
+                                      .changePage(state.pageIndex + 1);
+                            },
                             style: ElevatedButton.styleFrom(
                               backgroundColor: AppColors.buttonNeonGreen,
+                              shape: RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.circular(16.0), // <-- Radius
+                              ),
                               padding:
                                   const EdgeInsets.symmetric(vertical: 10.0),
                             ),
@@ -171,15 +182,40 @@ class DotIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedContainer(
-      duration: const Duration(milliseconds: 300),
-      height: isActive ? 12 : 4,
-      width: 4,
-      decoration: BoxDecoration(
-          color: isActive
-              ? lightColorScheme.primary
-              : lightColorScheme.primary.withOpacity(0.4),
-          borderRadius: const BorderRadius.all(Radius.circular(12))),
+    return Stack(
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          height: isActive ? 16 : 16,
+          width: 16,
+          decoration: BoxDecoration(
+            color: isActive
+                ? lightColorScheme.primary
+                : lightColorScheme.primary.withOpacity(0.4),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(12),
+            ),
+          ),
+        ),
+        Container(
+          width: 28,
+          height: 28,
+          decoration: BoxDecoration(
+            color: Colors.white, // border color
+            shape: BoxShape.circle,
+          ),
+          child: Padding(
+            padding: EdgeInsets.all(3), // border width
+            child: Container( // or ClipRRect if you need to clip the content
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Colors.black, // inner circle color
+              ),
+              child: Container(), // inner content
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
