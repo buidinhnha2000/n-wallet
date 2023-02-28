@@ -2,9 +2,9 @@ import 'dart:ui';
 
 class AppColors {
 
-  //primary
   static const Color backgroundGreen = Color(0xff105d38);
-  static const Color gesturedetectorWhile= Color(0xFFedfaf2);
+  static const Color backgroundLightGreen = Color(0xFF2d6845);
+  static const Color gestureDetectorWhile = Color(0xFFedfaf2);
   static const Color hover= Color(0xFFf2f2f2);
 
   //primary
@@ -26,6 +26,10 @@ class AppColors {
   static const Color buttonLightSalmon= Color(0xFFffd7af);
   static const Color buttonSalmon= Color(0xFFffae58);
   static const Color buttonGreen= Color(0xFF105d38);
+  static const Color buttonBorder= Color(0xFFf2f2f2);
+  static const Color buttonBorder1= Color(0xFFe6e6e8);
+  static const Color buttonBorder2= Color(0xFF306e4d);
+  static const Color buttonBorder3= Color(0xFF23241f);
 
   //icon
   static const Color iconYellow = Color(0xFFffd12e);
@@ -34,5 +38,13 @@ class AppColors {
   static const Color iconBlue = Color(0xFF2f80ed);
   static const Color iconSalmon = Color(0xFFFFAE58);
   static const Color iconBackgroundWhile = Color(0xFFF6FAFD);
+  static const Color iconGrey = Color(0xFFbdbdbd);
 
+  //text
+  static const Color textLightBlack = Color(0xFF8F92A1);
+  static const Color textBlack = Color(0xFF000000);
+  static const Color textBlackLight = Color(0xFF030319);
+  static const Color textYellow = Color(0xFFf9ad57);
+  static const Color textNeonGreen = Color(0xFF4cd080);
+  static const Color textWhite = Color(0xFFFFFFFF);
 }
