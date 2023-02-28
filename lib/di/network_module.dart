@@ -6,4 +6,9 @@ extension ServiceLocatorX on ServiceLocator {
         ExampleAuthApi(inject<DioClient>().authDio));
     registerSingleton<ExampleRepository>(ExampleRepositoryImpl(inject()));
   }
+
+  void configureLocalStorage() {
+    registerLazySingletonAsync<LocalStorage>(() async =>
+        LocalStorageImplement(await SharedPreferences.getInstance()));
+  }
 }

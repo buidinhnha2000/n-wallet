@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../blocs/authentication/authentication_cubit.dart';
 import '../../l10n/l10n.dart';
 import '../../models/dtos/city.dart';
-import '../../navigation/navigation.dart';
 import 'bloc/home_bloc.dart';
 import 'bloc/home_event.dart';
 import 'bloc/home_state.dart';
@@ -34,9 +32,7 @@ class HomeScreen extends StatelessWidget {
             ),
             OutlinedButton(
               onPressed: () {
-                context.read<AuthenticationCubit>().setUnauthenticated();
-                Navigator.pushNamedAndRemoveUntil(
-                    context, AppRoutes.login, (route) => false);
+
               },
               child: const Text('Logout'),
             ),

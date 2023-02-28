@@ -7,4 +7,5 @@ extension BuildContextX on BuildContext {
 
   TextTheme get textTheme => theme.textTheme;
 
+  NavigatorState get navigator => Navigator.of(this);
 }

@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class AppColors{
+class AppColors {
 
   static const Color backgroundGreen = Color(0xff105d38);
   static const Color backgroundLightGreen = Color(0xFF2d6845);
