@@ -16,7 +16,6 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
-  final _keyForm = GlobalKey<FormState>();
   bool showPassword = false;
 
   @override
@@ -118,15 +117,15 @@ class _SignInScreenState extends State<SignInScreen> {
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 16, right: 16),
-              child: ButtonCheck(
+              child: DWalletButton(
                   onPressed: () {
-                    if (_keyForm.currentState!.validate()) {
-                      Navigator.of(context).pushNamed(AppRoutes.signOption);
-                    }
+
                   },
                   text: context.l10n.text_login,
                   color: AppColors.buttonNeonGreen,
-                  img: null),
+                buttonType: ButtonType.onlyText,
+
+              ),
             ),
             const SizedBox(
               height: 24,
@@ -184,13 +183,13 @@ class _SignInScreenState extends State<SignInScreen> {
             children: [
               Expanded(
                 flex: 1,
-                child: ButtonOption(
+                child: DWalletButton(
                   onPressed: () {
                     return Navigator.of(context).pushNamed(AppRoutes.signIn);
                   },
                   text: context.l10n.text_facebook,
                   color: null,
-                  img: AppAssets.iconFacebook,
+                  imageIcon: AppAssets.iconFacebook,buttonType: ButtonType.iconAndText
                 ),
               ),
               const SizedBox(
@@ -198,13 +197,13 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               Expanded(
                 flex: 1,
-                child: ButtonOption(
+                child: DWalletButton(
                   onPressed: () {
                     return Navigator.of(context).pushNamed(AppRoutes.signIn);
                   },
                   text: context.l10n.text_google,
                   color: null,
-                  img: AppAssets.iconGoogle,
+                  imageIcon: AppAssets.iconGoogle, buttonType: ButtonType.iconAndText,
                 ),
               ),
             ],
