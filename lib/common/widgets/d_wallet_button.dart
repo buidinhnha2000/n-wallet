@@ -6,8 +6,8 @@ import '../extensions/context.dart';
 
 enum ButtonType { onlyIcon, onlyText, iconAndText }
 
-class ButtonAppWidget extends StatelessWidget {
-  const ButtonAppWidget({
+class DWalletButton extends StatelessWidget {
+  const DWalletButton({
     Key? key,
     this.text,
     this.icon,
@@ -43,7 +43,7 @@ class ButtonAppWidget extends StatelessWidget {
         );
         break;
       case ButtonType.iconAndText:
-        widget = _ButtonIconAndTextWidget(
+        widget = _DWalletButtonIconAndTextWidget(
           imageIcon: imageIcon ?? '',
           text: text ?? '',
         );
@@ -96,8 +96,8 @@ class ButtonAppWidget extends StatelessWidget {
   }
 }
 
-class _ButtonIconAndTextWidget extends StatelessWidget {
-  const _ButtonIconAndTextWidget(
+class _DWalletButtonIconAndTextWidget extends StatelessWidget {
+  const _DWalletButtonIconAndTextWidget(
       {required this.text, required this.imageIcon});
 
   final String text;
