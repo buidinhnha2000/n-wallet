@@ -51,21 +51,30 @@ class DWalletButton extends StatelessWidget {
     }
     return widget;
   }
+
   static const double _onlyIconSize = 40;
+
   double? handleChangeHeight() {
     const double defaultHeight = 56;
 
-    if(buttonType == ButtonType.onlyIcon) {
+    if (buttonType == ButtonType.onlyIcon) {
       return _onlyIconSize;
     }
     return defaultHeight;
   }
-  double? handleChangeWidth() {
 
-    if(buttonType == ButtonType.onlyIcon) {
+  double? handleChangeWidth() {
+    if (buttonType == ButtonType.onlyIcon) {
       return _onlyIconSize;
     }
     return null;
+  }
+
+  BorderSide handleShowBorderSide() {
+    if (buttonType == ButtonType.onlyText) {
+      return BorderSide.none;
+    }
+    return const BorderSide(color: AppColors.buttonBorder, width: 2);
   }
 
   @override
@@ -78,12 +87,12 @@ class DWalletButton extends StatelessWidget {
           padding: MaterialStateProperty.all(const EdgeInsets.all(8.0)),
           elevation: const MaterialStatePropertyAll(0),
           foregroundColor:
-          MaterialStateProperty.all<Color>(AppColors.textWhite),
+              MaterialStateProperty.all<Color>(AppColors.textWhite),
           backgroundColor: MaterialStateProperty.all<Color?>(color),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(16.0)),
-              side: BorderSide(color: AppColors.buttonBorder, width: 2),
+             RoundedRectangleBorder(
+              borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+              side: handleShowBorderSide(),
             ),
           ),
         ),
@@ -130,14 +139,13 @@ class _DWalletButtonIconAndTextWidget extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 4,
+          flex: 3,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
             children: [
               const Expanded(flex: 1, child: SizedBox()),
               Expanded(
-                flex: 6,
+                flex: 8,
                 child: Text(
                   text,
                   style: context.textTheme.titleMedium?.copyWith(
@@ -146,6 +154,7 @@ class _DWalletButtonIconAndTextWidget extends StatelessWidget {
                   ),
                 ),
               ),
+              // const Expanded(flex: 3, child: SizedBox())
             ],
           ),
         ),

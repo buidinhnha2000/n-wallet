@@ -115,16 +115,14 @@ class _SignInScreenState extends State<SignInScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            Padding(
+            Container(
+              width: double.infinity,
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: DWalletButton(
-                  onPressed: () {
-
-                  },
-                  text: context.l10n.text_login,
-                  color: AppColors.buttonNeonGreen,
+                onPressed: () {},
+                text: context.l10n.text_login,
+                color: AppColors.buttonNeonGreen,
                 buttonType: ButtonType.onlyText,
-
               ),
             ),
             const SizedBox(
@@ -175,6 +173,17 @@ class _SignInScreenState extends State<SignInScreen> {
         const SizedBox(
           height: 16,
         ),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: DWalletButton(
+              onPressed: () {
+                return Navigator.of(context).pushNamed(AppRoutes.signIn);
+              },
+              text: 'context.l10n.text_facebook',
+              color: null,
+              imageIcon: AppAssets.iconFacebook,
+              buttonType: ButtonType.iconAndText),
+        ),
         Container(
           height: 54,
           padding: const EdgeInsets.only(left: 16, right: 16),
@@ -184,13 +193,13 @@ class _SignInScreenState extends State<SignInScreen> {
               Expanded(
                 flex: 1,
                 child: DWalletButton(
-                  onPressed: () {
-                    return Navigator.of(context).pushNamed(AppRoutes.signIn);
-                  },
-                  text: context.l10n.text_facebook,
-                  color: null,
-                  imageIcon: AppAssets.iconFacebook,buttonType: ButtonType.iconAndText
-                ),
+                    onPressed: () {
+                      return Navigator.of(context).pushNamed(AppRoutes.signIn);
+                    },
+                    text: context.l10n.text_facebook,
+                    color: null,
+                    imageIcon: AppAssets.iconFacebook,
+                    buttonType: ButtonType.iconAndText),
               ),
               const SizedBox(
                 width: 16,
@@ -203,7 +212,8 @@ class _SignInScreenState extends State<SignInScreen> {
                   },
                   text: context.l10n.text_google,
                   color: null,
-                  imageIcon: AppAssets.iconGoogle, buttonType: ButtonType.iconAndText,
+                  imageIcon: AppAssets.iconGoogle,
+                  buttonType: ButtonType.iconAndText,
                 ),
               ),
             ],
