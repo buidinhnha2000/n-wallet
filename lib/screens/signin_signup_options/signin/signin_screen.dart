@@ -173,17 +173,6 @@ class _SignInScreenState extends State<SignInScreen> {
         const SizedBox(
           height: 16,
         ),
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: DWalletButton(
-              onPressed: () {
-                return Navigator.of(context).pushNamed(AppRoutes.signIn);
-              },
-              text: 'context.l10n.text_facebook',
-              color: null,
-              imageIcon: AppAssets.iconFacebook,
-              buttonType: ButtonType.iconAndText),
-        ),
         Container(
           height: 54,
           padding: const EdgeInsets.only(left: 16, right: 16),
