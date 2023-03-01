@@ -3,13 +3,14 @@ import '../../../common/extensions/context.dart';
 import '../../../theme/app_color.dart';
 
 class TextForm extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? hintText;
   final bool isPassword;
   final TextInputType keyboardType;
   final FormFieldValidator<String>? validator;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
+  final Function(String)? onChanged;
 
   const TextForm({
     Key? key,
@@ -19,7 +20,7 @@ class TextForm extends StatelessWidget {
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
     this.validator,
-    this.suffixIcon,
+    this.suffixIcon, this.onChanged,
   }) : super(key: key);
 
   @override
@@ -48,6 +49,7 @@ class TextForm extends StatelessWidget {
           suffixIcon: suffixIcon,
         ),
         validator: validator,
+        onChanged: onChanged,
       ),
     );
   }
