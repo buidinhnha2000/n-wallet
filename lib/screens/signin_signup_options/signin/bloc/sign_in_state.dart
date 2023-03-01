@@ -26,3 +26,4 @@ class SignInState extends Equatable{
   @override
   List<Object> get props => [status, email, password];
 }
+
