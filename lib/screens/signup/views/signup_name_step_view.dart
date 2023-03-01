@@ -43,32 +43,7 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      flex: 0,
-                      child: DWalletButton(
-                          onPressed: () {
-                            context.navigator.pushNamedAndRemoveUntil(
-                                AppRoutes.signUpEmailStep, (route) => false);
-                          },
-                          color: Colors.white,
-                          buttonType: ButtonType.onlyIcon,
-                          imageIcon: AppAssets.iconBack),
-                    ),
-                    const Spacer(),
-                    Expanded(
-                        flex: 4,
-                        child: Text(
-                          context.l10n.text_your_name,
-                          style: context.textTheme.titleSmall?.copyWith(
-                              color: Colors.black,
-                              fontSize: 20,
-                              fontWeight: FontWeight.w600),
-                        ))
-                  ],
-                ),
+                _TitleNameStepWidget(),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Text(
@@ -84,17 +59,14 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
                   hintText: context.l10n.text_your_name,
                 ),
                 const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 26.0),
-                  child: DWalletButton(
-                      onPressed: () {
-                        context.navigator.pushNamedAndRemoveUntil(
-                            AppRoutes.signUpPasswordStep, (route) => false);
-                      },
-                      text: context.l10n.text_continue,
-                      color: AppColors.buttonNeonGreen,
-                      buttonType: ButtonType.onlyText),
-                ),
+                DWalletButton(
+                    onPressed: () {
+                      context.navigator.pushNamedAndRemoveUntil(
+                          AppRoutes.signUpPasswordStep, (route) => false);
+                    },
+                    text: context.l10n.text_continue,
+                    color: AppColors.buttonNeonGreen,
+                    buttonType: ButtonType.onlyText),
               ],
             ),
           ),
@@ -104,3 +76,35 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
   }
 }
 
+class _TitleNameStepWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(
+          flex: 0,
+          child: DWalletButton(
+              onPressed: () {
+                context.navigator.pushNamedAndRemoveUntil(
+                    AppRoutes.signUpEmailStep, (route) => false);
+              },
+              color: Colors.white,
+              buttonType: ButtonType.onlyIcon,
+              imageIcon: AppAssets.iconBack),
+        ),
+        const Spacer(),
+        Expanded(
+            flex: 4,
+            child: Text(
+              context.l10n.text_your_name,
+              style: context.textTheme.titleSmall?.copyWith(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600),
+            ))
+      ],
+    );
+  }
+
+}

@@ -72,54 +72,9 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
                       color: AppColors.buttonNeonGreen,
                       buttonType: ButtonType.onlyText),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      context.l10n.text_have_an_account,
-                      style: context.textTheme.titleSmall?.copyWith(
-                          color: Colors.black54,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        context.navigator.pushNamedAndRemoveUntil(
-                            AppRoutes.signIn, (route) => false);
-                      },
-                      child: Text(
-                        context.l10n.text_login,
-                        style: context.textTheme.titleSmall?.copyWith(
-                          color: AppColors.primaryGreen,
-                          decoration: TextDecoration.underline,
-                          decorationColor: AppColors.primaryGreen,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                _TextNavigateToLoginWidget(),
                 const Spacer(),
-                DWalletButton(
-                  onPressed: () {
-                    context.navigator
-                        .pushNamedAndRemoveUntil(AppRoutes.signUpNameStep, (route) => false);
-                  },
-                  buttonType: ButtonType.iconAndText,
-                  text: context.l10n.text_sign_up_with_facebook,
-                  imageIcon: AppAssets.iconFacebook,
-                ),
-                const SizedBox(
-                  height: 12.0,
-                ),
-                DWalletButton(
-                  onPressed: () {
-                    context.navigator
-                        .pushNamedAndRemoveUntil(AppRoutes.signUpNameStep, (route) => false);
-                  },
-                  buttonType: ButtonType.iconAndText,
-                  text: context.l10n.text_sign_up_with_google,
-                  imageIcon: AppAssets.iconGoogle,
-                ),
+                _ButtonsSocialWidget()
               ],
             ),
           ),
@@ -127,5 +82,70 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
       ),
     );
   }
+}
+
+class _ButtonsSocialWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        DWalletButton(
+          onPressed: () {
+            context.navigator
+                .pushNamedAndRemoveUntil(AppRoutes.signUpNameStep, (route) => false);
+          },
+          buttonType: ButtonType.iconAndText,
+          text: context.l10n.text_sign_up_with_facebook,
+          imageIcon: AppAssets.iconFacebook,
+        ),
+        const SizedBox(
+          height: 12.0,
+        ),
+        DWalletButton(
+          onPressed: () {
+            context.navigator
+                .pushNamedAndRemoveUntil(AppRoutes.signUpNameStep, (route) => false);
+          },
+          buttonType: ButtonType.iconAndText,
+          text: context.l10n.text_sign_up_with_google,
+          imageIcon: AppAssets.iconGoogle,
+        ),
+      ],
+    );
+  }
+  
+}
+
+class _TextNavigateToLoginWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Text(
+          context.l10n.text_have_an_account,
+          style: context.textTheme.titleSmall?.copyWith(
+              color: Colors.black54,
+              fontSize: 15,
+              fontWeight: FontWeight.w300),
+        ),
+        TextButton(
+          onPressed: () {
+            context.navigator.pushNamedAndRemoveUntil(
+                AppRoutes.signIn, (route) => false);
+          },
+          child: Text(
+            context.l10n.text_login,
+            style: context.textTheme.titleSmall?.copyWith(
+              color: AppColors.primaryGreen,
+              decoration: TextDecoration.underline,
+              decorationColor: AppColors.primaryGreen,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
 }
 
