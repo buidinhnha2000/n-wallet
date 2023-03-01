@@ -62,11 +62,11 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
-          child: TextForm(
+          child: DWalletTextField(
             hintText: context.l10n.text_yourEmail,
             keyboardType: TextInputType.emailAddress,
             controller: _emailController,
-            validator: emailValidator,
+
           ),
         ),
         const SizedBox(
@@ -74,13 +74,12 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
         Padding(
           padding: const EdgeInsets.only(left: 16, right: 16),
-          child: TextForm(
+          child: DWalletTextField(
             hintText: context.l10n.text_password,
             keyboardType: TextInputType.text,
             controller: _passwordController,
-            validator: passwordValidator,
             isPassword: !showPassword,
-            suffixIcon: IconShowPassword(
+            suffixIcon: DWalletIconPassword(
               showPassword: showPassword,
               onPressed: () => setState(() {
                 showPassword = !showPassword;

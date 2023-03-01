@@ -54,7 +54,7 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
                         fontWeight: FontWeight.w300),
                   ),
                 ),
-                TextForm(
+                DWalletTextField(
                   controller: _textNameController,
                   hintText: context.l10n.text_your_name,
                 ),

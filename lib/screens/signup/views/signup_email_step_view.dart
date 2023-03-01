@@ -49,7 +49,7 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
                   margin: const EdgeInsets.only(bottom: 60.0),
                   child: Image.asset(AppAssets.logoApp),
                 ),
-                TextForm(
+                DWalletTextField(
                   controller: _textEmailController,
                   hintText: context.l10n.text_yourEmail,
                 ),
