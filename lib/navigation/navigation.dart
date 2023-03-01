@@ -14,7 +14,9 @@ abstract class AppRoutes {
 
   static const signOption = 'signOption';
   static const signIn = 'signIn';
-  static const signUp = 'signup';
+  static const signUpEmailStep = 'signUpEmailStep';
+  static const signUpNameStep = 'signUpNameStep';
+  static const signUpPasswordStep = 'signUpPasswordStep';
 }
 
 abstract class AppNavigation {
@@ -33,8 +35,12 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const SignInSignUpOption(), settings);
       case AppRoutes.signIn:
         return AppPageRoute((_) => const SignInScreen(), settings);
-      case AppRoutes.signUp:
-        return AppPageRoute((_) => const SignUpScreen(), settings);
+      case AppRoutes.signUpEmailStep:
+        return AppPageRoute((_) => const SignUpEmailStep(), settings);
+      case AppRoutes.signUpNameStep:
+        return AppPageRoute((_) => const SignUpNameStep(), settings);
+      case AppRoutes.signUpPasswordStep:
+        return AppPageRoute((_) => const SignUpPasswordStep(), settings);
       default:
         throw 'Cannot find destination route';
     }
