@@ -60,30 +60,33 @@ class _SignInSignUpOptionState extends State<SignInSignUpOption> {
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 10, right: 10),
-                child: ButtonCheck(
-                    onPressed: () {
-                      return Navigator.of(context).pushNamed(AppRoutes.signIn);
-                    },
-                    text: context.l10n.text_login,
-                    color: AppColors.buttonNeonGreen,
-                    img: null),
+                child: DWalletButton(
+                  onPressed: () {
+                    return Navigator.of(context).pushNamed(AppRoutes.signIn);
+                  },
+                  text: context.l10n.text_login,
+                  color: AppColors.buttonNeonGreen,
+                  buttonType: ButtonType.onlyText,
+                ),
               ),
               const SizedBox(
                 height: 16,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
-                child: ButtonCheck(
-                    onPressed: () {
-                      context.navigator.pushNamedAndRemoveUntil(
-                          AppRoutes.signUp, (route) => false);
-                    },
-                    text: context.l10n.text_signUp,
-                    color: AppColors.primaryGreen,
-                    img: null),
+                child: DWalletButton(
+                  onPressed: () {
+                    context.navigator.pushNamedAndRemoveUntil(
+                        AppRoutes.signUp, (route) => false);
+                  },
+                  text: context.l10n.text_signUp,
+                  color: AppColors.primaryGreen,
+                  buttonType: ButtonType.onlyText,
+                ),
               ),
             ],
           )
