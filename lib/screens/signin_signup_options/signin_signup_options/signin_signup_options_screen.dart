@@ -81,7 +81,7 @@ class _SignInSignUpOptionState extends State<SignInSignUpOption> {
                 child: DWalletButton(
                   onPressed: () {
                     context.navigator.pushNamedAndRemoveUntil(
-                        AppRoutes.signUp, (route) => false);
+                        AppRoutes.signUpEmailStep, (route) => false);
                   },
                   text: context.l10n.text_signUp,
                   color: AppColors.primaryGreen,

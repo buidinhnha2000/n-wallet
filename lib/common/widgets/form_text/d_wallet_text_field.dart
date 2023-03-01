@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../common/extensions/context.dart';
 import '../../../theme/app_color.dart';
 
-class TextForm extends StatelessWidget {
+class DWalletTextField extends StatelessWidget {
   final TextEditingController? controller;
   final String? hintText;
   final bool isPassword;
@@ -12,7 +12,7 @@ class TextForm extends StatelessWidget {
   final Widget? suffixIcon;
   final Function(String)? onChanged;
 
-  const TextForm({
+  const DWalletTextField({
     Key? key,
     required this.controller,
     this.prefixIcon,
