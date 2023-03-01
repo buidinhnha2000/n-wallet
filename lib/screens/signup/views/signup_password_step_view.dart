@@ -34,7 +34,7 @@ class SignUpPasswordStep extends StatelessWidget {
                         fontWeight: FontWeight.w300),
                   ),
                 ),
-                _TextFormInputPasswordWidget(),
+                _DWalletTextFieldWidget(),
                 const Spacer(),
                 DWalletButton(
                     onPressed: () {
@@ -85,14 +85,14 @@ class _TitlePasswordWidget extends StatelessWidget {
   }
 }
 
-class _TextFormInputPasswordWidget extends StatefulWidget {
+class _DWalletTextFieldWidget extends StatefulWidget {
   @override
-  State<_TextFormInputPasswordWidget> createState() =>
-      _TextFormInputPasswordWidgetState();
+  State<_DWalletTextFieldWidget> createState() =>
+      _DWalletTextFieldWidgetState();
 }
 
-class _TextFormInputPasswordWidgetState
-    extends State<_TextFormInputPasswordWidget> {
+class _DWalletTextFieldWidgetState
+    extends State<_DWalletTextFieldWidget> {
   late final TextEditingController _textPasswordController;
   bool showPassword = false;
 
