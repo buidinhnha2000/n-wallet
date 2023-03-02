@@ -1,7 +1,6 @@
 part of 'sign_in_bloc.dart';
 
-@immutable
-abstract class SignInEvent extends BaseState{}
+abstract class SignInEvent extends Equatable{}
 
 class SignInEmailChanged extends SignInEvent{
   final String email;
@@ -24,3 +23,10 @@ class SignInSubmitted extends SignInEvent {
   @override
   List<Object?> get props => [];
 }
+
+// class SignInFacebookEvent extends SignInEvent {
+//   @override
+//   List<Object?> get props => [];
+// }
+
+
