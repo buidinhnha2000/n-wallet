@@ -1,4 +1,3 @@
 export 'd_wallet_button.dart';
-export 'form_text/icon_show_password.dart';
-export 'form_text/text_form.dart';
-export 'form_text/validation_form.dart';
+export 'form_text/d_wallet_icon_password.dart';
+export 'form_text/d_wallet_text_field.dart';

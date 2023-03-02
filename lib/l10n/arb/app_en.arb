@@ -29,5 +29,10 @@
   "text_title_onboarding_safest_platform" : "Safest Platform",
   "text_desc_onboarding_safest_platform": "Multiple verification and face ID makes your account more safely",
   "text_title_onboarding_pay_anything" : "Pay Anything",
-  "text_desc_onboarding_pay_anything": "Supports many types of payments and pay without being complicated"
+  "text_desc_onboarding_pay_anything": "Supports many types of payments and pay without being complicated",
+  "text_desc_create_account": "By creating an account, you accept our Terms",
+  "text_continue": "Continue",
+  "text_have_an_account": "Already have an account?",
+  "text_sign_up_with_facebook": "Sign Up with Facebook",
+  "text_sign_up_with_google": "Sign Up with Google"
 }
