@@ -6,6 +6,7 @@ import '../../../common/either.dart';
 import '../../../common/error.dart';
 import '../dio.dart';
 import '../status_code.dart';
+import '../response_model.dart';
 
 abstract class Api {
   final Dio dio;
@@ -33,7 +34,7 @@ abstract class Api {
         case NetworkStatusCode.notFound:
           return const DataSourceError.notFound();
         case NetworkStatusCode.badRequest:
-          return const DataSourceError.badRequest();
+          return  DataSourceError.badRequest(response: ResponseApi.fromJson(error.response?.data));
         case NetworkStatusCode.forbidden:
           return const DataSourceError.forbidden();
         case NetworkStatusCode.internalServerError:

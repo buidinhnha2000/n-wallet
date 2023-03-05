@@ -34,6 +34,9 @@ dependencies:
   # Freezed
   freezed_annotation: ^2.1.0
 
+  # Formz
+  formz: ^0.4.1
+
   # Equatable
   equatable: ^2.0.5
 
@@ -48,6 +51,7 @@ dependencies:
   json_annotation: ^4.6.0
   flutter_svg: ^2.0.2
   form_field_validator: ^1.1.0
+  uuid: ^3.0.6
 
 dev_dependencies:
   flutter_test:

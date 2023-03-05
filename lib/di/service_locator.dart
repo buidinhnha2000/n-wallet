@@ -3,11 +3,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_flavor.dart';
 import '../data/local_storage.dart';
-import '../data/remote/apis/auth/example_auth_api.dart';
-import '../data/remote/data_sources/example/example_data_source.dart';
-import '../data/remote/data_sources/example/example_repository_impl.dart';
-import '../data/remote/dio.dart';
-import '../domain/repositories/example_repository.dart';
+import '../data/remote/apis/auth/authentication_api.dart';
+import '../data/remote/remote.dart';
+import '../domain/domain.dart';
+
 
 part 'network_module.dart';
 
