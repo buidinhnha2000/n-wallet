@@ -1,5 +1,6 @@
 import '../../../../common/either.dart';
 import '../../../../common/error.dart';
+import '../../../../models/account/account.dart';
 import '../../../../models/models.dart';
 import '../../remote.dart';
 import '../api.dart';
@@ -9,12 +10,23 @@ class AuthenticationApi extends Api implements AuthenticationDataSource {
   AuthenticationApi(super.dio);
 
   @override
-  Future<Either<DataSourceError, User?>> signup(
-      String? email, String? name, String? password) async {
+  Future<Either<DataSourceError, User?>> signup(Account account) async {
     return withTimeoutRequest(() async {
       final response = await dio.post(ApiPath.signup,
-          data: User(email: email, name: name, password: password));
+          data: Account(
+              email: account.email,
+              name: account.name,
+              password: account.password));
       return User.fromJson(response.data);
+    });
+  }
+
+  @override
+  Future<Either<DataSourceError, bool?>> mailExists(String? email) async {
+    return withTimeoutRequest(() async {
+      final response =
+          await dio.get(ApiPath.userExists, queryParameters: {'email': email});
+      return response.data == 'true';
     });
   }
 }

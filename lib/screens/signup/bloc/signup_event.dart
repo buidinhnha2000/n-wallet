@@ -9,10 +9,8 @@ class EmailChanged extends SignupEvent {
 
   const EmailChanged({required this.email});
 
-
   @override
   List<Object?> get props => [email];
-
 }
 
 class NameChanged extends SignupEvent {
@@ -30,16 +28,15 @@ class PasswordChanged extends SignupEvent {
   const PasswordChanged({required this.password});
 
   @override
-
   List<Object?> get props => [password];
-
 }
 
-
 class SignupSubmitted extends SignupEvent {
-
   @override
   List<Object?> get props => [];
 }
 
-
+class SignupEmailExists extends SignupEvent {
+  @override
+  List<Object?> get props => [];
+}

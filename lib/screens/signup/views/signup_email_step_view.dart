@@ -35,13 +35,17 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
     super.dispose();
   }
 
-  void handleNavigationToNameStep(FormzInputStatus emailStatus) {
-    if (emailStatus == FormzInputStatus.valid) {
-      context.navigator.pushNamed(AppRoutes.signUpNameStep);
-    }
+  void handleNavigationToNameStep(
+      FormzInputStatus emailStatus, String? errorMessage) {
+    (emailStatus == FormzInputStatus.valid && errorMessage != null)
+        ? context.read<SignUpBloc>().add(SignupEmailExists())
+        : context.navigator.pushNamed(AppRoutes.signUpNameStep);
   }
 
-  String? handleShowStatusError(Email emailStatus) {
+  String? handleShowStatusError(Email emailStatus, String? errorMessage) {
+    if (errorMessage == 'true') {
+      return 'mail đã tồn tại';
+    }
     if (emailStatus.pure || emailStatus.valid) {
       return '';
     }
@@ -68,14 +72,17 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
                     const _LogoHeaderWidget(),
                     _TextFormFieldWithValidationWidget(
                       controller: _textEmailController,
-                      textError: handleShowStatusError(state.email).toString(),
+                      textError:
+                          handleShowStatusError(state.email, state.errorMessage)
+                              .toString(),
                     ),
                     _DescriptionTermsWidget(),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 26.0),
                       child: DWalletButton(
                           onPressed: () {
-                            handleNavigationToNameStep(state.email.status);
+                            handleNavigationToNameStep(
+                                state.email.status, state.errorMessage);
                           },
                           text: context.l10n.text_continue,
                           color: AppColors.buttonNeonGreen,

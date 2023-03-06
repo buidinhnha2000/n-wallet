@@ -6,6 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/domain.dart';
+import '../../../models/account/account.dart';
 import '../../../models/models.dart';
 import '../validation/validations.dart';
 
@@ -24,6 +25,7 @@ class SignUpBloc extends Bloc<SignupEvent, SignUpState> {
     on<NameChanged>(onNameChange);
     on<PasswordChanged>(onPasswordChange);
     on<SignupSubmitted>(onSubmitted);
+    on<SignupEmailExists>(onEmailExists);
   }
 
   final AuthenticationRepository _authenticationRepository;
@@ -55,14 +57,28 @@ class SignUpBloc extends Bloc<SignupEvent, SignUpState> {
   FutureOr<void> onSubmitted(
       SignupSubmitted event, Emitter<SignUpState> emit) async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
-    final either = await _authenticationRepository.signup(
-        state.email.value, state.name.value, state.password.value);
+    final either = await _authenticationRepository.signup(Account(
+        email: state.email.value,
+        name: state.name.value,
+        password: state.password.value));
 
     either.fold(
       ifLeft: (err) => emit(state.copyWith(
           status: FormzStatus.submissionFailure, errorMessage: err.toString())),
-      ifRight: (user) =>
-          emit(state.copyWith(status: FormzStatus.submissionSuccess)),
+      ifRight: (user) => emit(
+          state.copyWith(status: FormzStatus.submissionSuccess, user: user)),
+    );
+  }
+
+  FutureOr<void> onEmailExists(
+      SignupEmailExists event, Emitter<SignUpState> emit) async {
+    final either =
+        await _authenticationRepository.mailExists(state.email.value);
+
+    either.fold(
+      ifLeft: (err) => emit(state.copyWith(errorMessage: err.toString())),
+      ifRight: (bool? data) =>
+          emit(state.copyWith(errorMessage: data.toString())),
     );
   }
 }
