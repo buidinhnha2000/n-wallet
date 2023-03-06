@@ -35,20 +35,20 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
     super.dispose();
   }
 
-  String? handleShowError(Email emailError) {
-    if (emailError.pure || emailError.valid) {
-      return '';
-    }
-    if (emailError.value.isEmpty) {
-      return context.l10n.text_complete_all_info;
-    }
-    return context.l10n.text_email_invalidate;
-  }
-
   void handleNavigationToNameStep(FormzInputStatus emailStatus) {
     if (emailStatus == FormzInputStatus.valid) {
       context.navigator.pushNamed(AppRoutes.signUpNameStep);
     }
+  }
+
+  String? handleShowStatusError(Email emailStatus) {
+    if (emailStatus.pure || emailStatus.valid) {
+      return '';
+    }
+    if (emailStatus.value.isEmpty) {
+      return context.l10n.text_complete_all_info;
+    }
+    return context.l10n.text_email_invalidate;
   }
 
   @override
@@ -65,45 +65,12 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Container(
-                      height: 120,
-                      width: 120,
-                      margin: const EdgeInsets.only(bottom: 60.0),
-                      child: Image.asset(AppAssets.logoApp),
+                    const _LogoHeaderWidget(),
+                    _TextFormFieldWithValidationWidget(
+                      controller: _textEmailController,
+                      textError: handleShowStatusError(state.email).toString(),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        DWalletTextField(
-                          controller: _textEmailController,
-                          hintText: context.l10n.text_yourEmail,
-                          onChanged: (emailValue) {
-                            context
-                                .read<SignUpBloc>()
-                                .add(EmailChanged(email: emailValue));
-                          },
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          handleShowError(state.email).toString(),
-                          style: context.textTheme.titleSmall?.copyWith(
-                            color: Colors.red,
-                          ),
-                        )
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 14.0,
-                    ),
-                    Text(
-                      context.l10n.text_desc_create_account,
-                      style: context.textTheme.titleSmall?.copyWith(
-                          color: Colors.black54,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w300),
-                    ),
+                    _DescriptionTermsWidget(),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 26.0),
                       child: DWalletButton(
@@ -124,6 +91,20 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _LogoHeaderWidget extends StatelessWidget {
+  const _LogoHeaderWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 120,
+      width: 120,
+      margin: const EdgeInsets.only(bottom: 60.0),
+      child: Image.asset(AppAssets.logoApp),
     );
   }
 }
@@ -183,6 +164,57 @@ class _TextNavigateToLoginWidget extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _TextFormFieldWithValidationWidget extends StatelessWidget {
+  final TextEditingController controller;
+  final String textError;
+
+  const _TextFormFieldWithValidationWidget({
+    required this.controller,
+    required this.textError,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DWalletTextField(
+          controller: controller,
+          hintText: context.l10n.text_yourEmail,
+          onChanged: (emailValue) {
+            context.read<SignUpBloc>().add(EmailChanged(email: emailValue));
+          },
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 6.0),
+          child: Text(
+            textError,
+            style: context.textTheme.titleSmall?.copyWith(
+              color: Colors.red,
+            ),
+          ),
+        )
+      ],
+    );
+  }
+}
+
+class _DescriptionTermsWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      context.l10n.text_desc_create_account,
+      style: context.textTheme.titleSmall?.copyWith(
+          color: AppColors.textLightBlack,
+          fontSize: 15,
+          fontWeight: FontWeight.w300),
     );
   }
 }

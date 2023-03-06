@@ -6,6 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../domain/domain.dart';
+import '../../../models/models.dart';
 import '../validation/validations.dart';
 
 part 'signup_bloc.freezed.dart';
@@ -33,11 +34,6 @@ class SignUpBloc extends Bloc<SignupEvent, SignUpState> {
       email: email,
       status: Formz.validate([email, state.name, state.password]),
     ));
-
-    // emit(state.copyWith(
-    //   email: email,
-    //   status: Formz.validate([email, state.name, state.password]),
-    // ));
   }
 
   FutureOr<void> onNameChange(NameChanged event, Emitter<SignUpState> emit) {

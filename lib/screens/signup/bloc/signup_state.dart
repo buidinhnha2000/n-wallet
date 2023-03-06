@@ -8,5 +8,6 @@ class SignUpState with _$SignUpState {
     required Password password,
     required FormzStatus status,
     String? errorMessage,
+    User? user,
   }) = _SignUpState;
 }

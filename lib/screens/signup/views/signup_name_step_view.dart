@@ -66,37 +66,10 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     _TitleNameStepWidget(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
-                      child: Text(
-                        context.l10n.text_your_name_content,
-                        style: context.textTheme.titleSmall?.copyWith(
-                            color: Colors.black54,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w300),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        DWalletTextField(
-                          controller: _textNameController,
-                          hintText: context.l10n.text_your_name,
-                          onChanged: (value) {
-                            context
-                                .read<SignUpBloc>()
-                                .add(NameChanged(name: value));
-                          },
-                        ),
-                        const SizedBox(
-                          height: 5,
-                        ),
-                        Text(
-                          handleShowError(state.name).toString(),
-                          style: context.textTheme.titleSmall
-                              ?.copyWith(color: Colors.red),
-                        )
-                      ],
+                    _DescriptionNameWidget(),
+                    _TextFormFieldWithValidationWidget(
+                      controller: _textNameController,
+                      textError: handleShowError(state.name).toString(),
                     ),
                     const Spacer(),
                     DWalletButton(
@@ -127,7 +100,7 @@ class _TitleNameStepWidget extends StatelessWidget {
           flex: 0,
           child: DWalletButton(
               onPressed: () {
-                context.navigator.pop(context);
+                context.navigator.pop;
               },
               color: Colors.white,
               buttonType: ButtonType.onlyIcon,
@@ -139,11 +112,60 @@ class _TitleNameStepWidget extends StatelessWidget {
             child: Text(
               context.l10n.text_your_name,
               style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.black,
+                  color: AppColors.textBlackLight,
                   fontSize: 20,
                   fontWeight: FontWeight.w600),
             ))
       ],
+    );
+  }
+}
+
+class _TextFormFieldWithValidationWidget extends StatelessWidget {
+  final TextEditingController controller;
+  final String textError;
+
+  const _TextFormFieldWithValidationWidget({
+    required this.controller,
+    required this.textError,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        DWalletTextField(
+          controller: controller,
+          hintText: context.l10n.text_your_name,
+          onChanged: (value) {
+            context.read<SignUpBloc>().add(NameChanged(name: value));
+          },
+        ),
+        const SizedBox(
+          height: 5,
+        ),
+        Text(
+          textError,
+          style: context.textTheme.titleSmall?.copyWith(color: Colors.red),
+        )
+      ],
+    );
+  }
+}
+
+class _DescriptionNameWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Text(
+        context.l10n.text_your_name_content,
+        style: context.textTheme.titleSmall?.copyWith(
+            color: AppColors.textLightBlack,
+            fontSize: 15,
+            fontWeight: FontWeight.w300),
+      ),
     );
   }
 }

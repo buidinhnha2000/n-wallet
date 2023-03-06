@@ -1,5 +1,7 @@
 import 'package:formz/formz.dart';
 
+import '../../../common/constants/constants.dart';
+
 enum NameValidationError { invalid }
 
 class Name extends FormzInput<String, NameValidationError> {
@@ -7,12 +9,10 @@ class Name extends FormzInput<String, NameValidationError> {
 
   const Name.dirty([super.value = '']) : super.dirty();
 
-  static final RegExp _emailRegex = RegExp(
-      r"^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)");
-
   @override
   NameValidationError? validator(String value) {
-    return _emailRegex.hasMatch(value) ? null : NameValidationError.invalid;
+    return NameRegex.nameRegex.hasMatch(value)
+        ? null
+        : NameValidationError.invalid;
   }
 }
-
