@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../blocs/authentication/authentication_cubit.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/extensions.dart';
 import '../../../common/widgets/widgets.dart';
@@ -52,7 +53,17 @@ class SignUpPasswordStep extends StatelessWidget {
                   validationList: passwordValidationList,
                 ),
                 const Spacer(),
-                BlocBuilder<SignUpBloc, SignUpState>(
+                BlocConsumer<SignUpBloc, SignUpState>(
+                  listener: (context, state) {
+                    if (state.user != null) {
+                      context
+                          .read<AuthenticationCubit>()
+                          .setAccessToken(state.user?.accessToken ?? '');
+                      context
+                          .read<AuthenticationCubit>()
+                          .setAccessToken(state.user?.refreshToken ?? '');
+                    }
+                  },
                   builder: (context, state) {
                     return DWalletButton(
                         onPressed: () {
@@ -82,7 +93,7 @@ class _TitlePasswordWidget extends StatelessWidget {
           flex: 0,
           child: DWalletButton(
               onPressed: () {
-                context.navigator.pop;
+                context.navigator.pop();
               },
               color: Colors.white,
               buttonType: ButtonType.onlyIcon,
@@ -222,7 +233,7 @@ class _ValidationItemWidget extends StatelessWidget {
                 : Colors.green,
             border: (errorPasswordList?.contains(validationList[index].error) ??
                     false)
-                ? Border.all(color: Colors.grey.shade400)
+                ? Border.all(color: AppColors.textLightBlack)
                 : Border.all(color: Colors.transparent),
             borderRadius: BorderRadius.circular(50),
           ),

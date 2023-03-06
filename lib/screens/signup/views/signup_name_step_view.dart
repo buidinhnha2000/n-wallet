@@ -100,7 +100,7 @@ class _TitleNameStepWidget extends StatelessWidget {
           flex: 0,
           child: DWalletButton(
               onPressed: () {
-                context.navigator.pop;
+                context.navigator.pop();
               },
               color: Colors.white,
               buttonType: ButtonType.onlyIcon,
