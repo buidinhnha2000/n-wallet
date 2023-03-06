@@ -46,7 +46,8 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
   }
 
   void handleNavigationToPasswordStep(FormzInputStatus passwordStatus) {
-    if (passwordStatus == FormzInputStatus.valid) {
+    if (passwordStatus == FormzInputStatus.valid ||
+        passwordStatus != FormzInputStatus.pure) {
       context.navigator.pushNamed(AppRoutes.signUpPasswordStep);
     }
   }
