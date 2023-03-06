@@ -1,9 +1,7 @@
 enum AppFlavor {
-  staging('https://631eb73e58a1c0fe9f562cec.mockapi.io/'),
+  staging('http://10.10.32.10:3001/api/'),
   production('https://631eb73e58a1c0fe9f562cec.mockapi.io/');
 
   final String baseUrl;
-  // Flavor things...
-
   const AppFlavor(this.baseUrl);
 }

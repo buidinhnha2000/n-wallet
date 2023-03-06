@@ -34,5 +34,9 @@
   "text_continue": "Continue",
   "text_have_an_account": "Already have an account?",
   "text_sign_up_with_facebook": "Sign Up with Facebook",
-  "text_sign_up_with_google": "Sign Up with Google"
+  "text_sign_up_with_google": "Sign Up with Google",
+  "text_desc_onboarding_pay_anything": "Supports many types of payments and pay without being complicated",
+  "text_authentication_failure": "Authentication Failure",
+  "text_validator_email_error": "Invalid email",
+  "text_validator_password_error": "Invalid password"
 }

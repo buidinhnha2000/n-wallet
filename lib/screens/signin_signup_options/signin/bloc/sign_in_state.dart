@@ -1,14 +1,11 @@
 part of 'sign_in_bloc.dart';
 
-
-
 class SignInState extends Equatable{
    const SignInState({
     this.status = FormzStatus.pure,
     this.email = const Email.pure(),
     this.password = const Password.pure(),
   });
-
 
   final FormzStatus status;
   final Email email;

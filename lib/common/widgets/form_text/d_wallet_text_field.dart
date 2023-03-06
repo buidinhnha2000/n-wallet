@@ -14,7 +14,7 @@ class DWalletTextField extends StatelessWidget {
 
   const DWalletTextField({
     Key? key,
-    required this.controller,
+    this.controller,
     this.prefixIcon,
     this.hintText,
     this.isPassword = false,

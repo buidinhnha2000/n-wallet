@@ -24,9 +24,5 @@ class SignInSubmitted extends SignInEvent {
   List<Object?> get props => [];
 }
 
-// class SignInFacebookEvent extends SignInEvent {
-//   @override
-//   List<Object?> get props => [];
-// }
 
 
