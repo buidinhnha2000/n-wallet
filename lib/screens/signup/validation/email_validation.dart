@@ -2,7 +2,10 @@ import 'package:formz/formz.dart';
 
 import '../../../common/constants/constants.dart';
 
-enum EmailValidationError { empty, invalid }
+enum EmailValidationError {
+  empty,
+  invalid,
+}
 
 class Email extends FormzInput<String, EmailValidationError> {
   const Email.pure([super.value = '']) : super.pure();
@@ -14,7 +17,7 @@ class Email extends FormzInput<String, EmailValidationError> {
     if (value.isEmpty) {
       return EmailValidationError.empty;
     }
-    return EmailRegex.emailRegExp.hasMatch(value)
+    return RegExp(DWalletRegex.emailRegex).hasMatch(value)
         ? null
         : EmailValidationError.invalid;
   }

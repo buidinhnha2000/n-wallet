@@ -19,19 +19,19 @@ class Password extends FormzInput<String, List<PasswordValidationError>> {
   @override
   List<PasswordValidationError> validator(String value) {
     final List<PasswordValidationError> list = [];
-    if (!PasswordRegex.oneUpperCase.hasMatch(value)) {
+    if (!RegExp(DWalletRegex.oneUpperCase).hasMatch(value)) {
       list.add(PasswordValidationError.oneUpperCase);
     }
-    if (!PasswordRegex.oneLowerCase.hasMatch(value)) {
+    if (!RegExp(DWalletRegex.oneLowerCase).hasMatch(value)) {
       list.add(PasswordValidationError.oneLowerCase);
     }
-    if (!PasswordRegex.oneDigit.hasMatch(value)) {
+    if (!RegExp(DWalletRegex.oneDigit).hasMatch(value)) {
       list.add(PasswordValidationError.oneDigit);
     }
-    if (!PasswordRegex.oneSpecialCharacter.hasMatch(value)) {
+    if (!RegExp(DWalletRegex.oneSpecialCharacter).hasMatch(value)) {
       list.add(PasswordValidationError.oneSpecialCharacter);
     }
-    if (!PasswordRegex.minimumEightLength.hasMatch(value)) {
+    if (!RegExp(DWalletRegex.minimumEightLength).hasMatch(value)) {
       list.add(PasswordValidationError.minimumEightLength);
     }
 

@@ -11,7 +11,7 @@ class Name extends FormzInput<String, NameValidationError> {
 
   @override
   NameValidationError? validator(String value) {
-    return NameRegex.nameRegex.hasMatch(value)
+    return RegExp(DWalletRegex.nameRegex).hasMatch(value)
         ? null
         : NameValidationError.invalid;
   }
