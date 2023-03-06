@@ -38,5 +38,10 @@
   "text_desc_onboarding_pay_anything": "Supports many types of payments and pay without being complicated",
   "text_authentication_failure": "Authentication Failure",
   "text_validator_email_error": "Invalid email",
-  "text_validator_password_error": "Invalid password"
+  "text_validator_password_error": "Password include",
+  "text_validator_password_upper_case" : "upper",
+  "text_validator_password_lower_case" : "lower",
+  "text_validator_password_digit" : "digit",
+  "text_validator_password_character" : "character",
+  "text_validator_password_length" : "length 8"
 }

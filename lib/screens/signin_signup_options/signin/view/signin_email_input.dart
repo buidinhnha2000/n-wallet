@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../common/extensions/context.dart';
 import '../../../../common/widgets/form_text/d_wallet_text_field.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../theme/app_color.dart';
 import '../bloc/sign_in_bloc.dart';
 
 class EmailInput extends StatelessWidget {
@@ -35,7 +36,7 @@ class EmailInput extends StatelessWidget {
                   Text(
                     state.email.invalid ? context.l10n.text_validator_email_error : '',
                     style: context.textTheme.bodySmall
-                        ?.copyWith(color: Colors.red, fontSize: 13),
+                        ?.copyWith(color: AppColors.textLightBlack, fontSize: 12),
                   ),
                 ],
               ),

@@ -43,13 +43,10 @@ class LoginButton extends StatelessWidget {
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: BlocBuilder<SignInBloc, SignInState>(
                 builder: (context, state) {
+                  debugPrint(state.toString());
                   return DWalletButton(
                     onPressed: state.status.isValidated
-                        ? () {
-                      context
-                          .read<SignInBloc>()
-                          .add(SignInSubmitted());
-                    }
+                        ? () => context.read<SignInBloc>().add(SignInSubmitted())
                         : null,
                     text: context.l10n.text_login,
                     color: AppColors.buttonNeonGreen,

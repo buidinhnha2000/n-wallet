@@ -1,29 +1,13 @@
 part of 'sign_in_bloc.dart';
 
-class SignInState extends Equatable{
-   const SignInState({
-    this.status = FormzStatus.pure,
-    this.email = const Email.pure(),
-    this.password = const Password.pure(),
-  });
-
-  final FormzStatus status;
-  final Email email;
-  final Password password;
-
-  SignInState copyWith({
-    FormzStatus? status,
-    Email? email,
-    Password? password,
-  }) {
-    return SignInState(
-      status: status ?? this.status,
-      email: email ?? this.email,
-      password: password ?? this.password,
-    );
-  }
-
-  @override
-  List<Object> get props => [status, email, password];
+@freezed
+class SignInState with _$SignInState {
+  const factory SignInState({
+    required Email email,
+    required Password password,
+    required FormzStatus status,
+    String? errorMessage,
+  }) = _SignInState;
 }
+
 

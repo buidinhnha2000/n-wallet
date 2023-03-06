@@ -2,40 +2,44 @@ import 'package:formz/formz.dart';
 
 enum PasswordValidationError {
   empty,
-  invalid,
-  valid,
-  lowerCase,
-  upperCase,
-  length
+  oneUpperCase,
+  oneLowerCase,
+  oneDigit,
+  oneSpecialCharacter,
+  minimumEightLength
 }
 
-class Password extends FormzInput<String, PasswordValidationError> {
+class Password extends FormzInput<String, List<PasswordValidationError>> {
   const Password.pure() : super.pure('');
 
   const Password.dirty([super.value = '']) : super.dirty();
-  static final RegExp _upperCaseRegExp = RegExp(r'[A-Z]');
-  static final RegExp _lowerCaseRegExp = RegExp(r'[a-z]');
-  static final RegExp _length = RegExp(r'^(?=.*[a-z]).{8,}$');
+
+  static final RegExp _oneUpperCase = RegExp(r'(?=.*?[A-Z])');
+  static final RegExp _oneLowerCase = RegExp(r'(?=.*?[a-z])');
+  static final RegExp _oneDigit = RegExp(r'(?=.*?[0-9])');
+  static final RegExp _oneSpecialCharacter = RegExp(r'(?=.*?[#?!@$%^&*-])');
+  static final RegExp _minimumEightLength = RegExp(r'.{8,}');
 
   @override
-  PasswordValidationError? validator(String value) {
-    if (value.isEmpty) {
-      return PasswordValidationError.empty;
+  List<PasswordValidationError>? validator(String value) {
+
+    final List<PasswordValidationError> list = [];
+
+    if (!_oneUpperCase.hasMatch(value)) {
+      list.add(PasswordValidationError.oneUpperCase);
     }
-    if (_upperCaseRegExp.hasMatch(value) &&
-        _lowerCaseRegExp.hasMatch(value) &&
-        _length.hasMatch(value)) {
-      if (_upperCaseRegExp.hasMatch(value)) {
-        return PasswordValidationError.upperCase;
-      }
-      if (_lowerCaseRegExp.hasMatch(value)) {
-        return PasswordValidationError.lowerCase;
-      }
-      if (_length.hasMatch(value)) {
-        return PasswordValidationError.length;
-      }
-      return null;
+    if (!_oneLowerCase.hasMatch(value)) {
+      list.add(PasswordValidationError.oneLowerCase);
     }
-    return PasswordValidationError.invalid;
+    if (!_oneDigit.hasMatch(value)) {
+      list.add(PasswordValidationError.oneDigit);
+    }
+    if (!_oneSpecialCharacter.hasMatch(value)) {
+      list.add(PasswordValidationError.oneSpecialCharacter);
+    }
+    if (!_minimumEightLength.hasMatch(value)) {
+      list.add(PasswordValidationError.minimumEightLength);
+    }
+    return list.isEmpty ? null : list;
   }
 }
