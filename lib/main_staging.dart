@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'app_flavor.dart';
-import 'bootstrap.dart';
 import 'data/remote/remote.dart';
 import 'di/service_locator.dart';
+import 'initialize.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,5 +14,5 @@ Future<void> main() async {
   serviceLocator.registerSingleton(dioClient);
   serviceLocator.configureNetworkModule(AppFlavor.staging);
   serviceLocator.configureLocalStorage();
-  bootstrap();
+  initialize();
 }

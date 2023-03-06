@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -15,7 +13,7 @@ import 'common/error_screen.dart';
 const String authDioInstance = 'auth_dio';
 const String noAuthDioInstance = 'no_auth_dio';
 
-Future<void> bootstrap() async {
+Future<void> initialize() async {
   FlutterError.onError = (FlutterErrorDetails details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
   };

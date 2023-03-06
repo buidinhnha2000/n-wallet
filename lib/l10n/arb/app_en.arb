@@ -34,5 +34,15 @@
   "text_continue": "Continue",
   "text_have_an_account": "Already have an account?",
   "text_sign_up_with_facebook": "Sign Up with Facebook",
-  "text_sign_up_with_google": "Sign Up with Google"
+  "text_sign_up_with_google": "Sign Up with Google",
+  "text_least_one_upper_case": "At least one upper case",
+  "text_least_one_lower_case": "At least one lower case",
+  "text_least_one_digit": "At least one digit",
+  "text_least_one_special_character": "At least one special character",
+  "text_minimum_eight_in_length": "Minimum eight in length",
+  "text_complete_all_info": "Please complete all information",
+  "text_email_invalidate" : "Email invalidate",
+  "text_email_validate": "Email validate",
+  "text_name_invalidate": "Name invalidate",
+  "text_name_validate": "Name validate"
 }

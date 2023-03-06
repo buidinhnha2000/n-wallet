@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'app_flavor.dart';
-import 'bootstrap.dart';
 import 'data/remote/dio.dart';
 import 'di/service_locator.dart';
+import 'initialize.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -15,5 +14,5 @@ Future<void> main() async {
   serviceLocator.registerSingleton(dioClient);
   serviceLocator.configureNetworkModule(AppFlavor.production);
 
-  bootstrap();
+  initialize();
 }

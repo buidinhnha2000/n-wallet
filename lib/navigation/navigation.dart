@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/signin_signup_options/signin/signin.dart';
@@ -22,8 +21,6 @@ abstract class AppRoutes {
 abstract class AppNavigation {
   static Route<dynamic>? onGeneratedRoute(RouteSettings settings) {
     switch (settings.name) {
-      case AppRoutes.home:
-        return AppPageRoute((_) => const HomeScreen(), settings);
       case AppRoutes.onboarding:
         return AppPageRoute(
             (_) => BlocProvider(
