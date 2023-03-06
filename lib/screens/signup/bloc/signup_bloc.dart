@@ -12,8 +12,8 @@ part 'signup_bloc.freezed.dart';
 part 'signup_event.dart';
 part 'signup_state.dart';
 
-class SignupBloc extends Bloc<SignupEvent, SignUpState> {
-  SignupBloc(this._authenticationRepository)
+class SignUpBloc extends Bloc<SignupEvent, SignUpState> {
+  SignUpBloc(this._authenticationRepository)
       : super(const SignUpState(
             email: Email.pure(),
             name: Name.pure(),
@@ -29,7 +29,6 @@ class SignupBloc extends Bloc<SignupEvent, SignUpState> {
 
   FutureOr<void> onEmailChange(EmailChanged event, Emitter<SignUpState> emit) {
     final email = Email.dirty(event.email);
-    print(email.valid);
     emit(state.copyWith(
       email: email,
       status: Formz.validate([email, state.name, state.password]),
