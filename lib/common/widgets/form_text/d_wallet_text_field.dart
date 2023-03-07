@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../common/extensions/context.dart';
 import '../../../theme/app_color.dart';
 
@@ -7,10 +8,10 @@ class DWalletTextField extends StatelessWidget {
   final String? hintText;
   final bool isPassword;
   final TextInputType keyboardType;
-  final FormFieldValidator<String>? validator;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Function(String)? onChanged;
+  final String? Function(String?)? validator;
 
   const DWalletTextField({
     Key? key,
@@ -19,8 +20,9 @@ class DWalletTextField extends StatelessWidget {
     this.hintText,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
+    this.suffixIcon,
+    this.onChanged,
     this.validator,
-    this.suffixIcon, this.onChanged,
   }) : super(key: key);
 
   @override
@@ -48,8 +50,8 @@ class DWalletTextField extends StatelessWidget {
           labelStyle: const TextStyle(color: Colors.black54, fontSize: 16),
           suffixIcon: suffixIcon,
         ),
-        validator: validator,
         onChanged: onChanged,
+        validator: validator,
       ),
     );
   }

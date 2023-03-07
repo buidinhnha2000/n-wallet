@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/signin_signup_options/signin/signin.dart';
 import '../screens/signin_signup_options/signin_signup_options/signin_signup_options.dart';
 import '../screens/signup/signup.dart';
+import '../screens/welcome/welcome_screen.dart';
 
 abstract class AppRoutes {
-  static const home = 'home';
+  static const welcome = 'welcome';
   static const onboarding = 'onboarding';
 
   static const signOption = 'signOption';
@@ -21,9 +21,10 @@ abstract class AppRoutes {
 
 abstract class AppNavigation {
   static Route<dynamic>? onGeneratedRoute(RouteSettings settings) {
+    print(settings.name);
     switch (settings.name) {
-      case AppRoutes.home:
-        return AppPageRoute((_) => const HomeScreen(), settings);
+      case AppRoutes.welcome:
+        return AppPageRoute((_) => const WelcomeScreen(), settings);
       case AppRoutes.onboarding:
         return AppPageRoute(
             (_) => BlocProvider(

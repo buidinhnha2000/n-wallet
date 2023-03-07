@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../blocs/authentication/authentication_cubit.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/extensions.dart';
 import '../../../common/widgets/widgets.dart';
 import '../../../l10n/l10n.dart';
-import '../../../navigation/navigation.dart';
 import '../../../theme/app_color.dart';
+import '../bloc/signup_bloc.dart';
+import '../validation/validations.dart';
+
+class ValidationItem {
+  bool isValid;
+  final String text;
+  final PasswordValidationError error;
+
+  ValidationItem(this.isValid, this.text, this.error);
+}
 
 class SignUpPasswordStep extends StatelessWidget {
   const SignUpPasswordStep({
@@ -14,6 +25,18 @@ class SignUpPasswordStep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final List<ValidationItem> passwordValidationList = [
+      ValidationItem(false, context.l10n.text_least_one_upper_case,
+          PasswordValidationError.oneUpperCase),
+      ValidationItem(false, context.l10n.text_least_one_lower_case,
+          PasswordValidationError.oneLowerCase),
+      ValidationItem(false, context.l10n.text_least_one_digit,
+          PasswordValidationError.oneDigit),
+      ValidationItem(false, context.l10n.text_least_one_special_character,
+          PasswordValidationError.oneSpecialCharacter),
+      ValidationItem(false, context.l10n.text_minimum_eight_in_length,
+          PasswordValidationError.minimumEightLength)
+    ];
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -24,26 +47,33 @@ class SignUpPasswordStep extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 _TitlePasswordWidget(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Text(
-                    context.l10n.text_new_password_content,
-                    style: context.textTheme.titleSmall?.copyWith(
-                        color: Colors.black54,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w300),
-                  ),
-                ),
+                _DescriptionPasswordWidget(),
                 _TextFormInputPasswordWidget(),
+                _ListValidationPasswordWidget(
+                  validationList: passwordValidationList,
+                ),
                 const Spacer(),
-                DWalletButton(
-                    onPressed: () {
-                      context.navigator.pushNamedAndRemoveUntil(
-                          AppRoutes.signUpPasswordStep, (route) => false);
-                    },
-                    text: context.l10n.text_continue,
-                    color: AppColors.buttonNeonGreen,
-                    buttonType: ButtonType.onlyText),
+                BlocConsumer<SignUpBloc, SignUpState>(
+                  listener: (context, state) {
+                    if (state.user != null) {
+                      context
+                          .read<AuthenticationCubit>()
+                          .setAccessToken(state.user?.accessToken ?? '');
+                      context
+                          .read<AuthenticationCubit>()
+                          .setAccessToken(state.user?.refreshToken ?? '');
+                    }
+                  },
+                  builder: (context, state) {
+                    return DWalletButton(
+                        onPressed: () {
+                          context.read<SignUpBloc>().add(SignupSubmitted());
+                        },
+                        text: context.l10n.text_continue,
+                        color: AppColors.buttonNeonGreen,
+                        buttonType: ButtonType.onlyText);
+                  },
+                ),
               ],
             ),
           ),
@@ -63,8 +93,7 @@ class _TitlePasswordWidget extends StatelessWidget {
           flex: 0,
           child: DWalletButton(
               onPressed: () {
-                context.navigator.pushNamedAndRemoveUntil(
-                    AppRoutes.signUpNameStep, (route) => false);
+                context.navigator.pop();
               },
               color: Colors.white,
               buttonType: ButtonType.onlyIcon,
@@ -76,7 +105,7 @@ class _TitlePasswordWidget extends StatelessWidget {
             child: Text(
               context.l10n.text_new_password,
               style: context.textTheme.titleSmall?.copyWith(
-                  color: Colors.black,
+                  color: AppColors.textBlackLight,
                   fontSize: 20,
                   fontWeight: FontWeight.w600),
             ))
@@ -115,13 +144,18 @@ class _TextFormInputPasswordWidgetState
       children: [
         Text(
           context.l10n.text_password,
-          style: context.textTheme.titleSmall
-              ?.copyWith(color: Colors.black54, fontWeight: FontWeight.w400),
+          style: context.textTheme.titleSmall?.copyWith(
+              color: AppColors.textLightBlack, fontWeight: FontWeight.w400),
         ),
         DWalletTextField(
           keyboardType: TextInputType.text,
           controller: _textPasswordController,
           isPassword: !showPassword,
+          onChanged: (passwordValue) {
+            context
+                .read<SignUpBloc>()
+                .add(PasswordChanged(password: passwordValue));
+          },
           suffixIcon: DWalletIconPassword(
             showPassword: showPassword,
             onPressed: () => setState(() {
@@ -130,6 +164,110 @@ class _TextFormInputPasswordWidgetState
           ),
         ),
       ],
+    );
+  }
+}
+
+class _ListValidationPasswordWidget extends StatelessWidget {
+  final List<ValidationItem> validationList;
+
+  const _ListValidationPasswordWidget({required this.validationList});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SignUpBloc, SignUpState>(
+      builder: (context, state) {
+        for (var e in validationList) {
+          (e.isValid = state.password.error?.contains(e.error) ?? false);
+        }
+        return Padding(
+          padding: const EdgeInsets.only(top: 12.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: validationList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: _ValidationItemWidget(
+                        index: index,
+                        errorPasswordList: state.password.error,
+                        validationList: validationList,
+                      ),
+                    );
+                  }),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _ValidationItemWidget extends StatelessWidget {
+  final List<ValidationItem> validationList;
+  final List<PasswordValidationError>? errorPasswordList;
+  final int index;
+
+  const _ValidationItemWidget(
+      {required this.validationList,
+      required this.errorPasswordList,
+      required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 500),
+          width: 15,
+          height: 15,
+          decoration: BoxDecoration(
+            color: (errorPasswordList?.contains(validationList[index].error) ??
+                    false)
+                ? Colors.white
+                : Colors.green,
+            border: (errorPasswordList?.contains(validationList[index].error) ??
+                    false)
+                ? Border.all(color: AppColors.textLightBlack)
+                : Border.all(color: Colors.transparent),
+            borderRadius: BorderRadius.circular(50),
+          ),
+          child: const Center(
+            child: Icon(
+              Icons.check,
+              color: Colors.white,
+              size: 12,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        ),
+        Text(
+          validationList[index].text.toString(),
+          style: context.textTheme.titleSmall?.copyWith(
+              color: AppColors.textLightBlack, fontWeight: FontWeight.w300),
+        ),
+      ],
+    );
+  }
+}
+
+class _DescriptionPasswordWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: Text(
+        context.l10n.text_new_password_content,
+        style: context.textTheme.titleSmall?.copyWith(
+            color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w300),
+      ),
     );
   }
 }

@@ -1,3 +1,4 @@
 abstract class ApiPath {
-  static const cities = '/texts';
+  static const signup = 'auth/signup';
+  static const userExists = 'users/check-email';
 }

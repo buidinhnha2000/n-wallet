@@ -1,18 +1,33 @@
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-class AuthenticationCubit extends HydratedCubit<bool> {
-  AuthenticationCubit() : super(false);
+import '../../data/local/local.dart';
+import '../../di/service_locator.dart';
 
-  static const authenticationStateKey = 'auth_state';
+class AuthenticationCubit extends HydratedCubit<String?> {
+  AuthenticationCubit() : super(null);
 
-  void setAuthenticated() => emit(true);
+  final LocalStorage localStorage = ServiceLocator.instance.inject();
 
-  void setUnauthenticated() => emit(false);
+  void setAccessToken(String token) async {
+    await localStorage.setString(LocalStorageKey.accessToken, token);
+    emit(token);
+  }
+
+  void setRefreshTokenToken(String token) async {
+    await localStorage.setString(LocalStorageKey.refreshToken, token);
+    emit(token);
+  }
+
+  void unsetToken() {
+    localStorage.remove(LocalStorageKey.accessToken);
+    emit(null);
+  }
 
   @override
-  bool? fromJson(Map<String, dynamic> json) =>
-      json[authenticationStateKey] as bool;
+  String? fromJson(Map<String, dynamic> json) =>
+      json[LocalStorageKey.accessToken] as String?;
 
   @override
-  Map<String, dynamic>? toJson(bool state) => {authenticationStateKey: state};
+  Map<String, dynamic>? toJson(String? state) =>
+      {LocalStorageKey.accessToken: state};
 }

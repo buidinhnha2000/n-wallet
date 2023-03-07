@@ -3,10 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../blocs/authentication/authentication_cubit.dart';
 import '../di/service_locator.dart';
-import '../domain/repositories/example_repository.dart';
+import '../domain/domain.dart';
 import '../l10n/l10n.dart';
 import '../navigation/navigation.dart';
 import '../screens/onboarding/cubit/onboarding_cubit.dart';
+import '../screens/signup/bloc/signup_bloc.dart';
 import '../theme/theme.dart';
 
 class App extends StatelessWidget {
@@ -16,9 +17,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
       providers: [
-        RepositoryProvider<ExampleRepository>(
+        RepositoryProvider<AuthenticationRepository>(
           create: (BuildContext context) =>
-              ServiceLocator.instance.inject<ExampleRepository>(),
+              ServiceLocator.instance.inject<AuthenticationRepository>(),
         ),
       ],
       child: MultiBlocProvider(
@@ -28,7 +29,10 @@ class App extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => OnBoardingCubit(),
-          )
+          ),
+          BlocProvider(
+              create: (context) => SignUpBloc(
+                  RepositoryProvider.of<AuthenticationRepository>(context)))
         ],
         child: const AppView(),
       ),
@@ -52,8 +56,8 @@ class AppView extends StatelessWidget {
         onGenerateRoute: AppNavigation.onGeneratedRoute,
         initialRoute: onBoardingState.onBoardingUnCompleted
             ? AppRoutes.onboarding
-            : authenticateState
-                ? AppRoutes.home
+            : authenticateState != null
+                ? AppRoutes.welcome
                 : AppRoutes.signOption);
   }
 }
