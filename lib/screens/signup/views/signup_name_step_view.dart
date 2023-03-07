@@ -42,11 +42,10 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
     if (nameError.value.isEmpty) {
       return context.l10n.text_complete_all_info;
     }
-    return context.l10n.text_email_invalidate;
+    return context.l10n.text_none_vietnamese;
   }
 
   void handleNavigationToPasswordStep(FormzInputStatus nameStatus) {
-    print(nameStatus);
     if (nameStatus == FormzInputStatus.valid &&
         nameStatus != FormzInputStatus.pure) {
       context.navigator.pushNamed(AppRoutes.signUpPasswordStep);
