@@ -44,5 +44,6 @@
   "text_email_invalidate" : "Email invalidate",
   "text_email_validate": "Email validate",
   "text_name_invalidate": "Name invalidate",
-  "text_name_validate": "Name validate"
+  "text_name_validate": "Name validate",
+  "text_check_mail_exists": "Email is exists"
 }

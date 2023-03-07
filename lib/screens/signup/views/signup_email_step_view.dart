@@ -37,11 +37,6 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
 
   void handleNavigationToNameStep(
       FormzInputStatus emailStatus, String? errorMessage) {
-    // errorMessage == null
-    //     ? context.read<SignUpBloc>().add(SignupEmailExists())
-    //     : emailStatus == FormzInputStatus.valid
-    //         ? context.navigator.pushNamed(AppRoutes.signUpNameStep)
-    //         : null;
     errorMessage == 'true'
         ? null
         : emailStatus == FormzInputStatus.valid
@@ -51,7 +46,7 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
 
   String? handleShowStatusError(Email emailStatus, String? errorMessage) {
     if (errorMessage == 'true') {
-      return 'mail đã tồn tại';
+      return context.l10n.text_check_mail_exists;
     }
     if (emailStatus.pure || emailStatus.valid) {
       return '';

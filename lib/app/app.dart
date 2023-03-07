@@ -57,7 +57,7 @@ class AppView extends StatelessWidget {
         initialRoute: onBoardingState.onBoardingUnCompleted
             ? AppRoutes.onboarding
             : authenticateState != null
-                ? AppRoutes.home
+                ? AppRoutes.welcome
                 : AppRoutes.signOption);
   }
 }
