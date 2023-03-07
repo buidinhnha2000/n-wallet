@@ -30,14 +30,19 @@ class SignInScreen extends StatelessWidget {
                 RepositoryProvider.of<AuthenticationRepository>(context));
           },
           child: Stack(
-            children: [_topPage(), const SignInScreenBottom()],
+            children: const [SignInForm(), SignInScreenBottom()],
           ),
         ),
       ),
     );
   }
+}
 
-  Widget _topPage() {
+class SignInForm extends StatelessWidget {
+  const SignInForm({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return BlocListener<SignInBloc, SignInState>(
       listener: (context, state) {
         if (state.status.isSubmissionFailure) {
@@ -71,3 +76,4 @@ class SignInScreen extends StatelessWidget {
     );
   }
 }
+

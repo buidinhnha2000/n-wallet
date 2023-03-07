@@ -14,7 +14,7 @@ class AuthenticationApi extends Api implements AuthenticationDataSource {
   Future<Either<DataSourceError, User?>> signin(
      Account account) async {
     return withTimeoutRequest(() async {
-      final response = await dio.post('http://10.10.32.10:3001/api/auth/signin',
+      final response = await dio.post(ApiPath.signin,
           data: Account(email: account.email, password: account.password));
       return User.fromJson(response.data);
     });

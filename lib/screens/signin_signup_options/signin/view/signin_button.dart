@@ -88,7 +88,6 @@ class LoginButton extends StatelessWidget {
                   width: 2,
                 ),
                 GestureDetector(
-                  // onTap: () => context.read<AuthenticationCubit>().(LocalStorageKey.token),
                   child: Text(
                     context.l10n.text_signUp,
                     style: context.textTheme.bodyLarge?.copyWith(
