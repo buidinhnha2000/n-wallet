@@ -1,10 +1,13 @@
 import 'package:dio/dio.dart';
 
-import '../../../di/service_locator.dart';
 import '../../local/local.dart';
 
 class AuthenticationInterceptor extends Interceptor {
-  final LocalStorage localStorage = ServiceLocator.instance.inject();
+  final LocalStorage localStorage;
+
+  AuthenticationInterceptor(this.localStorage);
+
+  // AuthenticationInterceptor(this.localStorage);
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     options.headers['Authorization'] =

@@ -37,7 +37,7 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
 
   void handleNavigationToNameStep(
       FormzInputStatus emailStatus, String? errorMessage) {
-    (emailStatus == FormzInputStatus.valid && errorMessage != null)
+    (errorMessage == null)
         ? context.read<SignUpBloc>().add(SignupEmailExists())
         : context.navigator.pushNamed(AppRoutes.signUpNameStep);
   }

@@ -8,9 +8,11 @@ import 'initialize.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final dioClient = DioClient(baseUrl: AppFlavor.production.baseUrl);
-
   final serviceLocator = ServiceLocator.instance;
+  final dioClient = DioClient(
+      baseUrl: AppFlavor.production.baseUrl,
+      authenticationInterceptor: serviceLocator.inject());
+
   serviceLocator.registerSingleton(dioClient);
   serviceLocator.configureNetworkModule(AppFlavor.production);
 
