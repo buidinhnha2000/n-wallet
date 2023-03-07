@@ -50,7 +50,7 @@ class AppView extends StatelessWidget {
         onGenerateRoute: AppNavigation.onGeneratedRoute,
         initialRoute: onBoardingState.onBoardingUnCompleted
             ? AppRoutes.onboarding
-            : authenticateState
+            : authenticateState != null
                 ? AppRoutes.signIn
                 : AppRoutes.signOption);
   }

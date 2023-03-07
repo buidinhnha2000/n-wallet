@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+import '../../../../blocs/authentication/authentication_cubit.dart';
 import '../../../../common/extensions/context.dart';
 import '../../../../common/widgets/d_wallet_button.dart';
+import '../../../../data/local/local.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../theme/app_color.dart';
 import '../bloc/sign_in_bloc.dart';
@@ -41,13 +43,29 @@ class LoginButton extends StatelessWidget {
             Container(
               width: double.infinity,
               padding: const EdgeInsets.only(left: 16, right: 16),
-              child: BlocBuilder<SignInBloc, SignInState>(
+              child: BlocConsumer<SignInBloc, SignInState>(
+                listener: (context, state) {
+                 context.read<AuthenticationCubit>().setToken(state.user?.accessToken ?? '');
+                },
                 builder: (context, state) {
                   debugPrint(state.toString());
                   return DWalletButton(
                     onPressed: state.status.isValidated
-                        ? () => context.read<SignInBloc>().add(SignInSubmitted())
-                        : null,
+                        ? () {
+                            context.read<SignInBloc>().add(SignInSubmitted());
+                            FocusScopeNode currentFocus =
+                                FocusScope.of(context);
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
+                          }
+                        : () {
+                            FocusScopeNode currentFocus =
+                                FocusScope.of(context);
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
+                          },
                     text: context.l10n.text_login,
                     color: AppColors.buttonNeonGreen,
                     buttonType: ButtonType.onlyText,
@@ -71,6 +89,7 @@ class LoginButton extends StatelessWidget {
                   width: 2,
                 ),
                 GestureDetector(
+                  onTap: () => context.read<AuthenticationCubit>().setUnToken(LocalStorageKey.token),
                   child: Text(
                     context.l10n.text_signUp,
                     style: context.textTheme.bodyLarge?.copyWith(

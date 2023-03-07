@@ -22,13 +22,16 @@ class PasswordInputState extends State<PasswordInput> {
   @override
   Widget build(BuildContext context) {
     final List<ValidationItem> passwordValidationList = [
-      ValidationItem(false, context.l10n.text_validator_password_upper_case, PasswordValidationError.oneUpperCase),
-      ValidationItem(false, context.l10n.text_validator_password_lower_case, PasswordValidationError.oneLowerCase),
-      ValidationItem(false, context.l10n.text_validator_password_digit, PasswordValidationError.oneDigit),
-      ValidationItem(
-          false, context.l10n.text_validator_password_character, PasswordValidationError.oneSpecialCharacter),
-      ValidationItem(
-          false, context.l10n.text_validator_password_length, PasswordValidationError.minimumEightLength)
+      ValidationItem(false, context.l10n.text_validator_password_upper_case,
+          PasswordValidationError.oneUpperCase),
+      ValidationItem(false, context.l10n.text_validator_password_lower_case,
+          PasswordValidationError.oneLowerCase),
+      ValidationItem(false, context.l10n.text_validator_password_digit,
+          PasswordValidationError.oneDigit),
+      ValidationItem(false, context.l10n.text_validator_password_character,
+          PasswordValidationError.oneSpecialCharacter),
+      ValidationItem(false, context.l10n.text_validator_password_length,
+          PasswordValidationError.minimumEightLength)
     ];
 
     return Padding(
@@ -80,17 +83,12 @@ class PasswordInputState extends State<PasswordInput> {
                             (state.password.error?.contains(
                                         passwordValidationList[index].error) ??
                                     false)
-                                ? '${passwordValidationList[index].text} '
+                                ? '${passwordValidationList[index].text}, '
                                 : '',
                             style: context.textTheme.bodySmall?.copyWith(
-                                color: AppColors.textLightBlack, fontSize: 12),
+                                color: AppColors.textLightBlack, fontSize: 13),
                           );
                         }),
-                    Text(
-                      '.',
-                      style: context.textTheme.bodySmall?.copyWith(
-                          color: AppColors.textLightBlack, fontSize: 12),
-                    )
                   ],
                 ),
               ),
@@ -101,4 +99,3 @@ class PasswordInputState extends State<PasswordInput> {
     );
   }
 }
-

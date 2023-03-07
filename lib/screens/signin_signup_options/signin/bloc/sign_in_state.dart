@@ -7,6 +7,7 @@ class SignInState with _$SignInState {
     required Password password,
     required FormzStatus status,
     String? errorMessage,
+    User? user,
   }) = _SignInState;
 }
 

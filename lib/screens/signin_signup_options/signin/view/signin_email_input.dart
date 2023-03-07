@@ -36,7 +36,7 @@ class EmailInput extends StatelessWidget {
                   Text(
                     state.email.invalid ? context.l10n.text_validator_email_error : '',
                     style: context.textTheme.bodySmall
-                        ?.copyWith(color: AppColors.textLightBlack, fontSize: 12),
+                        ?.copyWith(color: AppColors.textLightBlack, fontSize: 13),
                   ),
                 ],
               ),

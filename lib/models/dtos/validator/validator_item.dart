@@ -1,4 +1,4 @@
-import 'package:d_wallet/models/dtos/validator/password.dart';
+import 'password.dart';
 
 class ValidationItem {
   bool isValid;

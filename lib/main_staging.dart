@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'app_flavor.dart';
 import 'bootstrap.dart';
 import 'data/remote/remote.dart';
@@ -12,6 +13,6 @@ Future<void> main() async {
   final serviceLocator = ServiceLocator.instance;
   serviceLocator.registerSingleton(dioClient);
   serviceLocator.configureNetworkModule(AppFlavor.staging);
-  serviceLocator.configureLocalStorage();
+  serviceLocator.configureLocalStorage(await SharedPreferences.getInstance());
   bootstrap();
 }
