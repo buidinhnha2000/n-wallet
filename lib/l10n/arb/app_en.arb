@@ -56,5 +56,6 @@
   "text_check_mail_exists": "Email is exists",
   "text_welcome_title": "Welcome to Dpay",
   "text_welcome_desc": "Voila! You have successfuly created your account.",
-  "text_get_started": "Get Started"
+  "text_get_started": "Get Started",
+  "text_none_vietnamese": "Must not contain Vietnamese characters"
 }

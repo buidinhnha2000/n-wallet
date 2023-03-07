@@ -32,6 +32,8 @@ class SignUpPasswordStep extends StatelessWidget {
           PasswordValidationError.oneUpperCase),
       ValidationItem(false, context.l10n.text_least_one_lower_case,
           PasswordValidationError.oneLowerCase),
+      ValidationItem(false, context.l10n.text_none_vietnamese,
+          PasswordValidationError.noneVietnamese),
       ValidationItem(false, context.l10n.text_least_one_digit,
           PasswordValidationError.oneDigit),
       ValidationItem(false, context.l10n.text_least_one_special_character,
@@ -101,6 +103,9 @@ class _TitlePasswordWidget extends StatelessWidget {
           flex: 0,
           child: DWalletButton(
               onPressed: () {
+                context
+                    .read<SignUpBloc>()
+                    .add(const PasswordChanged(password: ''));
                 context.navigator.pop();
               },
               color: Colors.white,

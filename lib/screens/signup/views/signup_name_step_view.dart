@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/extensions.dart';
 import '../../../common/widgets/widgets.dart';
@@ -44,9 +45,10 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
     return context.l10n.text_email_invalidate;
   }
 
-  void handleNavigationToPasswordStep(FormzInputStatus passwordStatus) {
-    if (passwordStatus == FormzInputStatus.valid ||
-        passwordStatus != FormzInputStatus.pure) {
+  void handleNavigationToPasswordStep(FormzInputStatus nameStatus) {
+    print(nameStatus);
+    if (nameStatus == FormzInputStatus.valid &&
+        nameStatus != FormzInputStatus.pure) {
       context.navigator.pushNamed(AppRoutes.signUpPasswordStep);
     }
   }
