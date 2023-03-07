@@ -34,8 +34,6 @@
   "text_continue": "Continue",
   "text_have_an_account": "Already have an account?",
   "text_sign_up_with_facebook": "Sign Up with Facebook",
-  "text_sign_up_with_google": "Sign Up with Google",
-  "text_desc_onboarding_pay_anything": "Supports many types of payments and pay without being complicated",
   "text_authentication_failure": "Authentication Failure",
   "text_validator_email_error": "Invalid email",
   "text_validator_password_error": "Password include",
@@ -55,5 +53,8 @@
   "text_email_validate": "Email validate",
   "text_name_invalidate": "Name invalidate",
   "text_name_validate": "Name validate",
-  "text_check_mail_exists": "Email is exists"
+  "text_check_mail_exists": "Email is exists",
+  "text_welcome_title": "Welcome to Dpay",
+  "text_welcome_desc": "Voila! You have successfuly created your account.",
+  "text_get_started": "Get Started"
 }

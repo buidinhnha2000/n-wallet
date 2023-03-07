@@ -162,7 +162,7 @@ class _TextNavigateToLoginWidget extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            context.navigator.pushNamed(AppRoutes.signUpNameStep);
+            context.navigator.pushNamed(AppRoutes.signIn);
           },
           child: Text(
             context.l10n.text_login,
