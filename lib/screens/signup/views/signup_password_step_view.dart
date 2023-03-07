@@ -41,52 +41,66 @@ class SignUpPasswordStep extends StatelessWidget {
       ValidationItem(false, context.l10n.text_minimum_eight_in_length,
           PasswordValidationError.minimumEightLength)
     ];
+
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+        body: BlocBuilder<SignUpBloc, SignUpState>(
+          builder: (context, state) {
+            return Stack(
               children: [
-                _TitlePasswordWidget(),
-                _DescriptionPasswordWidget(),
-                _TextFormInputPasswordWidget(),
-                _ListValidationPasswordWidget(
-                  validationList: passwordValidationList,
+                SafeArea(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        _TitlePasswordWidget(),
+                        _DescriptionPasswordWidget(),
+                        _TextFormInputPasswordWidget(),
+                        _ListValidationPasswordWidget(
+                          validationList: passwordValidationList,
+                        ),
+                        const Spacer(),
+                        BlocConsumer<SignUpBloc, SignUpState>(
+                          listener: (context, state) {
+                            if (state.user != null) {
+                              context
+                                  .read<AuthenticationCubit>()
+                                  .setAccessToken(
+                                      state.user?.accessToken ?? '');
+                              context
+                                  .read<AuthenticationCubit>()
+                                  .setAccessToken(
+                                      state.user?.refreshToken ?? '');
+                            }
+                            if (state.status.isSubmissionSuccess) {
+                              context.navigator.pushNamedAndRemoveUntil(
+                                  AppRoutes.welcome, (route) => false);
+                            }
+                          },
+                          builder: (context, state) {
+                            return DWalletButton(
+                                onPressed: () {
+                                  if (state.status.isValidated) {
+                                    context
+                                        .read<SignUpBloc>()
+                                        .add(SignupSubmitted());
+                                  }
+                                },
+                                text: context.l10n.text_continue,
+                                color: AppColors.buttonNeonGreen,
+                                buttonType: ButtonType.onlyText);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                const Spacer(),
-                BlocConsumer<SignUpBloc, SignUpState>(
-                  listener: (context, state) {
-                    if (state.user != null) {
-                      context
-                          .read<AuthenticationCubit>()
-                          .setAccessToken(state.user?.accessToken ?? '');
-                      context
-                          .read<AuthenticationCubit>()
-                          .setAccessToken(state.user?.refreshToken ?? '');
-                    }
-                    if (state.status.isSubmissionSuccess) {
-                      context.navigator.pushNamedAndRemoveUntil(
-                          AppRoutes.welcome, (route) => false);
-                    }
-                  },
-                  builder: (context, state) {
-                    return DWalletButton(
-                        onPressed: () {
-                          if (state.status.isValidated) {
-                            context.read<SignUpBloc>().add(SignupSubmitted());
-                          }
-                        },
-                        text: context.l10n.text_continue,
-                        color: AppColors.buttonNeonGreen,
-                        buttonType: ButtonType.onlyText);
-                  },
-                ),
+                if (state.status.isSubmissionInProgress) const DWalletLoader()
               ],
-            ),
-          ),
+            );
+          },
         ),
       ),
     );

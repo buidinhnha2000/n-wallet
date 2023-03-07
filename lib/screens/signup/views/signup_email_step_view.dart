@@ -44,14 +44,13 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
             : null;
   }
 
-  String? handleShowStatusError(Email emailStatus, String? errorMessage) {
+  String? handleShowEmailStatusError(Email emailStatus, String? errorMessage) {
     if (errorMessage == 'true') {
       return context.l10n.text_check_mail_exists;
     }
     if (emailStatus.pure || emailStatus.valid) {
       return '';
     }
-
     if (emailStatus.value.isEmpty) {
       return context.l10n.text_complete_all_info;
     }
@@ -75,9 +74,9 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
                     const _LogoHeaderWidget(),
                     _TextFormFieldWithValidationWidget(
                       controller: _textEmailController,
-                      textError:
-                          handleShowStatusError(state.email, state.errorMessage)
-                              .toString(),
+                      textError: handleShowEmailStatusError(
+                              state.email, state.errorMessage)
+                          .toString(),
                     ),
                     _DescriptionTermsWidget(),
                     Padding(
