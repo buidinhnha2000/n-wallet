@@ -8,7 +8,7 @@ extension ServiceLocatorX on ServiceLocator {
         AuthenticationRepositoryImpl(inject()));
   }
 
-  void configureLocalStorage(SharedPreferences sharedPref) {
-    registerSingleton<LocalStorage>(LocalStorageImplement(sharedPref));
+  void configureLocalStorage(SharedPreferences prefs) {
+    registerSingleton<LocalStorage>(LocalStorageImplement(prefs));
   }
 }

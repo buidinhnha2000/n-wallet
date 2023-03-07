@@ -8,20 +8,26 @@ class AuthenticationCubit extends HydratedCubit<String?> {
 
   final LocalStorage localStorage = ServiceLocator.instance.inject();
 
-  void setToken(String token) async {
-    await localStorage.setString(LocalStorageKey.token, token);
+  void setAccessToken(String token) async {
+    await localStorage.setString(LocalStorageKey.accessToken, token);
     emit(token);
   }
 
-  void setUnToken(String token) async {
-    await localStorage.remove(LocalStorageKey.token);
+  void setRefreshTokenToken(String token) async {
+    await localStorage.setString(LocalStorageKey.refreshToken, token);
+    emit(token);
+  }
+
+  void unsetToken() {
+    localStorage.remove(LocalStorageKey.accessToken);
     emit(null);
   }
 
   @override
   String? fromJson(Map<String, dynamic> json) =>
-      json[LocalStorageKey.token] as String?;
+      json[LocalStorageKey.accessToken] as String?;
 
   @override
-  Map<String, dynamic>? toJson(String? state) => {LocalStorageKey.token: state};
+  Map<String, dynamic>? toJson(String? state) =>
+      {LocalStorageKey.accessToken: state};
 }

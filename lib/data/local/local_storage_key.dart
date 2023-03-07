@@ -1,3 +1,6 @@
 abstract class LocalStorageKey {
-  static const token = 'token';
+  static const accessToken = 'accessToken';
+  static const refreshToken = 'refreshToken';
+
+  static const userId = 'userId';
 }
