@@ -4,9 +4,9 @@ import '../../../../common/extensions/context.dart';
 import '../../../../common/widgets/form_text/d_wallet_icon_password.dart';
 import '../../../../common/widgets/form_text/d_wallet_text_field.dart';
 import '../../../../l10n/l10n.dart';
-import '../../../../models/dtos/validator/password.dart';
-import '../../../../models/dtos/validator/validator_item.dart';
 import '../../../../theme/app_color.dart';
+import '../../../signup/validation/password_validation.dart';
+import '../../../signup/views/signup_password_step_view.dart';
 import '../bloc/sign_in_bloc.dart';
 
 class PasswordInput extends StatefulWidget {

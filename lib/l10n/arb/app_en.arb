@@ -43,7 +43,7 @@
   "text_validator_password_lower_case" : "lower",
   "text_validator_password_digit" : "digit",
   "text_validator_password_character" : "character",
-  "text_validator_password_length" : "length 8"
+  "text_validator_password_length" : "length 8",
   "text_sign_up_with_google": "Sign Up with Google",
   "text_least_one_upper_case": "At least one upper case",
   "text_least_one_lower_case": "At least one lower case",

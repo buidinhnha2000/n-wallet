@@ -18,7 +18,7 @@ class AuthenticationCubit extends HydratedCubit<String?> {
     emit(token);
   }
 
-  void unsetToken() {
+  void unsetToken(String token) {
     localStorage.remove(LocalStorageKey.accessToken);
     emit(null);
   }

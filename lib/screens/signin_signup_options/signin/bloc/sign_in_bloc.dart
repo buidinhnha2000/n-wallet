@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../../domain/repositories/authentication_repository.dart';
-import '../../../../models/dtos/account/account.dart';
-import '../../../../models/dtos/user/user.dart';
-import '../../../../models/dtos/validator/validator.dart';
+import '../../../../models/account/account.dart';
+import '../../../../models/user/user.dart';
+import '../../../signup/validation/email_validation.dart';
+import '../../../signup/validation/password_validation.dart';
 
 part 'sign_in_event.dart';
 
@@ -47,7 +48,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   FutureOr<void> _onSubmitted(
       SignInSubmitted event, Emitter<SignInState> emit) async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
-    final either = await _authenticationRepository.login(
+    final either = await _authenticationRepository.signin(
         Account(email: state.email.value, password: state.password.value));
     either.fold(
       ifLeft: (err) => emit(state.copyWith(

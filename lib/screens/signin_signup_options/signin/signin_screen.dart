@@ -47,7 +47,7 @@ class SignInScreen extends StatelessWidget {
                 content: Text(context.l10n.text_authentication_failure)));
         }
         if (state.status.isSubmissionSuccess) {
-          Navigator.of(context).pushNamed(AppRoutes.signOption);
+          Navigator.of(context).pushNamed(AppRoutes.welcome);
         }
       },
       child: Column(
