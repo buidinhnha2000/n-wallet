@@ -37,9 +37,16 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
 
   void handleNavigationToNameStep(
       FormzInputStatus emailStatus, String? errorMessage) {
-    (errorMessage == null)
-        ? context.read<SignUpBloc>().add(SignupEmailExists())
-        : context.navigator.pushNamed(AppRoutes.signUpNameStep);
+    // errorMessage == null
+    //     ? context.read<SignUpBloc>().add(SignupEmailExists())
+    //     : emailStatus == FormzInputStatus.valid
+    //         ? context.navigator.pushNamed(AppRoutes.signUpNameStep)
+    //         : null;
+    errorMessage == 'true'
+        ? null
+        : emailStatus == FormzInputStatus.valid
+            ? context.navigator.pushNamed(AppRoutes.signUpNameStep)
+            : null;
   }
 
   String? handleShowStatusError(Email emailStatus, String? errorMessage) {
@@ -49,6 +56,7 @@ class _SignUpEmailStepState extends State<SignUpEmailStep> {
     if (emailStatus.pure || emailStatus.valid) {
       return '';
     }
+
     if (emailStatus.value.isEmpty) {
       return context.l10n.text_complete_all_info;
     }
@@ -194,6 +202,7 @@ class _TextFormFieldWithValidationWidget extends StatelessWidget {
           hintText: context.l10n.text_yourEmail,
           onChanged: (emailValue) {
             context.read<SignUpBloc>().add(EmailChanged(email: emailValue));
+            context.read<SignUpBloc>().add(SignupEmailExists());
           },
         ),
         const SizedBox(
