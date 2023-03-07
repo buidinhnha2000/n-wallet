@@ -1,4 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../blocs/authentication/authentication_cubit.dart';
+import '../../common/extensions/extensions.dart';
+import '../../common/widgets/d_wallet_button.dart';
+import '../../data/local/local_storage_key.dart';
+import '../../navigation/navigation.dart';
+import '../../theme/app_color.dart';
 
 import '../../common/assets/app_assets.dart';
 import '../../theme/app_color.dart';
@@ -12,8 +19,16 @@ class WelcomeScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryGreen,
       body: SafeArea(
         child: Center(
-          child: Image.asset(AppAssets.imageWelcome),
-        ),
+            child: DWalletButton(
+          onPressed: () {
+            context
+                .read<AuthenticationCubit>()
+                .unsetToken(LocalStorageKey.accessToken);
+            context.navigator.pushNamed(AppRoutes.signOption);
+          },
+          buttonType: ButtonType.onlyText,
+              color: AppColors.buttonNeonGreen,
+        )),
       ),
     );
   }

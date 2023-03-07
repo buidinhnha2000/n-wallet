@@ -21,6 +21,7 @@ class _SignInSignUpOptionState extends State<SignInSignUpOption> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.primaryGreen,
       body: Stack(
         children: [

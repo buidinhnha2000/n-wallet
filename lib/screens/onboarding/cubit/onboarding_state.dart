@@ -14,8 +14,7 @@ class OnBoardingState extends Equatable {
 
   OnBoardingState copyWith({bool? isOnBoardingComplete}) {
     return OnBoardingState(
-        onBoardingUnCompleted:
-            isOnBoardingComplete ?? onBoardingUnCompleted);
+        onBoardingUnCompleted: isOnBoardingComplete ?? onBoardingUnCompleted);
   }
 
   factory OnBoardingState.fromJson(Map<String, dynamic> json) =>

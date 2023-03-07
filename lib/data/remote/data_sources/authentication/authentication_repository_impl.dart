@@ -17,4 +17,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<Either<DataSourceError, bool?>> mailExists(String? email) =>
       authenticationDataSource.mailExists(email);
+
+  @override
+  Future<Either<DataSourceError, User?>> signin(Account account) =>
+      authenticationDataSource.signin(account);
 }

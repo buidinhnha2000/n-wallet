@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:dio/dio.dart';
-
 import '../../../common/either.dart';
 import '../../../common/error.dart';
 import '../dio.dart';

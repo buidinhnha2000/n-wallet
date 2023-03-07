@@ -17,7 +17,7 @@ class Password extends FormzInput<String, List<PasswordValidationError>> {
   const Password.dirty([super.value = '']) : super.dirty();
 
   @override
-  List<PasswordValidationError> validator(String value) {
+  List<PasswordValidationError>? validator(String value) {
     final List<PasswordValidationError> list = [];
     if (!RegExp(DWalletRegex.oneUpperCase).hasMatch(value)) {
       list.add(PasswordValidationError.oneUpperCase);
@@ -35,6 +35,6 @@ class Password extends FormzInput<String, List<PasswordValidationError>> {
       list.add(PasswordValidationError.minimumEightLength);
     }
 
-    return list;
+    return list.isEmpty ? null : list;
   }
 }
