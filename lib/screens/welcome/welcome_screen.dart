@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../common/extensions/extensions.dart';
+import '../../common/assets/app_assets.dart';
+import '../../theme/app_color.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -8,13 +9,10 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.primaryGreen,
       body: SafeArea(
         child: Center(
-          child: Text(
-            "Welcome Screen",
-            style:
-                context.textTheme.titleSmall?.copyWith(color: Colors.black54),
-          ),
+          child: Image.asset(AppAssets.imageWelcome),
         ),
       ),
     );
