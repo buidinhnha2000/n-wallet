@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 
 import '../../../blocs/authentication/authentication_cubit.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/extensions.dart';
 import '../../../common/widgets/widgets.dart';
 import '../../../l10n/l10n.dart';
+import '../../../navigation/navigation.dart';
 import '../../../theme/app_color.dart';
 import '../bloc/signup_bloc.dart';
 import '../validation/validations.dart';
@@ -63,11 +65,17 @@ class SignUpPasswordStep extends StatelessWidget {
                           .read<AuthenticationCubit>()
                           .setAccessToken(state.user?.refreshToken ?? '');
                     }
+                    if (state.status.isSubmissionSuccess) {
+                      context.navigator.pushNamedAndRemoveUntil(
+                          AppRoutes.welcome, (route) => false);
+                    }
                   },
                   builder: (context, state) {
                     return DWalletButton(
                         onPressed: () {
-                          context.read<SignUpBloc>().add(SignupSubmitted());
+                          if (state.status.isValidated) {
+                            context.read<SignUpBloc>().add(SignupSubmitted());
+                          }
                         },
                         text: context.l10n.text_continue,
                         color: AppColors.buttonNeonGreen,
