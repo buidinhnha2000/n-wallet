@@ -97,7 +97,9 @@ class SignUpPasswordStep extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (state.status.isSubmissionInProgress) const DWalletLoader()
+                if (state.status.isSubmissionInProgress ||
+                    state.status.isSubmissionFailure)
+                  const DWalletLoader()
               ],
             );
           },

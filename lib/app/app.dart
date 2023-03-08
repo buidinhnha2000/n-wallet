@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../blocs/authentication/authentication_cubit.dart';
 import '../di/service_locator.dart';
 import '../domain/domain.dart';
@@ -30,8 +31,10 @@ class App extends StatelessWidget {
             create: (context) => OnBoardingCubit(),
           ),
           BlocProvider(
-              create: (context) => SignUpBloc(
-                  RepositoryProvider.of<AuthenticationRepository>(context)))
+            create: (context) => SignUpBloc(
+              RepositoryProvider.of<AuthenticationRepository>(context),
+            ),
+          )
         ],
         child: const AppView(),
       ),

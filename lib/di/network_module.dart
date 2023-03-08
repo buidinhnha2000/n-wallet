@@ -1,9 +1,9 @@
 part of 'service_locator.dart';
 
 extension ServiceLocatorX on ServiceLocator {
-  void configureNetworkModule(AppFlavor flavor) {
+  Future<void> configureNetworkModule(AppFlavor flavor) async {
     registerSingleton<AuthenticationDataSource>(
-        AuthenticationApi(inject<DioClient>().authDio));
+        AuthenticationApi(inject<DioClient>().dio));
     registerSingleton<AuthenticationRepository>(
         AuthenticationRepositoryImpl(inject()));
   }
