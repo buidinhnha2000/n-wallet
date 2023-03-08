@@ -7,6 +7,7 @@ enum PasswordValidationError {
   oneUpperCase,
   oneLowerCase,
   oneDigit,
+  noneVietnamese,
   oneSpecialCharacter,
   minimumEightLength
 }
@@ -30,6 +31,9 @@ class Password extends FormzInput<String, List<PasswordValidationError>> {
     }
     if (!RegExp(DWalletRegex.oneSpecialCharacter).hasMatch(value)) {
       list.add(PasswordValidationError.oneSpecialCharacter);
+    }
+    if (!RegExp(DWalletRegex.noneVietnamese).hasMatch(value) || value.isEmpty) {
+      list.add(PasswordValidationError.noneVietnamese);
     }
     if (!RegExp(DWalletRegex.minimumEightLength).hasMatch(value)) {
       list.add(PasswordValidationError.minimumEightLength);

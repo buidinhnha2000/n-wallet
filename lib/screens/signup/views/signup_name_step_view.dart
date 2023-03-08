@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/extensions.dart';
 import '../../../common/widgets/widgets.dart';
@@ -34,19 +35,26 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
     super.dispose();
   }
 
-  String? handleShowError(Name nameError) {
-    if (nameError.pure || nameError.valid) {
+  String? handleShowNameStatusError(
+      NameValidationError? nameStatus, bool pure) {
+    if (pure) {
       return '';
     }
-    if (nameError.value.isEmpty) {
-      return context.l10n.text_complete_all_info;
+    switch (nameStatus) {
+      case NameValidationError.empty:
+        return context.l10n.text_complete_all_info;
+      case NameValidationError.invalid:
+        return context.l10n.text_none_vietnamese;
+
+      default:
+        return '';
     }
-    return context.l10n.text_email_invalidate;
   }
 
-  void handleNavigationToPasswordStep(FormzInputStatus passwordStatus) {
-    if (passwordStatus == FormzInputStatus.valid ||
-        passwordStatus != FormzInputStatus.pure) {
+  void handleNavigationToPasswordStep(FormzInputStatus nameStatus) {
+    print(nameStatus);
+    if (nameStatus == FormzInputStatus.valid &&
+        nameStatus != FormzInputStatus.pure) {
       context.navigator.pushNamed(AppRoutes.signUpPasswordStep);
     }
   }
@@ -68,7 +76,9 @@ class _SignUpNameStepState extends State<SignUpNameStep> {
                     _DescriptionNameWidget(),
                     _TextFormFieldWithValidationWidget(
                       controller: _textNameController,
-                      textError: handleShowError(state.name).toString(),
+                      textError: handleShowNameStatusError(
+                              state.name.error, state.name.pure)
+                          .toString(),
                     ),
                     const Spacer(),
                     DWalletButton(

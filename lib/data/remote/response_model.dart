@@ -7,7 +7,7 @@ part 'response_model.g.dart';
 class ResponseApi with _$ResponseApi {
   const factory ResponseApi({
     int? statusCode,
-    String? message,
+    List<String>? message,
     int? timestamp,
     String? path,
   }) = _ResponseApi;

@@ -2,7 +2,7 @@ import 'package:formz/formz.dart';
 
 import '../../../common/constants/constants.dart';
 
-enum NameValidationError { invalid }
+enum NameValidationError { empty, invalid }
 
 class Name extends FormzInput<String, NameValidationError> {
   const Name.pure([super.value = '']) : super.pure();
@@ -11,7 +11,9 @@ class Name extends FormzInput<String, NameValidationError> {
 
   @override
   NameValidationError? validator(String value) {
-    return RegExp(DWalletRegex.nameRegex).hasMatch(value)
+    if (value.isEmpty) return NameValidationError.empty;
+
+    return (RegExp(DWalletRegex.nameRegex).hasMatch(value))
         ? null
         : NameValidationError.invalid;
   }
