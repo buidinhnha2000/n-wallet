@@ -1,9 +1,6 @@
-import 'package:dio/dio.dart';
-
 import '../../../../common/either.dart';
 import '../../../../common/error.dart';
 import '../../../../di/service_locator.dart';
-import '../../../../models/account/account.dart';
 import '../../../../models/models.dart';
 import '../../../local/local.dart';
 import '../../data_sources/authentication/authentication_data_source.dart';
@@ -42,22 +39,6 @@ class AuthenticationApi extends Api implements AuthenticationDataSource {
       final response =
           await dio.get(ApiPath.userExists, queryParameters: {'email': email});
       return response.data == 'true';
-    });
-  }
-
-  @override
-  Future<Either<DataSourceError, User?>> refreshToken() async {
-    return withTimeoutRequest(() async {
-      final response = await dio.get(
-        ApiPath.refreshToken,
-        options: Options(
-          headers: {
-            'Authorization':
-                'Bearer ${localStorage.getString(LocalStorageKey.refreshToken)}'
-          },
-        ),
-      );
-      return User.fromJson(response.data);
     });
   }
 }

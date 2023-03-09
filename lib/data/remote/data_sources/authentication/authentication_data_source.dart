@@ -1,6 +1,5 @@
 import '../../../../common/either.dart';
 import '../../../../common/error.dart';
-import '../../../../models/account/account.dart';
 import '../../../../models/models.dart';
 
 abstract class AuthenticationDataSource {
@@ -9,6 +8,4 @@ abstract class AuthenticationDataSource {
   Future<Either<DataSourceError, bool?>> mailExists(String? email);
 
   Future<Either<DataSourceError, User?>> signin(Account account);
-
-  Future<Either<DataSourceError, User?>> refreshToken();
 }
