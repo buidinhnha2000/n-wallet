@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+
 import '../../../../blocs/authentication/authentication_cubit.dart';
 import '../../../../common/extensions/context.dart';
 import '../../../../common/widgets/d_wallet_button.dart';
@@ -44,7 +45,14 @@ class LoginButton extends StatelessWidget {
               padding: const EdgeInsets.only(left: 16, right: 16),
               child: BlocConsumer<SignInBloc, SignInState>(
                 listener: (context, state) {
-                 context.read<AuthenticationCubit>().setAccessToken(state.user?.accessToken ?? '');
+                  if (state.user != null) {
+                    context
+                        .read<AuthenticationCubit>()
+                        .setAccessToken(state.user?.accessToken ?? '');
+                    context
+                        .read<AuthenticationCubit>()
+                        .setRefreshToken(state.user?.refreshToken ?? '');
+                  }
                 },
                 builder: (context, state) {
                   debugPrint(state.toString());

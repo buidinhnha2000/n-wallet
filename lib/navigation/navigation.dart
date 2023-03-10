@@ -21,7 +21,6 @@ abstract class AppRoutes {
 
 abstract class AppNavigation {
   static Route<dynamic>? onGeneratedRoute(RouteSettings settings) {
-    print(settings.name);
     switch (settings.name) {
       case AppRoutes.welcome:
         return AppPageRoute((_) => const WelcomeScreen(), settings);

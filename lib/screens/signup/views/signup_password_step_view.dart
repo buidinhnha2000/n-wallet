@@ -71,7 +71,7 @@ class SignUpPasswordStep extends StatelessWidget {
                                       state.user?.accessToken ?? '');
                               context
                                   .read<AuthenticationCubit>()
-                                  .setAccessToken(
+                                  .setRefreshToken(
                                       state.user?.refreshToken ?? '');
                             }
                             if (state.status.isSubmissionSuccess) {
@@ -97,7 +97,9 @@ class SignUpPasswordStep extends StatelessWidget {
                     ),
                   ),
                 ),
-                if (state.status.isSubmissionInProgress) const DWalletLoader()
+                if (state.status.isSubmissionInProgress ||
+                    state.status.isSubmissionFailure)
+                  const DWalletLoader()
               ],
             );
           },

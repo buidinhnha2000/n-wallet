@@ -57,6 +57,7 @@ class SignUpBloc extends Bloc<SignupEvent, SignUpState> {
   FutureOr<void> onSubmitted(
       SignupSubmitted event, Emitter<SignUpState> emit) async {
     emit(state.copyWith(status: FormzStatus.submissionInProgress));
+    await Future.delayed(const Duration(seconds: 3));
     final either = await _authenticationRepository.signup(Account(
         email: state.email.value,
         name: state.name.value,

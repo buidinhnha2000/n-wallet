@@ -1,8 +1,7 @@
 import '../../../../common/either.dart';
 import '../../../../common/error.dart';
 import '../../../../domain/domain.dart';
-import '../../../../models/account/account.dart';
-import '../../../../models/user/user.dart';
+import '../../../../models/models.dart';
 import 'authentication_data_source.dart';
 
 class AuthenticationRepositoryImpl implements AuthenticationRepository {

@@ -1,6 +1,5 @@
 import '../../../../common/either.dart';
 import '../../../../common/error.dart';
-import '../../../../models/account/account.dart';
 import '../../../../models/models.dart';
 
 abstract class AuthenticationDataSource {
