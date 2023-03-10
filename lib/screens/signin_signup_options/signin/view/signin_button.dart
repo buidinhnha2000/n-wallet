@@ -51,7 +51,7 @@ class LoginButton extends StatelessWidget {
                         .setAccessToken(state.user?.accessToken ?? '');
                     context
                         .read<AuthenticationCubit>()
-                        .setRefreshTokenToken(state.user?.refreshToken ?? '');
+                        .setRefreshToken(state.user?.refreshToken ?? '');
                   }
                 },
                 builder: (context, state) {

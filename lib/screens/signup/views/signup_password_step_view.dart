@@ -71,7 +71,7 @@ class SignUpPasswordStep extends StatelessWidget {
                                       state.user?.accessToken ?? '');
                               context
                                   .read<AuthenticationCubit>()
-                                  .setRefreshTokenToken(
+                                  .setRefreshToken(
                                       state.user?.refreshToken ?? '');
                             }
                             if (state.status.isSubmissionSuccess) {
