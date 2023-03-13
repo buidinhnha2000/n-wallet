@@ -8,4 +8,6 @@ abstract class AuthenticationRepository {
   Future<Either<DataSourceError, bool?>> mailExists(String? email);
 
   Future<Either<DataSourceError, User?>> signin(Account account);
+
+  Future<Either<DataSourceError, User?>> signinWithGoogle(String? token);
 }
