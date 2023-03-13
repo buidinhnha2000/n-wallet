@@ -67,12 +67,7 @@ class SignUpPasswordStep extends StatelessWidget {
                             if (state.user != null) {
                               context
                                   .read<AuthenticationCubit>()
-                                  .setAccessToken(
-                                      state.user?.accessToken ?? '');
-                              context
-                                  .read<AuthenticationCubit>()
-                                  .setRefreshToken(
-                                      state.user?.refreshToken ?? '');
+                                  .setUserLogged(state.user);
                             }
                             if (state.status.isSubmissionSuccess) {
                               context.navigator.pushNamedAndRemoveUntil(

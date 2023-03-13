@@ -1,33 +1,39 @@
+import 'dart:convert';
+
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../data/local/local.dart';
 import '../../di/service_locator.dart';
+import '../../models/models.dart';
 
-class AuthenticationCubit extends HydratedCubit<String?> {
-  AuthenticationCubit() : super(null);
+class AuthenticationCubit extends HydratedCubit<User?> {
+  AuthenticationCubit() : super(const User());
 
   final LocalStorage localStorage = ServiceLocator.instance.inject();
 
-  void setAccessToken(String token) async {
-    await localStorage.setString(LocalStorageKey.accessToken, token);
-    emit(token);
+  void setUserLogged(User? user) {
+    final jsonString = jsonEncode(user?.toJson());
+    localStorage.setString(LocalStorageKey.user, jsonString);
+    emit(user);
   }
 
-  void setRefreshToken(String token) async {
-    await localStorage.setString(LocalStorageKey.refreshToken, token);
-    emit(token);
+  User? getUserLogged() {
+    final jsonString = localStorage.getString(LocalStorageKey.user);
+    if (jsonString != null) {
+      return User.fromJson(jsonDecode(jsonString));
+    }
+    return null;
   }
 
-  void unsetToken(String token) {
-    localStorage.remove(LocalStorageKey.accessToken);
+  void unsetUserLogged() {
+    localStorage.remove(LocalStorageKey.user);
+    clear();
     emit(null);
   }
 
   @override
-  String? fromJson(Map<String, dynamic> json) =>
-      json[LocalStorageKey.accessToken] as String?;
+  User? fromJson(Map<String, dynamic> json) => User.fromJson(json);
 
   @override
-  Map<String, dynamic>? toJson(String? state) =>
-      {LocalStorageKey.accessToken: state};
+  Map<String, dynamic>? toJson(User? state) => state?.toJson();
 }

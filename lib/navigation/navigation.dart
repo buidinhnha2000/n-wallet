@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/signin_signup_options/signin/signin.dart';
@@ -10,6 +11,7 @@ import '../screens/welcome/welcome_screen.dart';
 
 abstract class AppRoutes {
   static const welcome = 'welcome';
+  static const home = 'home';
   static const onboarding = 'onboarding';
 
   static const signOption = 'signOption';
@@ -41,6 +43,8 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const SignUpNameStep(), settings);
       case AppRoutes.signUpPasswordStep:
         return AppPageRoute((_) => const SignUpPasswordStep(), settings);
+      case AppRoutes.home:
+        return AppPageRoute((_) => const HomeScreen(), settings);
       default:
         throw 'Cannot find destination route';
     }

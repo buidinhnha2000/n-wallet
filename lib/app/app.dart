@@ -48,7 +48,8 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final onBoardingState = context.read<OnBoardingCubit>().state;
-    final authenticateState = context.read<AuthenticationCubit>().state;
+    final authenticateState =
+        context.read<AuthenticationCubit>().state?.accessToken;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.light,
@@ -59,7 +60,7 @@ class AppView extends StatelessWidget {
         initialRoute: onBoardingState.onBoardingUnCompleted
             ? AppRoutes.onboarding
             : authenticateState != null
-                ? AppRoutes.welcome
+                ? AppRoutes.home
                 : AppRoutes.signOption);
   }
 }
