@@ -22,3 +22,12 @@ class SocialAuthenticationNotLogged extends SocialAuthenticationState {
   @override
   List<Object?> get props => [error];
 }
+
+class SocialAuthenticationError extends SocialAuthenticationState {
+  final String? errorMessage;
+
+  SocialAuthenticationError(this.errorMessage);
+
+  @override
+  List<Object?> get props => [errorMessage];
+}

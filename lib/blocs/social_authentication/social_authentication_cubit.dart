@@ -20,13 +20,14 @@ class SocialAuthenticationCubit extends Cubit<SocialAuthenticationState> {
   Future<String?> signinWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    final GoogleSignInAuthentication googleAuth =
-        await googleUser!.authentication;
-
-    final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-    await FirebaseAuth.instance.signInWithCredential(credential);
-    return credential.idToken;
+    if (googleUser != null) {
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+      final credential = GoogleAuthProvider.credential(
+          accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+      await FirebaseAuth.instance.signInWithCredential(credential);
+      return credential.idToken;
+    }
   }
 
   FutureOr<void> onSubmitted() async {
@@ -35,7 +36,9 @@ class SocialAuthenticationCubit extends Cubit<SocialAuthenticationState> {
     either.fold(ifLeft: (error) {
       emit(SocialAuthenticationNotLogged(error));
     }, ifRight: (user) {
-      if (user == null) return;
+      if (user == null) {
+        return emit(SocialAuthenticationError('An error occurred'));
+      }
       emit(SocialAuthenticationLogged(user));
     });
   }
