@@ -52,7 +52,7 @@ class SignInForm extends StatelessWidget {
                 content: Text(context.l10n.text_authentication_failure)));
         }
         if (state.status.isSubmissionSuccess) {
-          Navigator.of(context).pushNamed(AppRoutes.welcome);
+          Navigator.of(context).pushNamed(AppRoutes.home);
         }
       },
       child: Column(

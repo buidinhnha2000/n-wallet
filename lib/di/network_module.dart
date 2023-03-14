@@ -6,6 +6,9 @@ extension ServiceLocatorX on ServiceLocator {
         AuthenticationApi(inject<DioClient>().dio));
     registerSingleton<AuthenticationRepository>(
         AuthenticationRepositoryImpl(inject()));
+
+    registerSingleton<UserDataSource>(UserApi(inject<DioClient>().authDio));
+    registerSingleton<UserRepository>(UserRepositoryImpl(inject(), inject()));
   }
 
   void configureLocalStorage(SharedPreferences prefs) {
