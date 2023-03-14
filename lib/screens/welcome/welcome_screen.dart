@@ -4,6 +4,7 @@ import '../../common/assets/app_assets.dart';
 import '../../common/extensions/extensions.dart';
 import '../../common/widgets/d_wallet_button.dart';
 import '../../l10n/l10n.dart';
+import '../../navigation/navigation.dart';
 import '../../theme/app_color.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -46,7 +47,10 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ),
                     DWalletButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context.navigator.pushNamedAndRemoveUntil(
+                              AppRoutes.home, (route) => false);
+                        },
                         color: AppColors.primaryNeonGreen,
                         text: context.l10n.text_get_started,
                         buttonType: ButtonType.onlyText),
