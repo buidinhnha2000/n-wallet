@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
+import '../../../blocs/social_authentication/social_authentication_cubit.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/context.dart';
 import '../../../common/widgets/widgets.dart';
@@ -136,8 +137,7 @@ class _ButtonsSocialWidget extends StatelessWidget {
         ),
         DWalletButton(
           onPressed: () {
-            context.navigator.pushNamedAndRemoveUntil(
-                AppRoutes.signUpNameStep, (route) => false);
+            context.read<SocialAuthenticationCubit>().signinWithGoogle();
           },
           buttonType: ButtonType.iconAndText,
           text: context.l10n.text_sign_up_with_google,

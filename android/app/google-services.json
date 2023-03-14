@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "37691429913",
+    "project_id": "d-wallet-dd0ba",
+    "storage_bucket": "d-wallet-dd0ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:37691429913:android:b370e514e4fed866824688",
+        "android_client_info": {
+          "package_name": "com.napaglobal.d_wallet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "37691429913-l8jtfij39gvnfe19b701qohep6om5rvr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.napaglobal.d_wallet",
+            "certificate_hash": "99b66750f850ea51b9e255b397497e6e167a705e"
+          }
+        },
+        {
+          "client_id": "37691429913-uau7hfuivku0kh4jattj4eh0jkj0hcen.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4gz0fnLAahUzCSfpJMFkLnJ_sIGgzChI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "37691429913-arovn9u23vmjc9asgbmf427p69gbe8nf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "37691429913-9hu6ql91mf9c7vojlpa8qp9ne7b1bddi.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.napaglobal.flutterBlocBaseSourceCode"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
