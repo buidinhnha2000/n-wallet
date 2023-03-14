@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../account/account.dart';
 
 part 'user.freezed.dart';
+
 part 'user.g.dart';
 
 @freezed

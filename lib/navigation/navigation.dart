@@ -11,8 +11,9 @@ import '../screens/welcome/welcome_screen.dart';
 
 abstract class AppRoutes {
   static const welcome = 'welcome';
-  static const home = 'home';
   static const onboarding = 'onboarding';
+  static const homeScreen = 'homeScreen';
+  static const home = 'home';
 
   static const signOption = 'signOption';
   static const signIn = 'signIn';
@@ -43,7 +44,10 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const SignUpNameStep(), settings);
       case AppRoutes.signUpPasswordStep:
         return AppPageRoute((_) => const SignUpPasswordStep(), settings);
+
       case AppRoutes.home:
+        return AppPageRoute((_) => const Home(), settings);
+      case AppRoutes.homeScreen:
         return AppPageRoute((_) => const HomeScreen(), settings);
       default:
         throw 'Cannot find destination route';
@@ -51,9 +55,6 @@ abstract class AppNavigation {
   }
 }
 
-/// This function ensures the RouteSettings parameter will be pass into a destination route
-/// to make sure every destination has a settings
-// ignore: non_constant_identifier_names
 MaterialPageRoute<T> AppPageRoute<T>(
   Widget Function(BuildContext context) builder,
   RouteSettings settings, {

@@ -7,7 +7,7 @@ import '../../di/service_locator.dart';
 import '../../models/models.dart';
 
 class AuthenticationCubit extends HydratedCubit<User?> {
-  AuthenticationCubit() : super(const User());
+  AuthenticationCubit() : super(null);
 
   final LocalStorage localStorage = ServiceLocator.instance.inject();
 

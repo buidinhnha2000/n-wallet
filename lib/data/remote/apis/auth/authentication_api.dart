@@ -41,4 +41,12 @@ class AuthenticationApi extends Api implements AuthenticationDataSource {
       return response.data == 'true';
     });
   }
+
+  @override
+  Future<Either<DataSourceError, User?>> signinWithGoogle(String? token) {
+    return withTimeoutRequest(() async {
+      final response = await dio.post(ApiPath.signinGoogle, data: token);
+      return User.fromJson(response.data);
+    });
+  }
 }

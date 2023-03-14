@@ -20,4 +20,8 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
   @override
   Future<Either<DataSourceError, User?>> signin(Account account) =>
       authenticationDataSource.signin(account);
+
+  @override
+  Future<Either<DataSourceError, User?>> signinWithGoogle(String? token) =>
+      authenticationDataSource.signinWithGoogle(token);
 }
