@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-
 import '../../../blocs/authentication/authentication_cubit.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/extensions.dart';
@@ -67,12 +66,7 @@ class SignUpPasswordStep extends StatelessWidget {
                             if (state.user != null) {
                               context
                                   .read<AuthenticationCubit>()
-                                  .setAccessToken(
-                                      state.user?.accessToken ?? '');
-                              context
-                                  .read<AuthenticationCubit>()
-                                  .setRefreshToken(
-                                      state.user?.refreshToken ?? '');
+                                  .setUserLogged(state.user);
                             }
                             if (state.status.isSubmissionSuccess) {
                               context.navigator.pushNamedAndRemoveUntil(

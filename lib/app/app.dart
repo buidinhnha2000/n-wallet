@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../blocs/authentication/authentication_cubit.dart';
 import '../blocs/social_authentication/social_authentication_cubit.dart';
 import '../di/service_locator.dart';
@@ -21,6 +20,10 @@ class App extends StatelessWidget {
         RepositoryProvider<AuthenticationRepository>(
           create: (BuildContext context) =>
               ServiceLocator.instance.inject<AuthenticationRepository>(),
+        ),
+        RepositoryProvider<UserRepository>(
+          create: (BuildContext context) =>
+              ServiceLocator.instance.inject<UserRepository>(),
         ),
       ],
       child: MultiBlocProvider(
@@ -65,7 +68,7 @@ class AppView extends StatelessWidget {
         initialRoute: onBoardingState.onBoardingUnCompleted
             ? AppRoutes.onboarding
             : authenticateState != null
-                ? AppRoutes.welcome
+                ? AppRoutes.home
                 : AppRoutes.signOption);
   }
 }

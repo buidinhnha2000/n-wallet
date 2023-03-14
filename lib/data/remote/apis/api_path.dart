@@ -4,4 +4,6 @@ abstract class ApiPath {
   static const signin = 'auth/signin';
   static const refreshToken = 'auth/refresh';
   static const signinGoogle = 'auth/google-mobile';
+  static const profile = 'users/profile';
+  static const balance = 'balance';
 }
