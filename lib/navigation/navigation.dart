@@ -29,10 +29,10 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const WelcomeScreen(), settings);
       case AppRoutes.onboarding:
         return AppPageRoute(
-                (_) => BlocProvider(
-              create: (_) => OnBoardingScreenCubit(),
-              child: const OnBoardingScreen(),
-            ),
+            (_) => BlocProvider(
+                  create: (_) => OnBoardingScreenCubit(),
+                  child: const OnBoardingScreen(),
+                ),
             settings);
       case AppRoutes.signOption:
         return AppPageRoute((_) => const SignInSignUpOption(), settings);
@@ -56,11 +56,11 @@ abstract class AppNavigation {
 }
 
 MaterialPageRoute<T> AppPageRoute<T>(
-    Widget Function(BuildContext context) builder,
-    RouteSettings settings, {
-      bool maintainState = true,
-      bool fullscreenDialog = false,
-    }) =>
+  Widget Function(BuildContext context) builder,
+  RouteSettings settings, {
+  bool maintainState = true,
+  bool fullscreenDialog = false,
+}) =>
     MaterialPageRoute(
       builder: builder,
       settings: settings,

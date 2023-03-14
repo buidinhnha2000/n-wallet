@@ -1,5 +1,7 @@
 import 'dart:convert';
+
 import 'package:hydrated_bloc/hydrated_bloc.dart';
+
 import '../../data/local/local.dart';
 import '../../di/service_locator.dart';
 import '../../models/models.dart';

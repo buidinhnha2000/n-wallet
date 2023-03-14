@@ -53,7 +53,6 @@ class LoginButton extends StatelessWidget {
                   }
                 },
                 builder: (context, state) {
-                  debugPrint(state.toString());
                   return DWalletButton(
                     onPressed: state.status.isValidated
                         ? () {

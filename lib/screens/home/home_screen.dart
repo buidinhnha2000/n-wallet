@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../common/assets/app_assets.dart';
-import '../../common/widgets/bottom_navigator/cubit.dart';
 import '../../common/widgets/bottom_navigator/bottom_navigator.dart';
+import '../../common/widgets/bottom_navigator/cubit.dart';
 import '../../theme/app_color.dart';
 import '../welcome/welcome_screen.dart';
 import 'bloc/home_bloc.dart';
