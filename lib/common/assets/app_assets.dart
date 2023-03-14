@@ -13,6 +13,7 @@ abstract class AppAssets {
       '$appAssetImageSource/image_illustrations.png';
   static const logoApp = '$appAssetImageSource/logo_app.png';
   static const imageWelcome = '$appAssetImageSource/image_welcome.png';
+  static const imageDiscountBanner = '$appAssetImageSource/img_discount_banner.svg';
 
   static const iconTea = '$appAssetIconSource/icon_tea.svg';
   static const iconFacebook = '$appAssetIconSource/facebook.svg';
@@ -20,4 +21,29 @@ abstract class AppAssets {
   static const iconBack = '$appAssetIconSource/icon_back.svg';
   static const iconPasswordLess = '$appAssetIconSource/icon_password.svg';
   static const iconPasswordShow = '$appAssetIconSource/icon_password_show.svg';
+  static const iconSetting = '$appAssetIconSource/icon_setting.svg';
+
+  static const iconNavigatorHome = '$appAssetIconSource/icon_home.svg';
+  static const iconNavigatorStatistic = '$appAssetIconSource/icon_statistic.svg';
+  static const iconNavigatorNotification = '$appAssetIconSource/icon_notification.svg';
+  static const iconNavigatorProfile = '$appAssetIconSource/icon_profile.svg';
+  static const iconNavigatorHomeOn = '$appAssetIconSource/icon_home_on.svg';
+  static const iconNavigatorStatisticOn = '$appAssetIconSource/icon_statistic_on.svg';
+  static const iconNavigatorNotificationOn = '$appAssetIconSource/icon_notification_on.svg';
+  static const iconNavigatorProfileOn = '$appAssetIconSource/icon_profile_on.svg';
+
+  static const iconTransfer = '$appAssetIconSource/icon_transfer.svg';
+  static const iconTopup = '$appAssetIconSource/icon_topup.svg';
+  static const iconHistory = '$appAssetIconSource/icon_history.svg';
+
+  static const iconElectricity = '$appAssetIconSource/icon_electricity.svg';
+  static const iconInternet = '$appAssetIconSource/icon_internet.svg';
+  static const iconVoucher = '$appAssetIconSource/icon_voucher.svg';
+  static const iconAssurance = '$appAssetIconSource/icon_assurance.svg';
+  static const iconMerchant = '$appAssetIconSource/icon_merchant.svg';
+  static const iconMobileCredit = '$appAssetIconSource/icon_mobile_credit.svg';
+  static const iconBill = '$appAssetIconSource/icon_bill.svg';
+  static const iconMore = '$appAssetIconSource/icon_more.svg';
+  static const iconQr = '$appAssetIconSource/icon_qr.svg';
+
 }

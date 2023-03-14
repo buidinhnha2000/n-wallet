@@ -6,11 +6,17 @@ class AppColors {
   static const Color backgroundLightGreen = Color(0xFF2d6845);
   static const Color gestureDetectorWhile = Color(0xFFedfaf2);
   static const Color hover= Color(0xFFf2f2f2);
+  static const Color divider= Color(0xFF73da9c);
+
+  static const Color dividerLightGreen= Color(0xFF74da9c);
+  static const Color dividerGreen= Color(0xFF4cc37a);
 
   //primary
   static const Color primaryGreen= Color(0xFF0d472f);
   static const Color primaryNeonGreen= Color(0xFF4cd080);
   static const Color primaryOrange= Color(0xFFffae58);
+  static const Color backgroundItem= Color(0xFFf6fafd);
+
 
   //card
   static const Color cardBackgroundWhile= Color(0xFFF2F2F2);
@@ -30,6 +36,7 @@ class AppColors {
   static const Color buttonBorder1= Color(0xFFe6e6e8);
   static const Color buttonBorder2= Color(0xFF306e4d);
   static const Color buttonBorder3= Color(0xFF23241f);
+
 
   //icon
   static const Color iconYellow = Color(0xFFffd12e);
