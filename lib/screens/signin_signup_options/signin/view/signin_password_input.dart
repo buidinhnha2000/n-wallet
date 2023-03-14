@@ -86,7 +86,7 @@ class PasswordInputState extends State<PasswordInput> {
                                 ? '${passwordValidationList[index].text}, '
                                 : '',
                             style: context.textTheme.bodySmall?.copyWith(
-                                color: AppColors.textLightBlack, fontSize: 13),
+                                color: AppColors.textRed, fontSize: 12),
                           );
                         }),
                   ],

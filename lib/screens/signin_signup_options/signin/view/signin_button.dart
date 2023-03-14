@@ -6,6 +6,7 @@ import '../../../../blocs/authentication/authentication_cubit.dart';
 import '../../../../common/extensions/context.dart';
 import '../../../../common/widgets/d_wallet_button.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../navigation/navigation.dart';
 import '../../../../theme/app_color.dart';
 import '../bloc/sign_in_bloc.dart';
 
@@ -93,6 +94,9 @@ class LoginButton extends StatelessWidget {
                   width: 2,
                 ),
                 GestureDetector(
+                  onTap: (){
+                    context.navigator.pushNamed(AppRoutes.signUpEmailStep);
+                  },
                   child: Text(
                     context.l10n.text_signUp,
                     style: context.textTheme.bodyLarge?.copyWith(
