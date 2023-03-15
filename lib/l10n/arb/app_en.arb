@@ -64,5 +64,14 @@
   "text_welcome_desc": "Voila! You have successfully created your account.",
   "text_get_started": "Get Started",
   "text_none_vietnamese": "Must not contain Vietnamese characters",
-  "text_available_balance": "Your available balance"
+  "text_available_balance": "Your available balance",
+  "text_my_profile": "My Profile",
+  "text_profile_person": "Personal",
+  "text_profile_privacy_security": "Privacy & Security",
+  "text_profile_offers_reward": "Offers & Rewards",
+  "text_profile_help": "Help",
+  "text_profile_logout": "Logout",
+  "text_balance": "Balance",
+  "text_bianca_cooper": "BIANCA COOPER"
+
 }

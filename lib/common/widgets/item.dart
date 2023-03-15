@@ -1,4 +1,4 @@
-
+import '../../navigation/navigation.dart';
 import '../assets/app_assets.dart';
 
 const List<ActionMainHome> actionMainHome = [
@@ -28,4 +28,19 @@ class PaymentItem {
   final String img;
   final String text;
   const PaymentItem(this.img, this.text);
+}
+
+const List<ProfileSettingItem> itemProfileSetting = [
+  ProfileSettingItem(AppAssets.iconPerson, 'Personal', AppRoutes.home),
+  ProfileSettingItem(AppAssets.iconPrivacy, 'Privacy & Security', AppRoutes.home),
+  ProfileSettingItem(AppAssets.iconOffers, 'Offers & Rewards', AppRoutes.home),
+  ProfileSettingItem(AppAssets.iconHelp, 'Help', AppRoutes.home),
+  ProfileSettingItem(AppAssets.iconLogout, 'Logout', AppRoutes.signOption),
+];
+
+class ProfileSettingItem {
+  final String img;
+  final String text;
+  final String route;
+  const ProfileSettingItem(this.img, this.text, this.route);
 }

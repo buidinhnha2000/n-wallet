@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../common/assets/app_assets.dart';
+import '../../../theme/app_color.dart';
 
 class DWalletIconPassword extends StatelessWidget {
   const DWalletIconPassword({
@@ -20,6 +21,7 @@ class DWalletIconPassword extends StatelessWidget {
         height: 24,
         width: 24,
         fit: BoxFit.scaleDown,
+        color: AppColors.textLightBlack,
       ),
     );
   }
