@@ -152,17 +152,22 @@ class _TextNavigateToLoginWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           context.l10n.text_have_an_account,
           style: context.textTheme.titleSmall?.copyWith(
-              color: Colors.black54, fontSize: 15, fontWeight: FontWeight.w300),
+              color: Colors.black54, fontSize: 16, fontWeight: FontWeight.w400),
         ),
         TextButton(
           onPressed: () {
             context.navigator.pushNamed(AppRoutes.signIn);
           },
+          style: TextButton.styleFrom(
+            minimumSize: Size.zero,
+            padding: const EdgeInsets.only(left: 3),
+            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          ),
           child: Text(
             context.l10n.text_login,
             style: context.textTheme.titleSmall?.copyWith(
@@ -223,8 +228,8 @@ class _DescriptionTermsWidget extends StatelessWidget {
       context.l10n.text_desc_create_account,
       style: context.textTheme.titleSmall?.copyWith(
           color: AppColors.textLightBlack,
-          fontSize: 15,
-          fontWeight: FontWeight.w300),
+          fontSize: 14,
+          fontWeight: FontWeight.w400),
     );
   }
 }

@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>37691429913-9hu6ql91mf9c7vojlpa8qp9ne7b1bddi.apps.googleusercontent.com</string>
+	<string>514146279724-8vgqvukqnan4qu64pr02hhj2fc28cb0j.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.37691429913-9hu6ql91mf9c7vojlpa8qp9ne7b1bddi</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>37691429913-l8jtfij39gvnfe19b701qohep6om5rvr.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.514146279724-8vgqvukqnan4qu64pr02hhj2fc28cb0j</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD3Fhx4LEQUs1ENsQz7SFmXDYZFMNyy6Vg</string>
+	<string>AIzaSyDAJQOjrMJLIP-SNFIJVg6X_-gs9qSo03k</string>
 	<key>GCM_SENDER_ID</key>
-	<string>37691429913</string>
+	<string>514146279724</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.napaglobal.flutterBlocBaseSourceCode</string>
 	<key>PROJECT_ID</key>
-	<string>d-wallet-dd0ba</string>
+	<string>napa-digital-wallet</string>
 	<key>STORAGE_BUCKET</key>
-	<string>d-wallet-dd0ba.appspot.com</string>
+	<string>napa-digital-wallet.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:37691429913:ios:0e86ef113a5a166e824688</string>
+	<string>1:514146279724:ios:86e8cfe26fb8004dc30c89</string>
 </dict>
 </plist>

@@ -50,21 +50,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyD4gz0fnLAahUzCSfpJMFkLnJ_sIGgzChI',
-    appId: '1:37691429913:android:b370e514e4fed866824688',
-    messagingSenderId: '37691429913',
-    projectId: 'd-wallet-dd0ba',
-    storageBucket: 'd-wallet-dd0ba.appspot.com',
+    apiKey: 'AIzaSyD2D598HTLy5ACjPU_xvC1uJaHRMSWZP2g',
+    appId: '1:514146279724:android:8b5901a243ee4812c30c89',
+    messagingSenderId: '514146279724',
+    projectId: 'napa-digital-wallet',
+    storageBucket: 'napa-digital-wallet.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyD3Fhx4LEQUs1ENsQz7SFmXDYZFMNyy6Vg',
-    appId: '1:37691429913:ios:0e86ef113a5a166e824688',
-    messagingSenderId: '37691429913',
-    projectId: 'd-wallet-dd0ba',
-    storageBucket: 'd-wallet-dd0ba.appspot.com',
-    androidClientId: '37691429913-l8jtfij39gvnfe19b701qohep6om5rvr.apps.googleusercontent.com',
-    iosClientId: '37691429913-9hu6ql91mf9c7vojlpa8qp9ne7b1bddi.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDAJQOjrMJLIP-SNFIJVg6X_-gs9qSo03k',
+    appId: '1:514146279724:ios:86e8cfe26fb8004dc30c89',
+    messagingSenderId: '514146279724',
+    projectId: 'napa-digital-wallet',
+    storageBucket: 'napa-digital-wallet.appspot.com',
+    iosClientId: '514146279724-8vgqvukqnan4qu64pr02hhj2fc28cb0j.apps.googleusercontent.com',
     iosBundleId: 'com.napaglobal.flutterBlocBaseSourceCode',
   );
 }
