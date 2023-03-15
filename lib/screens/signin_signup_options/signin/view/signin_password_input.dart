@@ -71,7 +71,7 @@ class PasswordInputState extends State<PasswordInput> {
                           ? '${context.l10n.text_validator_password_error} '
                           : '',
                       style: context.textTheme.bodySmall?.copyWith(
-                          color: AppColors.textLightBlack, fontSize: 12),
+                          color: AppColors.textRed, fontSize: 12),
                     ),
                     ListView.builder(
                         physics: const NeverScrollableScrollPhysics(),

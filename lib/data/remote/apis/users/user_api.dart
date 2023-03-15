@@ -13,7 +13,8 @@ class UserApi extends Api implements UserDataSource {
   Future<Either<DataSourceError, ProfileJson?>> getProfile() async {
     return withTimeoutRequest(() async {
       final data = await dio.get(ApiPath.profile);
-      return ProfileJsonWrapper.fromJson(data.data).profile;
+      final profile = ProfileJson.fromJson(data.data);
+      return profile;
     });
   }
 

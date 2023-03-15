@@ -14,6 +14,7 @@ abstract class AppAssets {
   static const logoApp = '$appAssetImageSource/logo_app.png';
   static const imageWelcome = '$appAssetImageSource/image_welcome.png';
   static const imageDiscountBanner = '$appAssetImageSource/img_discount_banner.svg';
+  static const imageAvatar = '$appAssetImageSource/img_avatar.png';
 
   static const iconTea = '$appAssetIconSource/icon_tea.svg';
   static const iconFacebook = '$appAssetIconSource/facebook.svg';
@@ -46,4 +47,15 @@ abstract class AppAssets {
   static const iconMore = '$appAssetIconSource/icon_more.svg';
   static const iconQr = '$appAssetIconSource/icon_qr.svg';
 
+  //profile
+  static const iconQr1 = '$appAssetIconSource/icon_qr1.svg';
+  static const iconEllipse = '$appAssetIconSource/icon_ellipse.svg';
+  static const iconLogoCard = '$appAssetIconSource/icon_logo_card.svg';
+  static const iconCardChip = '$appAssetIconSource/icon_card_chip.svg';
+  static const iconPerson = '$appAssetIconSource/icon_person.svg';
+  static const iconPrivacy = '$appAssetIconSource/icon_privacy.svg';
+  static const iconOffers = '$appAssetIconSource/icon_offers.svg';
+  static const iconHelp = '$appAssetIconSource/icon_help.svg';
+  static const iconLogout = '$appAssetIconSource/icon_logout.svg';
+  static const iconNext = '$appAssetIconSource/icon_next.svg';
 }

@@ -6,7 +6,7 @@ import '../../common/assets/app_assets.dart';
 import '../../common/widgets/bottom_navigator/bottom_navigator.dart';
 import '../../common/widgets/bottom_navigator/cubit.dart';
 import '../../theme/app_color.dart';
-import '../welcome/welcome_screen.dart';
+import '../profile/profile_screen.dart';
 import 'bloc/home_bloc.dart';
 import 'views/home_screen_header.dart';
 import 'views/home_screen_main_action.dart';
@@ -23,7 +23,7 @@ class Home extends StatelessWidget {
       const HomeScreen(),
       const HomeScreen(),
       const HomeScreen(),
-      const WelcomeScreen(),
+      const ProfileScreen(),
     ];
     return BlocProvider(
       create: (context) => BottomNavigationTabCubit(),
