@@ -1,7 +1,7 @@
 {
   "file_generated_by": "FlutterFire CLI",
   "purpose": "FirebaseAppID & ProjectID for this Firebase app in this directory",
-  "GOOGLE_APP_ID": "1:37691429913:ios:0e86ef113a5a166e824688",
-  "FIREBASE_PROJECT_ID": "d-wallet-dd0ba",
-  "GCM_SENDER_ID": "37691429913"
+  "GOOGLE_APP_ID": "1:514146279724:ios:86e8cfe26fb8004dc30c89",
+  "FIREBASE_PROJECT_ID": "napa-digital-wallet",
+  "GCM_SENDER_ID": "514146279724"
 }

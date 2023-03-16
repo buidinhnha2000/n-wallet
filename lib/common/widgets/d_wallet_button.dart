@@ -90,7 +90,7 @@ class DWalletButton extends StatelessWidget {
               MaterialStateProperty.all<Color>(AppColors.textWhite),
           backgroundColor: MaterialStateProperty.all<Color?>(color),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-             RoundedRectangleBorder(
+            RoundedRectangleBorder(
               borderRadius: const BorderRadius.all(Radius.circular(16.0)),
               side: handleShowBorderSide(),
             ),
@@ -149,9 +149,9 @@ class _DWalletButtonIconAndTextWidget extends StatelessWidget {
                 child: Text(
                   text,
                   style: context.textTheme.titleMedium?.copyWith(
-                    color: AppColors.textBlack,
-                    fontSize: 16,
-                  ),
+                      color: AppColors.textBlack,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
                 ),
               ),
               // const Expanded(flex: 3, child: SizedBox())
