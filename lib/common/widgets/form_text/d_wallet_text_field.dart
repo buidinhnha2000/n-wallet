@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../common/extensions/context.dart';
 import '../../../theme/app_color.dart';
@@ -11,7 +12,8 @@ class DWalletTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Function(String)? onChanged;
-  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool readOnly;
 
   const DWalletTextField({
     Key? key,
@@ -22,7 +24,8 @@ class DWalletTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.suffixIcon,
     this.onChanged,
-    this.validator,
+    this.inputFormatters,
+    this.readOnly = false,
   }) : super(key: key);
 
   @override
@@ -35,9 +38,10 @@ class DWalletTextField extends StatelessWidget {
         obscureText: isPassword,
         keyboardType: keyboardType,
         style: context.textTheme.bodyLarge?.copyWith(
-            color: AppColors.textLightBlack,
-            fontWeight: FontWeight.w400,
-            fontSize: 16),
+          color: AppColors.textLightBlack,
+          fontWeight: FontWeight.w400,
+          fontSize: 16,
+        ),
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           hintText: hintText,
@@ -51,7 +55,7 @@ class DWalletTextField extends StatelessWidget {
           suffixIcon: suffixIcon,
         ),
         onChanged: onChanged,
-        validator: validator,
+        readOnly: readOnly,
       ),
     );
   }
