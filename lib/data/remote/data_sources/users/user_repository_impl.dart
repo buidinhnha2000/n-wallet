@@ -3,6 +3,7 @@ import '../../../../common/error.dart';
 import '../../../../domain/repositories/user_repository.dart';
 import '../../../../models/domain/balance.dart';
 import '../../../../models/domain/profile.dart';
+import '../../../../models/domain/search.dart';
 import '../../../local/local.dart';
 import '../../../local/local_storage.dart';
 import 'users_data_source.dart';
@@ -20,4 +21,9 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<Either<DataSourceError, Profile>> getProfile() async =>
       (await userDataSource.getProfile()).map((value) => Profile.fromDTO(value));
+
+  @override
+  Future<Either<DataSourceError, Search>> getSearch(String? wordSearch) async =>
+      (await userDataSource.getSearch(wordSearch))
+          .map((value) => Search.fromDTO(value));
 }

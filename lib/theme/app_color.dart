@@ -4,12 +4,15 @@ class AppColors {
 
   static const Color backgroundGreen = Color(0xff105d38);
   static const Color backgroundLightGreen = Color(0xFF2d6845);
+  static const Color backgroundWhite = Color(0xFFFFFFFF);
+  static const Color backgroundBlackLight= Color(0xFFF2F2F2);
   static const Color gestureDetectorWhile = Color(0xFFedfaf2);
   static const Color hover= Color(0xFFf2f2f2);
   static const Color divider= Color(0xFF73da9c);
 
   static const Color dividerLightGreen= Color(0xFF74da9c);
   static const Color dividerGreen= Color(0xFF4cc37a);
+  static const Color dividerBlackLight= Color(0xFFF2F2F2);
 
   //primary
   static const Color primaryGreen= Color(0xFF0d472f);
@@ -32,6 +35,7 @@ class AppColors {
   static const Color buttonLightSalmon= Color(0xFFffd7af);
   static const Color buttonSalmon= Color(0xFFffae58);
   static const Color buttonGreen= Color(0xFF105d38);
+  static const Color buttonLightGreen= Color(0xFFF1FBF5);
   static const Color buttonBorder= Color(0xFFf2f2f2);
   static const Color buttonBorder1= Color(0xFFe6e6e8);
   static const Color buttonBorder2= Color(0xFF306e4d);

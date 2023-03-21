@@ -2,15 +2,16 @@ import '../../navigation/navigation.dart';
 import '../assets/app_assets.dart';
 
 const List<ActionMainHome> actionMainHome = [
-  ActionMainHome(AppAssets.iconTransfer, 'Transfer'),
-  ActionMainHome(AppAssets.iconTopup, 'Top Up'),
-  ActionMainHome(AppAssets.iconHistory, 'History'),
+  ActionMainHome(AppAssets.iconTransfer, 'Transfer', AppRoutes.transferBalance),
+  ActionMainHome(AppAssets.iconTopup, 'Deposit', AppRoutes.home),
+  ActionMainHome(AppAssets.iconHistory, 'History', AppRoutes.home),
 ];
 
 class ActionMainHome {
   final String img;
   final String text;
-  const ActionMainHome(this.img, this.text);
+  final String route;
+  const ActionMainHome(this.img, this.text, this.route);
 }
 
 const List<PaymentItem> itemPaymentList = [
