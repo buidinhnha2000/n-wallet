@@ -20,9 +20,11 @@ abstract class AppAssets {
   static const iconFacebook = '$appAssetIconSource/facebook.svg';
   static const iconGoogle = '$appAssetIconSource/google.svg';
   static const iconBack = '$appAssetIconSource/icon_back.svg';
+  static const iconBackWhite = '$appAssetIconSource/icon_back_white.svg';
   static const iconPasswordLess = '$appAssetIconSource/icon_password.svg';
   static const iconPasswordShow = '$appAssetIconSource/icon_password_show.svg';
   static const iconSetting = '$appAssetIconSource/icon_setting.svg';
+  static const iconSearch = '$appAssetIconSource/icon_search.svg';
 
   static const iconNavigatorHome = '$appAssetIconSource/icon_home.svg';
   static const iconNavigatorStatistic = '$appAssetIconSource/icon_statistic.svg';
@@ -58,4 +60,13 @@ abstract class AppAssets {
   static const iconHelp = '$appAssetIconSource/icon_help.svg';
   static const iconLogout = '$appAssetIconSource/icon_logout.svg';
   static const iconNext = '$appAssetIconSource/icon_next.svg';
+
+  static const iconIndicator = '$appAssetIconSource/icon_indicator.svg';
+  static const iconAdd = '$appAssetIconSource/icon_add.svg';
+  static const iconWarning = '$appAssetIconSource/icon_warning.svg';
+
+  //transfer
+  static const iconMoreBlue = '$appAssetIconSource/icon_more_blue.svg';
+  static const iconReceipt = '$appAssetIconSource/icon_receipt.svg';
+  static const iconSuccess = '$appAssetIconSource/icon_success.svg';
 }

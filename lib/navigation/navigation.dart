@@ -5,9 +5,11 @@ import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
 import '../screens/profile/profile_screen.dart';
+import '../screens/search/search.dart';
 import '../screens/signin_signup_options/signin/signin.dart';
 import '../screens/signin_signup_options/signin_signup_options/signin_signup_options.dart';
 import '../screens/signup/signup.dart';
+import '../screens/transfer_balance/transfer_balance.dart';
 import '../screens/welcome/welcome_screen.dart';
 
 abstract class AppRoutes {
@@ -16,6 +18,8 @@ abstract class AppRoutes {
   static const homeScreen = 'homeScreen';
   static const home = 'home';
   static const profile = 'profile';
+  static const transferBalance = 'transferBalance';
+  static const search = 'search';
 
   static const signOption = 'signOption';
   static const signIn = 'signIn';
@@ -53,6 +57,10 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const HomeScreen(), settings);
       case AppRoutes.profile:
         return AppPageRoute((_) => const ProfileScreen(), settings);
+      case AppRoutes.transferBalance:
+        return AppPageRoute((_) => const TransferBalanceScreen(), settings);
+      case AppRoutes.search:
+        return AppPageRoute((_) => const SearchScreen(), settings);
       default:
         throw 'Cannot find destination route';
     }

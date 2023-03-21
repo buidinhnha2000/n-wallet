@@ -15,7 +15,7 @@ class HomeScreenMainAction extends StatefulWidget {
 class _HomeScreenMainActionState extends State<HomeScreenMainAction> {
 
   static List<String> pages = <String>[
-    AppRoutes.welcome,
+    AppRoutes.transferBalance,
     AppRoutes.homeScreen,
     AppRoutes.homeScreen,
   ];
