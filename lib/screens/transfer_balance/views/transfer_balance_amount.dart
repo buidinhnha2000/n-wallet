@@ -13,10 +13,10 @@ class TransferBalanceScreenAmount extends StatefulWidget {
 }
 
 class _TransferBalanceScreenAmountState extends State<TransferBalanceScreenAmount> {
-  double a = 0.0;
 
   @override
   Widget build(BuildContext context) {
+    double a = 0.0;
     final a1 = dWalletFormatCard.currencyFormat.format(a);
     final a2 = dWalletFormatCard.currencyFormat.format(0);
     return ListView(
@@ -81,7 +81,7 @@ class _TransferBalanceScreenAmountState extends State<TransferBalanceScreenAmoun
                 style: const ButtonStyle(
                     elevation: MaterialStatePropertyAll(0),
                     backgroundColor:
-                    MaterialStatePropertyAll(AppColors.buttonLightGreen)),
+                        MaterialStatePropertyAll(AppColors.buttonLightGreen)),
                 child: Text(
                   dWalletFormatCard.currencyFormat.format(100),
                   style: context.textTheme.bodyMedium?.copyWith(
@@ -104,7 +104,7 @@ class _TransferBalanceScreenAmountState extends State<TransferBalanceScreenAmoun
                 style: const ButtonStyle(
                     elevation: MaterialStatePropertyAll(0),
                     backgroundColor:
-                    MaterialStatePropertyAll(AppColors.buttonLightGreen)),
+                        MaterialStatePropertyAll(AppColors.buttonLightGreen)),
                 child: Text(
                   dWalletFormatCard.currencyFormat.format(250),
                   style: context.textTheme.bodyMedium?.copyWith(
@@ -127,7 +127,7 @@ class _TransferBalanceScreenAmountState extends State<TransferBalanceScreenAmoun
                 style: const ButtonStyle(
                     elevation: MaterialStatePropertyAll(0),
                     backgroundColor:
-                    MaterialStatePropertyAll(AppColors.buttonLightGreen)),
+                        MaterialStatePropertyAll(AppColors.buttonLightGreen)),
                 child: Text(
                   dWalletFormatCard.currencyFormat.format(500),
                   style: context.textTheme.bodyMedium?.copyWith(
