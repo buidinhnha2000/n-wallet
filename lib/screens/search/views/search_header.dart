@@ -22,79 +22,91 @@ class SearchHeader extends StatelessWidget {
             top: 60, left: 16, right: 16, bottom: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              flex: 5,
-              child: TextField(
-                onChanged: (wordSearch) {
-                  context.read<SearchBloc>().add(LoadSearch(wordSearch));
-                },
-                style: context.textTheme.bodyMedium?.copyWith(
-                    color: AppColors.textLightBlack,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 16),
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.only(left: 2),
-                  enabledBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColors.buttonWhite,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16.0),
-                    ),
-                  ),
-                  focusedBorder: const OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColors.buttonWhite,
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(16.0),
-                    ),
-                  ),
-                  isDense: true,
-                  hintText: context.l10n.text_search_username_and_email,
-                  hintStyle: const TextStyle(
-                    fontSize: 16,
-                    color: AppColors.textLightBlack,
-                  ),
-                  prefixIcon: SvgPicture.asset(
-                    AppAssets.iconSearch,
-                    color: AppColors.textLightBlack,
-                    fit: BoxFit.scaleDown,
-                  ),
-                  prefixIconConstraints:
-                  const BoxConstraints(minWidth: 40, minHeight: 40),
-                  suffixIconConstraints:
-                  const BoxConstraints(minWidth: 40, minHeight: 40),
-                  filled: true,
-                  fillColor: AppColors.backgroundWhite,
-                ),
-              ),
-            ),
-            const SizedBox(width: 5),
-            Expanded(
-              flex: 1,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () => context.navigator.pop(),
-                    child: Text(
-                      context.l10n.text_hide,
-                      style: context.textTheme.bodyMedium?.copyWith(
-                          color: AppColors.textWhite,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          children: const [
+            SearchHeaderTextField(),
+            SearchHeaderBack()
           ],
         ),
       ),
     );
   }
 }
+
+class SearchHeaderTextField extends StatelessWidget {
+  const SearchHeaderTextField({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+    InputBorder border = const OutlineInputBorder(
+      borderSide: BorderSide(
+        color: AppColors.buttonWhite,
+        width: 1,
+      ),
+      borderRadius: BorderRadius.all(
+        Radius.circular(16.0),
+      ),
+    );
+    return Expanded(
+      flex: 5,
+      child: TextField(
+        onChanged: (wordSearch) {
+          context.read<SearchBloc>().add(LoadSearch(wordSearch));
+        },
+        style: context.textTheme.bodyMedium?.copyWith(
+            color: AppColors.textLightBlack,
+            fontWeight: FontWeight.w500,
+            fontSize: 16),
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.only(left: 2),
+          enabledBorder: border,
+          focusedBorder: border,
+          isDense: true,
+          hintText: context.l10n.text_search_username_and_email,
+          hintStyle: const TextStyle(
+            fontSize: 16,
+            color: AppColors.textLightBlack,
+          ),
+          prefixIcon: SvgPicture.asset(
+            AppAssets.iconSearch,
+            color: AppColors.textLightBlack,
+            fit: BoxFit.scaleDown,
+          ),
+          prefixIconConstraints:
+          const BoxConstraints(minWidth: 40, minHeight: 40),
+          suffixIconConstraints:
+          const BoxConstraints(minWidth: 40, minHeight: 40),
+          filled: true,
+          fillColor: AppColors.backgroundWhite,
+        ),
+      )
+    );
+  }
+}
+
+class SearchHeaderBack extends StatelessWidget {
+  const SearchHeaderBack({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      flex: 1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () => context.navigator.pop(),
+            child: Text(
+              context.l10n.text_hide,
+              style: context.textTheme.bodyMedium?.copyWith(
+                  color: AppColors.textWhite,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
