@@ -44,3 +44,11 @@ class CvcCreditCardChanged extends NewCreditCardEvent {
   @override
   List<Object?> get props => [cvc];
 }
+
+class CreditCardSubmitted extends NewCreditCardEvent {
+  final CreditCardCreation creditCardCreation;
+
+  const CreditCardSubmitted(this.creditCardCreation);
+  @override
+  List<Object?> get props => [creditCardCreation];
+}

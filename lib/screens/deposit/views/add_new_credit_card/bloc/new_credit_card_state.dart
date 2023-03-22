@@ -11,5 +11,6 @@ class NewCreditCardState with _$NewCreditCardState {
     required FormzStatus status,
     required CardType? brand,
     String? errorMessage,
+    CreditCard? creditCard,
   }) = _NewreditCardState;
 }

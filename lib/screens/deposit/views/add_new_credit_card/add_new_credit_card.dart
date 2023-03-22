@@ -7,6 +7,8 @@ import '../../../../common/extensions/extensions.dart';
 import '../../../../common/widgets/d_wallet_credit_card.dart';
 import '../../../../common/widgets/widgets.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../models/domain/credit_card/credit_card_creation.dart';
+import '../../../../navigation/navigation.dart';
 import '../../../../theme/app_color.dart';
 import '../../input_formatters/card_number_input_formatter.dart';
 import '../../input_formatters/input_formatters.dart';
@@ -34,7 +36,7 @@ class DepositNewCreditCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NewCreditCardBloc(),
+      create: (context) => NewCreditCardBloc(context.read()),
       child: GestureDetector(
         behavior: HitTestBehavior.opaque,
         onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -77,7 +79,26 @@ class DepositNewCreditCard extends StatelessWidget {
                   },
                   builder: (context, state) {
                     return DWalletButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        final CreditCardCreation creditCard =
+                            CreditCardCreation(
+                                name: state.name.value,
+                                number: state.cardNumber.value,
+                                expYear: state.expYear,
+                                expMonth: state.expMonth,
+                                cvc: state.cvc);
+                        if (completedAddCreditCardForm(
+                                state.name.value,
+                                state.cardNumber.value,
+                                state.expMonth,
+                                state.expYear,
+                                state.cvc) &&
+                            state.name.valid) {
+                          context.navigator.pushNamed(
+                              AppRoutes.depositConfirmCreditCard,
+                              arguments: creditCard);
+                        }
+                      },
                       text: context.l10n.text_continue,
                       color: AppColors.primaryNeonGreen,
                       buttonType: ButtonType.onlyText,

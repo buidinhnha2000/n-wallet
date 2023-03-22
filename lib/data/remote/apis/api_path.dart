@@ -7,4 +7,5 @@ abstract class ApiPath {
   static const profile = 'users/profile';
   static const balance = 'balance';
   static const search = 'users/search';
+  static const createCreditCard = 'cards';
 }
