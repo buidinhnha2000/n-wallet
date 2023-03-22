@@ -96,6 +96,7 @@
   "text_choose_card": "Choose Card",
   "text_hide": "Hide",
   "text_search_username_and_email": "Search username or email",
-  "text_transfer_on": "Transfer on"
+  "text_transfer_on": "Transfer on",
+  "text_back_to_home": "Back to home"
 
 }

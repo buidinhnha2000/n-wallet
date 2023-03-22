@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../screens/deposit/deposit.dart';
 import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
@@ -26,6 +27,9 @@ abstract class AppRoutes {
   static const signUpEmailStep = 'signUpEmailStep';
   static const signUpNameStep = 'signUpNameStep';
   static const signUpPasswordStep = 'signUpPasswordStep';
+
+  static const depositSelectMethod = 'depositSelectMethod';
+  static const depositWithCreditCard = 'depositWithCreditCard';
 }
 
 abstract class AppNavigation {
@@ -61,6 +65,11 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const TransferBalanceScreen(), settings);
       case AppRoutes.search:
         return AppPageRoute((_) => const SearchScreen(), settings);
+      case AppRoutes.depositSelectMethod:
+        return AppPageRoute((_) => const DepositSelectMethods(), settings);
+      case AppRoutes.depositWithCreditCard:
+        return AppPageRoute((_) => const DepositWithCreditCard(), settings);
+
       default:
         throw 'Cannot find destination route';
     }
