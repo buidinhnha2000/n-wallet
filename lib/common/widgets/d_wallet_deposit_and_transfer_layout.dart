@@ -8,14 +8,14 @@ import 'd_wallet_appbar.dart';
 class DWalletDepositAndTransferLayout extends StatelessWidget {
   const DWalletDepositAndTransferLayout(
       {Key? key,
-      this.title,
+      this.title = '',
       this.onPressed,
-      this.desc,
+      this.desc = '',
       required this.child,
       this.isAppBar = true})
       : super(key: key);
-  final String? title;
-  final String? desc;
+  final String title;
+  final String desc;
   final Function()? onPressed;
   final Widget child;
   final bool isAppBar;
@@ -38,7 +38,7 @@ class DWalletDepositAndTransferLayout extends StatelessWidget {
                 children: [
                   if (isAppBar)
                     DWalletAppBar(
-                      text: title ?? '',
+                      text: title,
                       textColor: AppColors.textWhite,
                       buttonColor: Colors.transparent,
                       icon: AppAssets.iconBackWhite,
@@ -50,7 +50,7 @@ class DWalletDepositAndTransferLayout extends StatelessWidget {
                     height: 14,
                   ),
                   Text(
-                    desc ?? '',
+                    desc,
                     style: context.textTheme.titleSmall?.copyWith(
                         color: AppColors.textWhite,
                         fontSize: 16,

@@ -6,16 +6,16 @@ class DWalletCardView extends StatelessWidget {
     Key? key,
     this.backgroundColor,
     this.onTap,
-    this.prefixIcon,
-    this.suffixIcon,
+    this.prefixIcon = '',
+    this.suffixIcon = '',
     required this.child,
     this.style,
   }) : super(key: key);
 
   final Color? backgroundColor;
   final Function()? onTap;
-  final String? prefixIcon;
-  final String? suffixIcon;
+  final String prefixIcon;
+  final String suffixIcon;
   final Widget child;
   final TextStyle? style;
 
@@ -36,14 +36,14 @@ class DWalletCardView extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  if (prefixIcon != null) SvgPicture.asset(prefixIcon ?? ''),
+                  if (prefixIcon.isNotEmpty) SvgPicture.asset(prefixIcon),
                   const SizedBox(
                     width: 16,
                   ),
                   child,
                 ],
               ),
-              if (suffixIcon != null) SvgPicture.asset(suffixIcon ?? '')
+              if (suffixIcon.isNotEmpty) SvgPicture.asset(suffixIcon)
             ],
           ),
         ),
