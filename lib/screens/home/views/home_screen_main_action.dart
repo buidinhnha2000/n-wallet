@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../common/extensions/context.dart';
 import '../../../common/widgets/item.dart';
 import '../../../navigation/navigation.dart';
@@ -13,10 +14,9 @@ class HomeScreenMainAction extends StatefulWidget {
 }
 
 class _HomeScreenMainActionState extends State<HomeScreenMainAction> {
-
   static List<String> pages = <String>[
     AppRoutes.transferBalance,
-    AppRoutes.homeScreen,
+    AppRoutes.depositNewCreditCard,
     AppRoutes.homeScreen,
   ];
 

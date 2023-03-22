@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../common/extensions/context.dart';
 import '../../../theme/app_color.dart';
@@ -11,7 +12,7 @@ class DWalletTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final Function(String)? onChanged;
-  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
 
   const DWalletTextField({
     Key? key,
@@ -22,7 +23,7 @@ class DWalletTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.suffixIcon,
     this.onChanged,
-    this.validator,
+    this.inputFormatters,
   }) : super(key: key);
 
   @override
@@ -51,7 +52,7 @@ class DWalletTextField extends StatelessWidget {
           suffixIcon: suffixIcon,
         ),
         onChanged: onChanged,
-        validator: validator,
+        inputFormatters: inputFormatters,
       ),
     );
   }

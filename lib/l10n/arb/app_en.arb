@@ -96,6 +96,8 @@
   "text_choose_card": "Choose Card",
   "text_hide": "Hide",
   "text_search_username_and_email": "Search username or email",
-  "text_transfer_on": "Transfer on"
-
+  "text_transfer_on": "Transfer on",
+  "text_add_new_card": "Add New Card",
+  "text_desc_add_new_card": "Fill in the fields below or use camera phone to scan card",
+  "text_holder_name_invalid": "The holder's name must match the name on the card."
 }
