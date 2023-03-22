@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../l10n/l10n.dart';
@@ -117,27 +116,5 @@ class DWalletCard extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class CreditCardNumberInputFormatter extends TextInputFormatter {
-  @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
-    String maskedValue = _getMaskedNumber(newValue.text);
-    return TextEditingValue(
-      text: maskedValue,
-      selection: TextSelection.collapsed(offset: maskedValue.length),
-    );
-  }
-
-  String _getMaskedNumber(String number) {
-    String stripped = number.replaceAll(RegExp(r'\D'), ''); // remove non-digits
-    if (stripped.length > 4) {
-      stripped =
-          '${stripped.substring(0, stripped.length - 4)}****'; // mask all but the last 4 digits
-    }
-    return stripped.replaceAllMapped(RegExp(r'.{4}'),
-        (match) => '${match.group(0)} '); // add spacing for readability
   }
 }
