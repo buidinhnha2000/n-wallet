@@ -82,4 +82,10 @@ abstract class AppAssets {
   static const iconArrowForward = '$appAssetIconSource/icon_arrow_forward.svg';
   static const iconCreditCard = '$appAssetIconSource/icon_credit_card.svg';
   static const iconBank = '$appAssetIconSource/icon_bank.svg';
+
+  static const iconMastercard = '$appAssetIconSource/icon_mastercard.svg';
+  static const iconVisa = '$appAssetIconSource/icon_visa.svg';
+  static const iconDiscover = '$appAssetIconSource/icon_discover.svg';
+  static const iconAmericanExp = '$appAssetIconSource/icon_american.svg';
+  static const iconCardOther = '$appAssetIconSource/icon_card_other.svg';
 }

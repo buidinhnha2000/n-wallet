@@ -13,7 +13,6 @@ class DWalletTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final Function(String)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
-  final bool readOnly;
 
   const DWalletTextField({
     Key? key,
@@ -25,7 +24,6 @@ class DWalletTextField extends StatelessWidget {
     this.suffixIcon,
     this.onChanged,
     this.inputFormatters,
-    this.readOnly = false,
   }) : super(key: key);
 
   @override
@@ -38,10 +36,9 @@ class DWalletTextField extends StatelessWidget {
         obscureText: isPassword,
         keyboardType: keyboardType,
         style: context.textTheme.bodyLarge?.copyWith(
-          color: AppColors.textLightBlack,
-          fontWeight: FontWeight.w400,
-          fontSize: 16,
-        ),
+            color: AppColors.textLightBlack,
+            fontWeight: FontWeight.w400,
+            fontSize: 16),
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
           hintText: hintText,
@@ -55,7 +52,7 @@ class DWalletTextField extends StatelessWidget {
           suffixIcon: suffixIcon,
         ),
         onChanged: onChanged,
-        readOnly: readOnly,
+        inputFormatters: inputFormatters,
       ),
     );
   }

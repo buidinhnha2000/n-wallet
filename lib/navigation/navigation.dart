@@ -30,6 +30,8 @@ abstract class AppRoutes {
 
   static const depositSelectMethod = 'depositSelectMethod';
   static const depositWithCreditCard = 'depositWithCreditCard';
+
+  static const depositNewCreditCard = 'depositNewCreditCard';
 }
 
 abstract class AppNavigation {
@@ -70,6 +72,8 @@ abstract class AppNavigation {
       case AppRoutes.depositWithCreditCard:
         return AppPageRoute((_) => const DepositWithCreditCard(), settings);
 
+      case AppRoutes.depositNewCreditCard:
+        return AppPageRoute((_) => const DepositNewCreditCard(), settings);
       default:
         throw 'Cannot find destination route';
     }
