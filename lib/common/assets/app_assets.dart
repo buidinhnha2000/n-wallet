@@ -13,7 +13,8 @@ abstract class AppAssets {
       '$appAssetImageSource/image_illustrations.png';
   static const logoApp = '$appAssetImageSource/logo_app.png';
   static const imageWelcome = '$appAssetImageSource/image_welcome.png';
-  static const imageDiscountBanner = '$appAssetImageSource/img_discount_banner.svg';
+  static const imageDiscountBanner =
+      '$appAssetImageSource/img_discount_banner.svg';
   static const imageAvatar = '$appAssetImageSource/img_avatar.png';
 
   static const iconTea = '$appAssetIconSource/icon_tea.svg';
@@ -27,13 +28,18 @@ abstract class AppAssets {
   static const iconSearch = '$appAssetIconSource/icon_search.svg';
 
   static const iconNavigatorHome = '$appAssetIconSource/icon_home.svg';
-  static const iconNavigatorStatistic = '$appAssetIconSource/icon_statistic.svg';
-  static const iconNavigatorNotification = '$appAssetIconSource/icon_notification.svg';
+  static const iconNavigatorStatistic =
+      '$appAssetIconSource/icon_statistic.svg';
+  static const iconNavigatorNotification =
+      '$appAssetIconSource/icon_notification.svg';
   static const iconNavigatorProfile = '$appAssetIconSource/icon_profile.svg';
   static const iconNavigatorHomeOn = '$appAssetIconSource/icon_home_on.svg';
-  static const iconNavigatorStatisticOn = '$appAssetIconSource/icon_statistic_on.svg';
-  static const iconNavigatorNotificationOn = '$appAssetIconSource/icon_notification_on.svg';
-  static const iconNavigatorProfileOn = '$appAssetIconSource/icon_profile_on.svg';
+  static const iconNavigatorStatisticOn =
+      '$appAssetIconSource/icon_statistic_on.svg';
+  static const iconNavigatorNotificationOn =
+      '$appAssetIconSource/icon_notification_on.svg';
+  static const iconNavigatorProfileOn =
+      '$appAssetIconSource/icon_profile_on.svg';
 
   static const iconTransfer = '$appAssetIconSource/icon_transfer.svg';
   static const iconTopup = '$appAssetIconSource/icon_topup.svg';
@@ -69,4 +75,11 @@ abstract class AppAssets {
   static const iconMoreBlue = '$appAssetIconSource/icon_more_blue.svg';
   static const iconReceipt = '$appAssetIconSource/icon_receipt.svg';
   static const iconSuccess = '$appAssetIconSource/icon_success.svg';
+  static const iconAttention = '$appAssetIconSource/icon_attention.svg';
+  static const iconCardActive = '$appAssetIconSource/icon_card_active.svg';
+  static const iconSetLimit = '$appAssetIconSource/icon_set_limit.svg';
+  static const iconLockCard = '$appAssetIconSource/icon_lock_card.svg';
+  static const iconArrowForward = '$appAssetIconSource/icon_arrow_forward.svg';
+  static const iconCreditCard = '$appAssetIconSource/icon_credit_card.svg';
+  static const iconBank = '$appAssetIconSource/icon_bank.svg';
 }

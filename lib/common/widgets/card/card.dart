@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../l10n/l10n.dart';
 import '../../../theme/app_color.dart';
 import '../../assets/app_assets.dart';
@@ -12,7 +13,9 @@ class DWalletCard extends StatelessWidget {
       {Key? key,
       required this.numberCard,
       required this.money,
-      required this.cardBackground, this.cardExpiration, this.text})
+      required this.cardBackground,
+      this.cardExpiration,
+      this.text})
       : super(key: key);
   final String numberCard;
   final double money;
@@ -82,11 +85,13 @@ class DWalletCard extends StatelessWidget {
                 const SizedBox(
                   width: 16,
                 ),
-                Text(numberCard.substring(numberCard.length - 4),
-                    style: context.textTheme.bodySmall?.copyWith(
-                        color: AppColors.textWhite,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500)),
+                Text(
+                  numberCard.substring(numberCard.length - 4),
+                  style: context.textTheme.bodySmall?.copyWith(
+                      color: AppColors.textWhite,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500),
+                ),
               ],
             ),
           ),

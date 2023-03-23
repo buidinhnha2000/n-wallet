@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 import '../../../common/widgets/card/card.dart';
 import '../../../l10n/l10n.dart';
 import '../../../theme/app_color.dart';
@@ -27,9 +28,12 @@ class ProfileScreenCard extends StatelessWidget {
                   topLeft: Radius.circular(16), topRight: Radius.circular(16))),
         ),
         DWalletCard(
-            numberCard: '1111222233334444',
-            money: 12361273,
-            cardBackground: AppColors.cardBackgroundNeonGreen, text: context.l10n.text_balance, cardExpiration: '11/24',)
+          numberCard: '1111222233334444',
+          money: 12361273,
+          cardBackground: AppColors.cardBackgroundNeonGreen,
+          text: context.l10n.text_balance,
+          cardExpiration: '11/24',
+        )
       ],
     );
   }
