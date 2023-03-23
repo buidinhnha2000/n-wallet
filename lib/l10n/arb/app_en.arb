@@ -130,7 +130,8 @@
   "text_card_settings": "Card Settings",
   "text_set_limit": "Set Limit",
   "text_lock_card": "Lock Card",
-  "text_top_up_now": "Deposit Now"
+  "text_top_up_now": "Deposit Now",
+  "text_back_to_home": "Back to home"
 
 
 }

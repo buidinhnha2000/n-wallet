@@ -5,6 +5,7 @@ import '../../../../common/extensions/extensions.dart';
 import '../../../../common/widgets/card/card.dart';
 import '../../../../common/widgets/widgets.dart';
 import '../../../../l10n/l10n.dart';
+import '../../../../navigation/navigation.dart';
 import '../../../../theme/app_color.dart';
 
 class DepositWithCreditCard extends StatelessWidget {
@@ -66,14 +67,14 @@ class _DepositContent extends StatelessWidget {
           const Spacer(),
           DWalletButton(
               onPressed: () {},
-              text: context.l10n.text_back_to_home,
+              text: context.l10n.text_deposit_now,
               color: AppColors.primaryNeonGreen,
               style: context.textTheme.titleMedium
                   ?.copyWith(color: AppColors.textWhite),
               buttonType: ButtonType.onlyText),
           DWalletButton(
               onPressed: () {
-                context.navigator.pop();
+                context.navigator.pushNamed(AppRoutes.home);
               },
               text: context.l10n.text_back_to_home,
               style: context.textTheme.titleMedium
@@ -96,6 +97,15 @@ class _Header extends StatelessWidget {
       child: ListView(
         physics: const NeverScrollableScrollPhysics(),
         children: [
+          DWalletAppBar(
+            text: context.l10n.text_title_deposit_with_credit_card,
+            textColor: AppColors.textWhite,
+            buttonColor: Colors.transparent,
+            icon: AppAssets.iconBackWhite,
+            onPressed: () {
+              context.navigator.pop();
+            },
+          ),
           const SizedBox(
             height: 16,
           ),
@@ -105,11 +115,22 @@ class _Header extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('context.l10n.text_credit_card'),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(context.l10n.text_credit_card,
+                      style: context.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 18,
+                      )),
                   const SizedBox(
                     height: 6,
                   ),
-                  Text('context.l10n.text_choose_your_credit_card'),
+                  Text(context.l10n.text_choose_your_credit_card,
+                      style: context.textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.w200,
+                        fontSize: 16,
+                      )),
                 ],
               ),
               DWalletButton(
