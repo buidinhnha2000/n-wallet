@@ -125,7 +125,7 @@ class CreditCardFormData extends StatelessWidget {
             return Column(
               children: [
                 DWalletTextField(
-                  hintText: 'Cardholder Name',
+                  hintText: context.l10n.text_card_placeholder_name,
                   inputFormatters: [
                     UpperCaseTextFormatter(),
                   ],
@@ -152,7 +152,7 @@ class CreditCardFormData extends StatelessWidget {
             final brandCardType = state.cardNumber.error;
 
             return DWalletTextField(
-              hintText: 'Card Number',
+              hintText: context.l10n.text_card_placeholder_number,
               keyboardType: TextInputType.number,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
@@ -182,7 +182,7 @@ class CreditCardFormData extends StatelessWidget {
           children: [
             Expanded(
               child: DWalletTextField(
-                hintText: 'Expiry Date',
+                hintText: context.l10n.text_card_placeholder_expiry_date,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   ExpirationDateFormatter(),
@@ -199,7 +199,7 @@ class CreditCardFormData extends StatelessWidget {
             ),
             Expanded(
                 child: DWalletTextField(
-              hintText: '3-digit CVV',
+              hintText: context.l10n.text_card_placeholder_cvv,
               keyboardType: TextInputType.number,
               isPassword: true,
               inputFormatters: [
