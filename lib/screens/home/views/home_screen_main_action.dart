@@ -16,7 +16,7 @@ class HomeScreenMainAction extends StatefulWidget {
 class _HomeScreenMainActionState extends State<HomeScreenMainAction> {
   static List<String> pages = <String>[
     AppRoutes.transferBalance,
-    AppRoutes.depositNewCreditCard,
+    AppRoutes.depositWithCreditCard,
     AppRoutes.homeScreen,
   ];
 

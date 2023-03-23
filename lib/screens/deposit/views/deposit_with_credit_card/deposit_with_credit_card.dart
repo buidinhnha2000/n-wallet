@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../../../../common/assets/app_assets.dart';
 import '../../../../common/extensions/extensions.dart';
-import '../../../../common/widgets/d_wallet_button.dart';
-import '../../../../common/widgets/d_wallet_credit_card.dart';
+import '../../../../common/widgets/card/card.dart';
+import '../../../../common/widgets/widgets.dart';
 import '../../../../navigation/navigation.dart';
 import '../../../../theme/app_color.dart';
 
-class DepositAddCreditCardSuccess extends StatelessWidget {
-  const DepositAddCreditCardSuccess({Key? key}) : super(key: key);
+class DepositWithCreditCard extends StatelessWidget {
+  const DepositWithCreditCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,41 +44,39 @@ class DepositAddCreditCardSuccess extends StatelessWidget {
               decoration: const BoxDecoration(
                 color: Colors.white,
               ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 24, bottom: 16),
-                      child: Text(
-                        'Card Settings',
-                        style: context.textTheme.titleMedium?.copyWith(
-                            color: AppColors.textBlack,
-                            fontWeight: FontWeight.w700,
-                            fontSize: 20),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 16,
-                    ),
-                    const Spacer(),
-                    DWalletButton(
-                      onPressed: () {
-                        context.navigator
-                            .pushNamed(AppRoutes.depositWithCreditCard);
-                      },
-                      color: AppColors.primaryNeonGreen,
-                      text: 'Deposit Now',
-                      buttonType: ButtonType.onlyText,
-                    ),
-                    const SizedBox(
-                      height: 32,
-                    )
-                  ],
-                ),
-              ),
+              child: const _DepositContent(),
             ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _DepositContent extends StatelessWidget {
+  const _DepositContent();
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Spacer(),
+          DWalletButton(
+              onPressed: () {},
+              text: 'Deposit Now',
+              color: AppColors.primaryNeonGreen,
+              buttonType: ButtonType.onlyText),
+          DWalletButton(
+              onPressed: () {
+                context.navigator.pushNamed(AppRoutes.home);
+              },
+              text: 'Back to home',
+              buttonType: ButtonType.onlyText),
+          const SizedBox(
+            height: 32,
           )
         ],
       ),
@@ -100,10 +98,19 @@ class _Header extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  Text('context.l10n.text_credit_card'),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  Text('context.l10n.text_choose_your_credit_card'),
+                ],
+              ),
               DWalletButton(
                   onPressed: () {
-                    context.navigator
-                        .pushNamed(AppRoutes.depositWithCreditCard);
+                    context.navigator.pushNamed(AppRoutes.depositNewCreditCard);
                   },
                   color: AppColors.primaryOrange,
                   imageIcon: AppAssets.iconAdd,
@@ -112,8 +119,10 @@ class _Header extends StatelessWidget {
           ),
           const Padding(
             padding: EdgeInsets.only(top: 24),
-            child: DWalletCreditCard(
-              cardBackground: AppColors.primaryOrange,
+            child: DWalletCard(
+              cardBackground: AppColors.primaryNeonGreen,
+              money: 26.968,
+              numberCard: '37435353564335',
             ),
           ),
         ],

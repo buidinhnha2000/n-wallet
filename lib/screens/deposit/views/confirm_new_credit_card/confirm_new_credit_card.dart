@@ -52,10 +52,11 @@ class DepositConfirmNewCreditCard extends StatelessWidget {
                           height: 8,
                         ),
                         DWalletCreditCard(
-                          cardNumber: state.cardNumber.value,
-                          expiration: '${state.expMonth}/${state.expYear}',
-                          holderName: state.name.value,
-                          brand: state.brand,
+                          cardNumber: creditCard.number,
+                          expiration:
+                              '${creditCard.expMonth}/${creditCard.expYear}',
+                          holderName: creditCard.name,
+                          brand: creditCard.cardType,
                           cardBackground: AppColors.primaryOrange,
                         ),
                         Padding(

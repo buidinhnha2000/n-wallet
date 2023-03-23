@@ -86,7 +86,8 @@ class DepositNewCreditCard extends StatelessWidget {
                                 number: state.cardNumber.value,
                                 expYear: state.expYear,
                                 expMonth: state.expMonth,
-                                cvc: state.cvc);
+                                cvc: state.cvc,
+                                cardType: state.brand);
                         if (completedAddCreditCardForm(
                                 state.name.value,
                                 state.cardNumber.value,

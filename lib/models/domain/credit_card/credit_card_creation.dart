@@ -1,5 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../screens/deposit/validations/validations.dart';
+
 part 'credit_card_creation.freezed.dart';
 part 'credit_card_creation.g.dart';
 
@@ -13,6 +15,7 @@ class CreditCardCreation with _$CreditCardCreation {
     required String expMonth,
     required String expYear,
     required String cvc,
+    CardType? cardType,
   }) = _CreditCardCreation;
 
   factory CreditCardCreation.fromJson(Map<String, dynamic> json) =>

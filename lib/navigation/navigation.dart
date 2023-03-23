@@ -5,6 +5,7 @@ import '../models/domain/credit_card/credit_card_creation.dart';
 import '../screens/deposit/views/add_new_credit_card/add_new_credit_card.dart';
 import '../screens/deposit/views/add_success_credit_card/add_success_credit_card.dart';
 import '../screens/deposit/views/confirm_new_credit_card/confirm_new_credit_card.dart';
+import '../screens/deposit/views/deposit_with_credit_card/deposit_with_credit_card.dart';
 import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
@@ -34,6 +35,7 @@ abstract class AppRoutes {
   static const depositNewCreditCard = 'depositNewCreditCard';
   static const depositConfirmCreditCard = 'depositConfirmCreditCard';
   static const depositAddCardSuccess = 'depositAddCardSuccess';
+  static const depositWithCreditCard = 'depositWithCreditCard';
 }
 
 abstract class AppNavigation {
@@ -79,6 +81,8 @@ abstract class AppNavigation {
       case AppRoutes.depositAddCardSuccess:
         return AppPageRoute(
             (_) => const DepositAddCreditCardSuccess(), settings);
+      case AppRoutes.depositWithCreditCard:
+        return AppPageRoute((_) => const DepositWithCreditCard(), settings);
       default:
         throw 'Cannot find destination route';
     }
