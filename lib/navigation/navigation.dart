@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../screens/deposit/deposit.dart';
 import '../models/domain/credit_card/credit_card_creation.dart';
 import '../screens/deposit/views/add_new_credit_card/add_new_credit_card.dart';
 import '../screens/deposit/views/add_success_credit_card/add_success_credit_card.dart';
@@ -31,6 +32,9 @@ abstract class AppRoutes {
   static const signUpEmailStep = 'signUpEmailStep';
   static const signUpNameStep = 'signUpNameStep';
   static const signUpPasswordStep = 'signUpPasswordStep';
+
+  static const depositSelectMethod = 'depositSelectMethod';
+  static const depositWithCreditCard = 'depositWithCreditCard';
 
   static const depositNewCreditCard = 'depositNewCreditCard';
   static const depositConfirmCreditCard = 'depositConfirmCreditCard';
@@ -71,6 +75,11 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const TransferBalanceScreen(), settings);
       case AppRoutes.search:
         return AppPageRoute((_) => const SearchScreen(), settings);
+      case AppRoutes.depositSelectMethod:
+        return AppPageRoute((_) => const DepositSelectMethods(), settings);
+      case AppRoutes.depositWithCreditCard:
+        return AppPageRoute((_) => const DepositWithCreditCard(), settings);
+
       case AppRoutes.depositNewCreditCard:
         return AppPageRoute((_) => const DepositNewCreditCard(), settings);
       case AppRoutes.depositConfirmCreditCard:

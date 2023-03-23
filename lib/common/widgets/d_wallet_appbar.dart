@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../theme/app_color.dart';
 import '../assets/app_assets.dart';
 import '../extensions/extensions.dart';
-import 'd_wallet_button.dart';
+import 'widgets.dart';
 
 class DWalletAppBar extends StatelessWidget {
   const DWalletAppBar(

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import '../../../../common/extensions/extensions.dart';
-import '../../../../common/widgets/d_wallet_credit_card.dart';
 import '../../../../common/widgets/widgets.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../models/domain/credit_card/credit_card_creation.dart';
@@ -101,6 +100,10 @@ class DepositNewCreditCard extends StatelessWidget {
                         }
                       },
                       text: context.l10n.text_continue,
+                      style: context.textTheme.titleMedium?.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                       color: AppColors.primaryNeonGreen,
                       buttonType: ButtonType.onlyText,
                     );
@@ -144,7 +147,7 @@ class CreditCardFormData extends StatelessWidget {
             return Column(
               children: [
                 DWalletTextField(
-                  hintText: 'Cardholder Name',
+                  hintText: context.l10n.text_card_placeholder_name,
                   inputFormatters: [
                     UpperCaseTextFormatter(),
                   ],
@@ -171,7 +174,7 @@ class CreditCardFormData extends StatelessWidget {
             final brandCardType = state.cardNumber.error;
 
             return DWalletTextField(
-              hintText: 'Card Number',
+              hintText: context.l10n.text_card_placeholder_number,
               keyboardType: TextInputType.number,
               inputFormatters: [
                 FilteringTextInputFormatter.digitsOnly,
@@ -201,7 +204,7 @@ class CreditCardFormData extends StatelessWidget {
           children: [
             Expanded(
               child: DWalletTextField(
-                hintText: 'Expiry Date',
+                hintText: context.l10n.text_card_placeholder_expiry_date,
                 keyboardType: TextInputType.number,
                 inputFormatters: [
                   ExpirationDateFormatter(),
@@ -218,7 +221,7 @@ class CreditCardFormData extends StatelessWidget {
             ),
             Expanded(
                 child: DWalletTextField(
-              hintText: '3-digit CVV',
+              hintText: context.l10n.text_card_placeholder_cvv,
               keyboardType: TextInputType.number,
               isPassword: true,
               inputFormatters: [
