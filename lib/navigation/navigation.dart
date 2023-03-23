@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../screens/deposit/views/deposit_with_credit_card/deposit_with_credit_card.dart';
-import '../screens/deposit/views/select_method/select_method_view.dart';
+import '../screens/deposit/deposit.dart';
 import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
@@ -70,6 +69,7 @@ abstract class AppNavigation {
         return AppPageRoute((_) => const DepositSelectMethods(), settings);
       case AppRoutes.depositWithCreditCard:
         return AppPageRoute((_) => const DepositWithCreditCard(), settings);
+
       default:
         throw 'Cannot find destination route';
     }
