@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../models/domain/credit_card/credit_card_creation.dart';
 import '../screens/deposit/deposit.dart';
 import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
@@ -32,6 +33,8 @@ abstract class AppRoutes {
   static const depositWithCreditCard = 'depositWithCreditCard';
 
   static const depositNewCreditCard = 'depositNewCreditCard';
+  static const depositConfirmCreditCard = 'depositConfirmCreditCard';
+  static const depositAddCardSuccess = 'depositAddCardSuccess';
 }
 
 abstract class AppNavigation {
@@ -74,6 +77,14 @@ abstract class AppNavigation {
 
       case AppRoutes.depositNewCreditCard:
         return AppPageRoute((_) => const DepositNewCreditCard(), settings);
+      case AppRoutes.depositConfirmCreditCard:
+        return AppPageRoute(
+            (_) => DepositConfirmNewCreditCard(
+                creditCard: settings.arguments as CreditCardCreation),
+            settings);
+      case AppRoutes.depositAddCardSuccess:
+        return AppPageRoute(
+            (_) => const DepositAddCreditCardSuccess(), settings);
       default:
         throw 'Cannot find destination route';
     }
