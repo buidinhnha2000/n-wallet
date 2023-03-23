@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import '../../../../common/extensions/extensions.dart';
-import '../../../../common/widgets/d_wallet_credit_card.dart';
 import '../../../../common/widgets/widgets.dart';
 import '../../../../l10n/l10n.dart';
 import '../../../../theme/app_color.dart';
@@ -79,6 +78,10 @@ class DepositNewCreditCard extends StatelessWidget {
                     return DWalletButton(
                       onPressed: () {},
                       text: context.l10n.text_continue,
+                      style: context.textTheme.titleMedium?.copyWith(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
                       color: AppColors.primaryNeonGreen,
                       buttonType: ButtonType.onlyText,
                     );

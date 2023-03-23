@@ -134,7 +134,9 @@ class _Header extends StatelessWidget {
                 ],
               ),
               DWalletButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.navigator.pushNamed(AppRoutes.depositNewCreditCard);
+                  },
                   color: AppColors.primaryOrange,
                   imageIcon: AppAssets.iconAdd,
                   buttonType: ButtonType.onlyIcon)
