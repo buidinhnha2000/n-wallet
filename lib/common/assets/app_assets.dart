@@ -75,6 +75,13 @@ abstract class AppAssets {
   static const iconMoreBlue = '$appAssetIconSource/icon_more_blue.svg';
   static const iconReceipt = '$appAssetIconSource/icon_receipt.svg';
   static const iconSuccess = '$appAssetIconSource/icon_success.svg';
+  static const iconAttention = '$appAssetIconSource/icon_attention.svg';
+  static const iconCardActive = '$appAssetIconSource/icon_card_active.svg';
+  static const iconSetLimit = '$appAssetIconSource/icon_set_limit.svg';
+  static const iconLockCard = '$appAssetIconSource/icon_lock_card.svg';
+  static const iconArrowForward = '$appAssetIconSource/icon_arrow_forward.svg';
+  static const iconCreditCard = '$appAssetIconSource/icon_credit_card.svg';
+  static const iconBank = '$appAssetIconSource/icon_bank.svg';
 
   static const iconMastercard = '$appAssetIconSource/icon_mastercard.svg';
   static const iconVisa = '$appAssetIconSource/icon_visa.svg';

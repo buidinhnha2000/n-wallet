@@ -9,47 +9,43 @@ enum ButtonType { onlyIcon, onlyText, iconAndText }
 class DWalletButton extends StatelessWidget {
   const DWalletButton({
     Key? key,
-    this.text,
+    this.text = '',
     this.icon,
     required this.onPressed,
     this.color,
     required this.buttonType,
-    this.imageIcon,
+    this.imageIcon = '',
+    this.style,
   }) : super(key: key);
 
   final IconData? icon;
   final Function()? onPressed;
   final Color? color;
   final ButtonType buttonType;
-  final String? text;
-  final String? imageIcon;
+  final String text;
+  final String imageIcon;
+  final TextStyle? style;
 
   Widget? handleShowChildElement(BuildContext context,
       {required ButtonType buttonType}) {
-    Widget? widget;
+    Widget? child;
     switch (buttonType) {
       case ButtonType.onlyIcon:
-        widget = SvgPicture.asset(
-          imageIcon ?? '',
+        child = SvgPicture.asset(
+          imageIcon,
         );
         break;
       case ButtonType.onlyText:
-        widget = Text(
-          text ?? '',
-          style: context.textTheme.titleMedium?.copyWith(
-            color: AppColors.textWhite,
-            fontSize: 16,
-          ),
-        );
+        child = Text(text, style: style);
         break;
       case ButtonType.iconAndText:
-        widget = _DWalletButtonIconAndTextWidget(
-          imageIcon: imageIcon ?? '',
-          text: text ?? '',
+        child = _DWalletButtonIconAndTextWidget(
+          imageIcon: imageIcon,
+          text: text,
         );
         break;
     }
-    return widget;
+    return child;
   }
 
   static const double _onlyIconSize = 40;

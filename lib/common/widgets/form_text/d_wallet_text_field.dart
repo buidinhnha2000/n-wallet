@@ -13,6 +13,7 @@ class DWalletTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final Function(String)? onChanged;
   final List<TextInputFormatter>? inputFormatters;
+  final bool readOnly;
 
   const DWalletTextField({
     Key? key,
@@ -23,7 +24,7 @@ class DWalletTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.suffixIcon,
     this.onChanged,
-    this.inputFormatters,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -52,7 +53,7 @@ class DWalletTextField extends StatelessWidget {
           suffixIcon: suffixIcon,
         ),
         onChanged: onChanged,
-        inputFormatters: inputFormatters,
+        validator: validator,
       ),
     );
   }
