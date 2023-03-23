@@ -4,6 +4,7 @@ import '../../../../common/assets/app_assets.dart';
 import '../../../../common/extensions/extensions.dart';
 import '../../../../common/widgets/d_wallet_button.dart';
 import '../../../../common/widgets/d_wallet_credit_card.dart';
+import '../../../../l10n/l10n.dart';
 import '../../../../navigation/navigation.dart';
 import '../../../../theme/app_color.dart';
 
@@ -52,7 +53,7 @@ class DepositAddCreditCardSuccess extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 24, bottom: 16),
                       child: Text(
-                        'Card Settings',
+                        context.l10n.text_card_settings,
                         style: context.textTheme.titleMedium?.copyWith(
                             color: AppColors.textBlack,
                             fontWeight: FontWeight.w700,
@@ -69,7 +70,7 @@ class DepositAddCreditCardSuccess extends StatelessWidget {
                             .pushNamed(AppRoutes.depositWithCreditCard);
                       },
                       color: AppColors.primaryNeonGreen,
-                      text: 'Deposit Now',
+                      text: context.l10n.text_deposit_now,
                       buttonType: ButtonType.onlyText,
                     ),
                     const SizedBox(

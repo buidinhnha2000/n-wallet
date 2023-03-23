@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
 import '../../../../common/extensions/extensions.dart';
-import '../../../../common/widgets/d_wallet_credit_card.dart';
 import '../../../../common/widgets/widgets.dart';
+import '../../../../l10n/l10n.dart';
 import '../../../../models/domain/credit_card/credit_card_creation.dart';
 import '../../../../navigation/navigation.dart';
 import '../../../../theme/app_color.dart';
@@ -33,7 +33,7 @@ class DepositConfirmNewCreditCard extends StatelessWidget {
                       children: [
                         Text(
                           textAlign: TextAlign.center,
-                          'Add Card Confirm',
+                          context.l10n.text_add_card_confirm,
                           style: context.textTheme.titleMedium?.copyWith(
                             color: AppColors.textBlack,
                             fontSize: 20,
@@ -44,7 +44,7 @@ class DepositConfirmNewCreditCard extends StatelessWidget {
                           height: 12,
                         ),
                         Text(
-                          'Your Card',
+                          context.l10n.text_your_card,
                           style: context.textTheme.bodyMedium
                               ?.copyWith(color: AppColors.textBlackLight),
                         ),
@@ -74,7 +74,7 @@ class DepositConfirmNewCreditCard extends StatelessWidget {
                                   context.navigator.pop();
                                 },
                                 color: AppColors.iconGrey.withOpacity(0.6),
-                                text: 'Cancel',
+                                text: context.l10n.text_cancel,
                                 buttonType: ButtonType.onlyText,
                               ),
                             ),
@@ -103,7 +103,7 @@ class DepositConfirmNewCreditCard extends StatelessWidget {
                                           );
                                     },
                                     color: AppColors.buttonNeonGreen,
-                                    text: 'Add Card',
+                                    text: context.l10n.text_add_card,
                                     buttonType: ButtonType.onlyText,
                                   );
                                 },
