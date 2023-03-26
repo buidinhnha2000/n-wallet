@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
+
 import '../../../blocs/authentication/authentication_cubit.dart';
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/extensions.dart';
@@ -93,7 +94,7 @@ class SignUpPasswordStep extends StatelessWidget {
                 ),
                 if (state.status.isSubmissionInProgress ||
                     state.status.isSubmissionFailure)
-                  const DWalletLoader()
+                  DWalletLoader()
               ],
             );
           },

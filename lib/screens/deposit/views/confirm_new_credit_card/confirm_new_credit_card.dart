@@ -117,7 +117,7 @@ class DepositConfirmNewCreditCard extends StatelessWidget {
                       ],
                     ),
                   )),
-              if (state.status.isSubmissionInProgress) const DWalletLoader()
+              if (state.status.isSubmissionInProgress) DWalletLoader()
             ],
           );
         },
