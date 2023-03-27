@@ -9,6 +9,8 @@ class AppColors {
   static const Color gestureDetectorWhile = Color(0xFFedfaf2);
   static const Color hover= Color(0xFFf2f2f2);
   static const Color divider= Color(0xFF73da9c);
+  static const Color backgroundBlack = Color(0xFF000000);
+
 
   static const Color dividerLightGreen= Color(0xFF74da9c);
   static const Color dividerGreen= Color(0xFF4cc37a);

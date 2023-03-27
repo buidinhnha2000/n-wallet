@@ -19,14 +19,14 @@ class SearchList extends StatelessWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           shrinkWrap: true,
           padding: const EdgeInsets.only(top: 110),
-          itemCount: state.search?.profile?.length ?? 0,
+          itemCount: state.search?.searchProfile?.length ?? 0,
           itemBuilder: (context, index) {
-            final user = state.search?.profile![index];
+            final user = state.search?.searchProfile![index];
             if (state.search != null) {
               return GestureDetector(
                 onTap: () {
                   context.navigator.pushNamed(AppRoutes.transferBalance,
-                      arguments: state.search?.profile?[index]);
+                      arguments: state.search?.searchProfile?[index]);
                 },
                 child: Padding(
                   padding: const EdgeInsets.only(

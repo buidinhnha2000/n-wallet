@@ -82,10 +82,10 @@ class TransferBalanceRecentList extends StatelessWidget {
             return ListView.builder(
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
-              itemCount: state.search?.profile?.length ?? 0,
+              itemCount: state.search?.searchProfile?.length ?? 0,
               physics: const BouncingScrollPhysics(),
               itemBuilder: (BuildContext context, int index) {
-                final user = state.search?.profile![index];
+                final user = state.search?.searchProfile![index];
                 if (state.search != null) {
                   return Padding(
                     padding: const EdgeInsets.only(left: 16),

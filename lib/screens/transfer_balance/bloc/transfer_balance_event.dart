@@ -5,7 +5,7 @@ abstract class TransferBalanceEvent extends Equatable{
 }
 
 class OnChangedAmount extends TransferBalanceEvent{
-  final double amount;
+  final int amount;
 
   OnChangedAmount(this.amount);
 
