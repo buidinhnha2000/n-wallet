@@ -17,8 +17,8 @@ class HistoryDataJson with _$HistoryDataJson {
     String? status,
     String? typeTransaction,
     String? notes,
-    List<HistorySenderJson>? sender,
-    List<HistoryReceiverJson>? receiver,
+    HistorySenderJson? sender,
+    HistoryReceiverJson? receiver,
 
   }) = _HistoryDataJson;
 

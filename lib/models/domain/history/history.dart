@@ -23,8 +23,8 @@ class HistoryData extends Equatable {
   final int? id;
   final String? updatedAt, createdAt, deletedAt, status, typeTransaction, notes;
   final double? amount;
-  final List<HistoryReceiverJson>? historyReceiverJson;
-  final List<HistorySenderJson>? historySenderJson;
+  final HistoryReceiverJson? historyReceiverJson;
+  final HistorySenderJson? historySenderJson;
 
   const HistoryData(
       {this.id,
