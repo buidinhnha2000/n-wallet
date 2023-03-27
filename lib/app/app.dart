@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../blocs/authentication/authentication_cubit.dart';
 import '../blocs/social_authentication/social_authentication_cubit.dart';
 import '../di/service_locator.dart';
 import '../domain/domain.dart';
+import '../domain/repositories/transfer_repository.dart';
 import '../l10n/l10n.dart';
 import '../navigation/navigation.dart';
 import '../screens/onboarding/cubit/onboarding_cubit.dart';
@@ -30,6 +30,9 @@ class App extends StatelessWidget {
           create: (BuildContext context) =>
               ServiceLocator.instance.inject<CreditCardRepository>(),
         ),
+        RepositoryProvider<TransferRepository>(
+            create: (BuildContext context) =>
+                ServiceLocator.instance.inject<TransferRepository>())
       ],
       child: MultiBlocProvider(
         providers: [

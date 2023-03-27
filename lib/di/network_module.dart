@@ -9,6 +9,9 @@ extension ServiceLocatorX on ServiceLocator {
 
     registerSingleton<UserDataSource>(UserApi(inject<DioClient>().authDio));
     registerSingleton<UserRepository>(UserRepositoryImpl(inject(), inject()));
+
+    registerSingleton<TransferDataSource>(TransferApi(inject<DioClient>().authDio));
+    registerSingleton<TransferRepository>(TransferRepositoryImpl(inject()));
     registerSingleton<CreditCardDataSource>(
         CreditCardApi(inject<DioClient>().authDio));
     registerSingleton<CreditCardRepository>(CreditCardRepositoryImpl(inject()));

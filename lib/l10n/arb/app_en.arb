@@ -96,8 +96,6 @@
   "text_choose_card": "Choose Card",
   "text_hide": "Hide",
   "text_search_username_and_email": "Search username or email",
-  "text_transfer_on": "Transfer on",
-
   "text_title_select_methods_deposit" : "Select Method",
   "text_desc_select_methods_deposit": "Select top up methods",
   "text_credit_card": "Credit Card",
@@ -131,7 +129,13 @@
   "text_set_limit": "Set Limit",
   "text_lock_card": "Lock Card",
   "text_top_up_now": "Deposit Now",
-  "text_back_to_home": "Back to home"
-
-
+  "text_back_to_home": "Back to home",
+  "text_transfer_on": "Transfer on",
+  "text_transfer_content": "Notes",
+  "text_transfer_content_des": "transfer",
+  "text_done": "Done",
+  "text_transfer_error_user": "Please select the transferor",
+  "text_transfer_error_amount": "Please enter the amount you want to transfer",
+  "text_transfer_error_user_amount": "Please select the sender and the money you want to transfer",
+  "text_notes": "Notes"
 }
