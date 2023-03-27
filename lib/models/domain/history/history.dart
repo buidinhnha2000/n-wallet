@@ -61,8 +61,8 @@ class HistoryData extends Equatable {
         typeTransaction: dto?.typeTransaction,
         notes: dto?.notes,
         amount: dto?.amount,
-        historyReceiverJson: dto?.historyReceiverJson,
-        historySenderJson: dto?.historySenderJson,
+        historyReceiverJson: dto?.receiver,
+        historySenderJson: dto?.sender,
       );
 }
 

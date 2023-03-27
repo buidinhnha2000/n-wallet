@@ -1,6 +1,7 @@
 import '../../../../common/either.dart';
 import '../../../../common/error.dart';
 import '../../../../models/balance/balance.dart';
+import '../../../../models/history/history.dart';
 import '../../../../models/profile/profile.dart';
 import '../../../../models/search/search.dart';
 import '../../data_sources/users/users_data_source.dart';
@@ -38,4 +39,14 @@ class UserApi extends Api implements UserDataSource {
       return search;
     });
   }
+
+  @override
+  Future<Either<DataSourceError, HistoryJson?>> getHistory() async {
+    return withTimeoutRequest(() async {
+      final data = await dio.get(ApiPath.history);
+      final history = HistoryJson.fromJson(data.data);
+      return history;
+    });
+  }
+
 }

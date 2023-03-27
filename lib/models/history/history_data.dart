@@ -17,8 +17,8 @@ class HistoryDataJson with _$HistoryDataJson {
     String? status,
     String? typeTransaction,
     String? notes,
-    @JsonKey(name: 'receiver') List<HistoryReceiverJson>? historyReceiverJson,
-    @JsonKey(name: 'sender') List<HistorySenderJson>? historySenderJson,
+    List<HistorySenderJson>? sender,
+    List<HistoryReceiverJson>? receiver,
 
   }) = _HistoryDataJson;
 
@@ -29,7 +29,7 @@ class HistoryDataJson with _$HistoryDataJson {
 @freezed
 class HistoryDataJsonWrapper with _$HistoryDataJsonWrapper {
   const factory HistoryDataJsonWrapper({
-    HistoryDataJson? historyDataJson,
+    HistoryDataJson? historyData,
   }) = _HistoryDataJsonWrapper;
 
   factory HistoryDataJsonWrapper.fromJson(Map<String, Object?> json) => _$HistoryDataJsonWrapperFromJson(json);

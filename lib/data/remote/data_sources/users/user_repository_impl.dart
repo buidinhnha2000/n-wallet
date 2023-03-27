@@ -2,6 +2,7 @@ import '../../../../common/either.dart';
 import '../../../../common/error.dart';
 import '../../../../domain/repositories/user_repository.dart';
 import '../../../../models/domain/balance.dart';
+import '../../../../models/domain/history/history.dart';
 import '../../../../models/domain/profile.dart';
 import '../../../../models/domain/search.dart';
 import '../../../local/local.dart';
@@ -26,4 +27,8 @@ class UserRepositoryImpl extends UserRepository {
   Future<Either<DataSourceError, Search>> getSearch(String? wordSearch) async =>
       (await userDataSource.getSearch(wordSearch))
           .map((value) => Search.fromDTO(value));
+
+  @override
+  Future<Either<DataSourceError, History>> getHistory() async =>
+      (await userDataSource.getHistory()).map((value) => History.fromDTO(value));
 }
