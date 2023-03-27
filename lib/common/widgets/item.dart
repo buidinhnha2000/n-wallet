@@ -6,7 +6,7 @@ import '../assets/app_assets.dart';
 
 const List<ActionMainHome> actionMainHome = [
   ActionMainHome(AppAssets.iconTransfer, 'Transfer', AppRoutes.transferBalance),
-  ActionMainHome(AppAssets.iconTopup, 'Deposit', AppRoutes.home),
+  ActionMainHome(AppAssets.iconTopup, 'Deposit', AppRoutes.depositSelectMethod),
   ActionMainHome(AppAssets.iconHistory, 'History', AppRoutes.home),
 ];
 

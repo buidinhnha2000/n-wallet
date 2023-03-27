@@ -9,4 +9,5 @@ abstract class ApiPath {
   static const search = 'users/search';
   static const createCreditCard = 'cards';
   static const history = 'transactions/history';
+  static const transfer = 'transactions/transfer';
 }

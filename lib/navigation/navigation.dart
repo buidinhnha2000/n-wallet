@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../models/search/search_profile.dart';
 import '../models/domain/credit_card/credit_card_creation.dart';
 import '../screens/deposit/deposit.dart';
 import '../screens/history/history.dart';
@@ -13,6 +14,8 @@ import '../screens/signin_signup_options/signin/signin.dart';
 import '../screens/signin_signup_options/signin_signup_options/signin_signup_options.dart';
 import '../screens/signup/signup.dart';
 import '../screens/transfer_balance/transfer_balance.dart';
+import '../screens/transfer_balance/views/transfer_model.dart';
+import '../screens/transfer_confirm/transfer_confirm.dart';
 import '../screens/welcome/welcome_screen.dart';
 
 abstract class AppRoutes {
@@ -22,6 +25,7 @@ abstract class AppRoutes {
   static const home = 'home';
   static const profile = 'profile';
   static const transferBalance = 'transferBalance';
+  static const transferConfirm = 'transferConfirm';
   static const search = 'search';
   static const history = 'history';
 
@@ -69,9 +73,18 @@ abstract class AppNavigation {
       case AppRoutes.profile:
         return AppPageRoute((_) => const ProfileScreen(), settings);
       case AppRoutes.transferBalance:
-        return AppPageRoute((_) => const TransferBalanceScreen(), settings);
+        return AppPageRoute(
+            (_) => TransferBalanceScreen(
+                searchProfile: settings.arguments as SearchProfileJson?),
+            settings);
       case AppRoutes.search:
         return AppPageRoute((_) => const SearchScreen(), settings);
+      case AppRoutes.transferConfirm:
+        return AppPageRoute(
+            (_) => TransferConfirmScreen(
+                transferModel: settings.arguments as TransferModel,
+                ),
+            settings);
       case AppRoutes.depositSelectMethod:
         return AppPageRoute((_) => const DepositSelectMethods(), settings);
       case AppRoutes.depositWithCreditCard:

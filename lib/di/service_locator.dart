@@ -3,15 +3,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../app_flavor.dart';
 import '../data/local/local_storage.dart';
+import '../data/remote/apis/auth/authentication_api.dart';
+import '../data/remote/apis/transfer/transfer_api.dart';
 import '../data/remote/apis/credit_card/credit_card_api.dart';
 import '../data/remote/apis/users/user_api.dart';
 import '../data/remote/data_sources/authentication/authentication_repository_impl.dart';
+import '../data/remote/data_sources/transfer/transfer_data_source.dart';
+import '../data/remote/data_sources/transfer/transfer_repository_impl.dart';
 import '../data/remote/data_sources/credit_card/credit_card_data_source.dart';
 import '../data/remote/data_sources/credit_card/credit_card_repository_impl.dart';
 import '../data/remote/data_sources/users/user_repository_impl.dart';
 import '../data/remote/data_sources/users/users_data_source.dart';
 import '../data/remote/remote.dart';
 import '../domain/domain.dart';
+import '../domain/repositories/transfer_repository.dart';
 
 part 'network_module.dart';
 
