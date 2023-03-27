@@ -137,7 +137,7 @@ class _ButtonsSocialWidget extends StatelessWidget {
         ),
         DWalletButton(
           onPressed: () {
-            context.read<SocialAuthenticationCubit>().signinWithGoogle();
+            context.read<SocialAuthenticationCubit>().onSubmitted();
           },
           buttonType: ButtonType.iconAndText,
           text: context.l10n.text_sign_up_with_google,

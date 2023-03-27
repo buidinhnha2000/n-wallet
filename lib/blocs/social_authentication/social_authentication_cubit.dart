@@ -19,15 +19,15 @@ class SocialAuthenticationCubit extends Cubit<SocialAuthenticationState> {
 
   Future<String?> signinWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
+    late final OAuthCredential credential;
     if (googleUser != null) {
       final GoogleSignInAuthentication googleAuth =
           await googleUser.authentication;
-      final credential = GoogleAuthProvider.credential(
+      credential = GoogleAuthProvider.credential(
           accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
       await FirebaseAuth.instance.signInWithCredential(credential);
-      return credential.idToken;
     }
+    return credential.idToken;
   }
 
   FutureOr<void> onSubmitted() async {
