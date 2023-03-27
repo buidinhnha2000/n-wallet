@@ -17,7 +17,7 @@ class _HomeScreenMainActionState extends State<HomeScreenMainAction> {
   static List<String> pages = <String>[
     AppRoutes.transferBalance,
     AppRoutes.depositSelectMethod,
-    AppRoutes.homeScreen,
+    AppRoutes.history,
   ];
 
   void _onNavigator(int index) {

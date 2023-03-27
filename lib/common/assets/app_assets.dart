@@ -88,4 +88,8 @@ abstract class AppAssets {
   static const iconDiscover = '$appAssetIconSource/icon_discover.svg';
   static const iconAmericanExp = '$appAssetIconSource/icon_american.svg';
   static const iconCardOther = '$appAssetIconSource/icon_card_other.svg';
+  static const iconFilter = '$appAssetIconSource/icon_filter.svg';
+  static const iconDribble = '$appAssetIconSource/icon_dribble.svg';
+  static const iconStarbucks = '$appAssetIconSource/icon_starbucks.svg';
+  static const iconLess = '$appAssetIconSource/icon_less.svg';
 }

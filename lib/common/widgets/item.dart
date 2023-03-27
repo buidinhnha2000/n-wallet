@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+
 import '../../navigation/navigation.dart';
+import '../../theme/app_color.dart';
 import '../assets/app_assets.dart';
 
 const List<ActionMainHome> actionMainHome = [
@@ -44,4 +47,18 @@ class ProfileSettingItem {
   final String text;
   final String route;
   const ProfileSettingItem(this.img, this.text, this.route);
+}
+
+const List<ActionMainHistory> actionMainHistory = [
+  ActionMainHistory(AppAssets.iconStarbucks, 'Starbucks', AppRoutes.transferBalance, AppColors.buttonGreen),
+  ActionMainHistory(AppAssets.iconDribble, 'Dribbble', AppRoutes.home, AppColors.buttonPink),
+  ActionMainHistory(AppAssets.iconStarbucks, 'Statistic', AppRoutes.home, AppColors.buttonBlack),
+];
+
+class ActionMainHistory {
+  final String img;
+  final String text;
+  final String route;
+  final Color color;
+  const ActionMainHistory(this.img, this.text, this.route, this.color);
 }

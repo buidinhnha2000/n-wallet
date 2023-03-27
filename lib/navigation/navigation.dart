@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../models/domain/credit_card/credit_card_creation.dart';
 import '../screens/deposit/deposit.dart';
+import '../screens/history/history.dart';
 import '../screens/home/home.dart';
 import '../screens/onboarding/bloc/onboarding_bloc.dart';
 import '../screens/onboarding/onboarding.dart';
@@ -22,6 +23,7 @@ abstract class AppRoutes {
   static const profile = 'profile';
   static const transferBalance = 'transferBalance';
   static const search = 'search';
+  static const history = 'history';
 
   static const signOption = 'signOption';
   static const signIn = 'signIn';
@@ -85,6 +87,9 @@ abstract class AppNavigation {
       case AppRoutes.depositAddCardSuccess:
         return AppPageRoute(
             (_) => const DepositAddCreditCardSuccess(), settings);
+      case AppRoutes.history:
+        return AppPageRoute(
+                (_) => const HistoryScreen(), settings);
       default:
         throw 'Cannot find destination route';
     }
