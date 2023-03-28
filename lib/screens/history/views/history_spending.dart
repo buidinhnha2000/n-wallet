@@ -86,69 +86,82 @@ class HistoryScreenSpendingViewStatistic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+            color: AppColors.buttonSalmon.withOpacity(0.1),
+            borderRadius: const BorderRadius.all(Radius.circular(16))),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: 48,
+              width: 48,
+              padding: const EdgeInsets.only(top: 2),
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: AppColors.buttonSalmon),
+              child: SvgPicture.asset(
+                AppAssets.iconLess,
+                height: 24,
+                width: 24,
+                fit: BoxFit.scaleDown,
+              ),
+            ),
+            const SizedBox(width: 16),
+            const HistoryScreenSpendingViewStatisticTwoMonth(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class HistoryScreenSpendingViewStatisticTwoMonth extends StatelessWidget {
+  const HistoryScreenSpendingViewStatisticTwoMonth({Key? key})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return BlocBuilder<HistoryBloc, HistoryState>(
       builder: (context, state) {
         final twoMonth =
-            dWalletFormatCard.currencyFormat.format(state.twoMonth ?? 0);
-        return Padding(
-          padding: const EdgeInsets.all(16),
-          child: Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-                color: AppColors.buttonSalmon.withOpacity(0.1),
-                borderRadius: const BorderRadius.all(Radius.circular(16))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  height: 48,
-                  width: 48,
-                  padding: const EdgeInsets.only(top: 2),
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle, color: AppColors.buttonSalmon),
-                  child: SvgPicture.asset(
-                    AppAssets.iconLess,
-                    height: 24,
-                    width: 24,
-                    fit: BoxFit.scaleDown,
+        dWalletFormatCard.currencyFormat.format(state.twoMonth ?? 0);
+        return Flexible(
+          child: Column(
+            children: [
+              Text(
+                '${context.l10n
+                    .text_history_spending_desc_first} $twoMonth ${context.l10n
+                    .text_history_spending_desc_last}',
+                style: context.textTheme.bodyMedium?.copyWith(
+                    color: AppColors.textLightBlack,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Text(
+                    context.l10n.text_history_pending_view_statistic,
+                    style: context.textTheme.bodyMedium?.copyWith(
+                        color: AppColors.textYellow,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500),
                   ),
-                ),
-                const SizedBox(width: 16),
-                Flexible(
-                  child: Column(
-                    children: [
-                      Text(
-                        '${context.l10n.text_history_spending_desc_first} $twoMonth ${context.l10n.text_history_spending_desc_last}',
-                        style: context.textTheme.bodyMedium?.copyWith(
-                            color: AppColors.textLightBlack,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Text(
-                            context.l10n.text_history_pending_view_statistic,
-                            style: context.textTheme.bodyMedium?.copyWith(
-                                color: AppColors.textYellow,
-                                fontSize: 14,
-                                fontWeight: FontWeight.w500),
-                          ),
-                          SvgPicture.asset(
-                            AppAssets.iconNext,
-                            color: AppColors.textYellow,
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                  SvgPicture.asset(
+                    AppAssets.iconNext,
+                    color: AppColors.textYellow,
+                  )
+                ],
+              )
+            ],
           ),
         );
       },
     );
   }
 }
+
