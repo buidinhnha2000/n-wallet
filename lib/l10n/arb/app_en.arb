@@ -129,7 +129,6 @@
   "text_set_limit": "Set Limit",
   "text_lock_card": "Lock Card",
   "text_top_up_now": "Deposit Now",
-  "text_back_to_home": "Back to home",
   "text_transfer_on": "Transfer on",
   "text_transfer_content": "Notes",
   "text_transfer_content_des": "transfer",
@@ -144,7 +143,9 @@
   "text_dribbble": "Dribbble",
   "text_spendings": "Spendings",
   "text_expenses": "Expenses",
-  "text_history_spending_desc": "You’ve spent $1,547 on expenses over the past 2 months",
-  "text_history_pending_view_statistic": "View Statistic"
+  "text_history_spending_desc_first": "You’ve spent",
+  "text_history_spending_desc_last": "on expenses over the past 2 months",
+  "text_history_pending_view_statistic": "View Statistic",
+  "text_transfer_with": "Transfer with"
 
 }

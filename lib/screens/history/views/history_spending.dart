@@ -1,11 +1,14 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/assets/app_assets.dart';
 import '../../../common/extensions/context.dart';
+import '../../../common/widgets/card/card_format.dart';
 import '../../../common/widgets/item.dart';
 import '../../../l10n/l10n.dart';
 import '../../../theme/app_color.dart';
+import '../bloc/history_bloc.dart';
 
 class HistoryScreenSpending extends StatelessWidget {
   const HistoryScreenSpending({Key? key}) : super(key: key);
@@ -43,17 +46,17 @@ class HistoryScreenMainAction extends StatelessWidget {
       child: ListView(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
+          physics: const BouncingScrollPhysics(),
           children: List.generate(actionMainHistory.length, (index) {
             return GestureDetector(
-              onTap: () => context.navigator
-                  .pushNamed(actionMainHistory[index].route),
+              onTap: () =>
+                  context.navigator.pushNamed(actionMainHistory[index].route),
               child: Container(
                 height: 92,
                 width: 140,
                 margin: const EdgeInsets.only(left: 16),
                 decoration: BoxDecoration(
-                    borderRadius:
-                    const BorderRadius.all(Radius.circular(16)),
+                    borderRadius: const BorderRadius.all(Radius.circular(16)),
                     color: actionMainHistory[index].color),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -83,63 +86,69 @@ class HistoryScreenSpendingViewStatistic extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-            color: AppColors.buttonSalmon.withOpacity(0.1),
-            borderRadius: const BorderRadius.all(Radius.circular(16))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 48,
-              width: 48,
-              padding: const EdgeInsets.only(top: 2),
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: AppColors.buttonSalmon),
-              child: SvgPicture.asset(
-                AppAssets.iconLess,
-                height: 24,
-                width: 24,
-                fit: BoxFit.scaleDown,
-              ),
-            ),
-            const SizedBox(width: 16),
-            Flexible(
-              child: Column(
-                children: [
-                  Text(
-                    context.l10n.text_history_spending_desc,
-                    style: context.textTheme.bodyMedium?.copyWith(
-                        color: AppColors.textLightBlack,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
+    return BlocBuilder<HistoryBloc, HistoryState>(
+      builder: (context, state) {
+        final twoMonth =
+            dWalletFormatCard.currencyFormat.format(state.twoMonth ?? 0);
+        return Padding(
+          padding: const EdgeInsets.all(16),
+          child: Container(
+            padding: const EdgeInsets.all(16),
+            decoration: BoxDecoration(
+                color: AppColors.buttonSalmon.withOpacity(0.1),
+                borderRadius: const BorderRadius.all(Radius.circular(16))),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 48,
+                  width: 48,
+                  padding: const EdgeInsets.only(top: 2),
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle, color: AppColors.buttonSalmon),
+                  child: SvgPicture.asset(
+                    AppAssets.iconLess,
+                    height: 24,
+                    width: 24,
+                    fit: BoxFit.scaleDown,
                   ),
-                  const SizedBox(height: 8),
-                  Row(
+                ),
+                const SizedBox(width: 16),
+                Flexible(
+                  child: Column(
                     children: [
                       Text(
-                        context.l10n.text_history_pending_view_statistic,
+                        '${context.l10n.text_history_spending_desc_first} $twoMonth ${context.l10n.text_history_spending_desc_last}',
                         style: context.textTheme.bodyMedium?.copyWith(
-                            color: AppColors.textYellow,
+                            color: AppColors.textLightBlack,
                             fontSize: 14,
                             fontWeight: FontWeight.w500),
                       ),
-                      SvgPicture.asset(
-                        AppAssets.iconNext,
-                        color: AppColors.textYellow,
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Text(
+                            context.l10n.text_history_pending_view_statistic,
+                            style: context.textTheme.bodyMedium?.copyWith(
+                                color: AppColors.textYellow,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500),
+                          ),
+                          SvgPicture.asset(
+                            AppAssets.iconNext,
+                            color: AppColors.textYellow,
+                          )
+                        ],
                       )
                     ],
-                  )
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

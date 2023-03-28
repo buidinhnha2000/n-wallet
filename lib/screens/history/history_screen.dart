@@ -16,7 +16,9 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HistoryBloc(context.read())..add(LoadHistory()),
+      create: (context) =>
+      HistoryBloc(context.read())
+        ..add(LoadHistory()),
       child: GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
